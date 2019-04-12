@@ -23,10 +23,5 @@ Class ClassConexion{
             //echo "Bien";
         }
     }
-
-    
-    
-
-
 }
 ?>

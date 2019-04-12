@@ -11,7 +11,7 @@ class  crud {
 public function Listar(){
     $cn=new ClassConexion();
     $mysqli=$cn->Conectar();
-    $sql=$mysqli->prepare("call sp_listar_alumo()");
+    $sql=$mysqli->prepare("call sp_listar_alumno()");
     $sql->execute();
     $array=[];
     if($sql->{'error'}==''){
@@ -30,6 +30,16 @@ public function Listar(){
     return $res;
 
 }
+public function Insertar(){
+    $cn=new ClassConexion();
+    $mysqli=$cn->Conectar();
+    $sql=$mysqli->prepare("call sp_insertar_alumno(?,?,?,?)");
+    $sql->execute();  
+}
+
+
+
+
 
 }
 ?>
