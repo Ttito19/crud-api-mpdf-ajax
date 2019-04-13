@@ -2,8 +2,8 @@
 <html>
 <head>
 	<title>Form-Crud</title>
-    <link rel="stylesheet" type="text/css" href="../style/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="../style/css/bootstrap.css">
+ <!--   <link rel="stylesheet" type="text/css" href="../style/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../style/css/bootstrap.css">-->
 
 </head>
 <body>
@@ -35,4 +35,6 @@
 <div>
 
 </body>
+<!--<script src="../style/js/bootstrap.min.js"></script>
+<script src="../style/js/bootstrap.js"></script>-->
 </html>
