@@ -31,6 +31,16 @@ public function Listar(){
     return $res;//retornara el resultado
 
 }
+public function Insertar(){
+    $cn=new ClassConexion();
+    $mysqli=$cn->Conectar();
+    $sql=$mysqli->prepare("call sp_insertar_alumno(?,?,?,?)");
+    $sql->execute();  
+}
+
+
+
+
 
 }
 ?>
