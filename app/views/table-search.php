@@ -1,4 +1,4 @@
-<?php require  '../controllers/crudControlador.php'; //Ruta del controlador ?>
+<?php require  '../controllers/listar-controller.php'; //Ruta del controlador ?>
 <!-- En el navegador ejecutas este archivo(inicio.php) pero arriba esta la ruta del controlador, por lo cual ese archivo se ejecutara primero 
 y luego continuara con lo de abajo-->
 
@@ -10,13 +10,13 @@ y luego continuara con lo de abajo-->
 <html>
 <head>
     <title>Listar en Pdf </title>
-   <link rel="stylesheet" type="text/css" href="../style/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="../style/css/bootstrap.css">
+   <link rel="stylesheet" type="text/css" href="../../public/style/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../../public/style/css/bootstrap.css">
 </head>
 <body>	
 <div class="container">
 <div class="content-justify-center">
-<div class="col-sm-4">
+<div class="col-sm-4 offset-sm-1">
 <form method="post" class="form-group">
 	
 	
@@ -28,14 +28,19 @@ y luego continuara con lo de abajo-->
 
 </form>
 
-	<table class="table-bordered" >
+	<table class="table-active" >
 		<thead>
 			<tr class="table-primary">
-				<td style="color:green" >Codigo</td>
-				<td style="color:green">Nombres</td>
+				<td style="color:green">Codigo</td>
+				<td style="color:green">Dni</td>
 				<td style="color:green">Apellido</td>
-				<td style="color:green">Direcion</td>
+				<td style="color:green">Nombre</td>
 				<td style="color:green">Telefono</td>
+				<td style="color:green">Direccion</td>
+				<td style="color:green">Departamento</td>
+				<td style="color:green">Provicia</td>
+				<td style="color:green">Distrito</td>
+				<td style="color:green">Sexo</td>
 				<td style="color:green">Editar</td>
 				<td style="color:green">Eliminar</td>
 			</tr>	
@@ -48,12 +53,17 @@ y luego continuara con lo de abajo-->
 			
 				<tr>
 					<td width="10"><?php echo $value['id']?></td>
-					<td width="10"><?php echo $value['nombre']?></td>
+					<td width="10"><?php echo $value['dni']?></td>
 					<td width="10"><?php echo $value['apellido']?></td>
-					<td width="10"><?php echo $value['Direccion']?></td>
+					<td width="10"><?php echo $value['nombre']?></td>
 					<td width="10"><?php echo $value['telefono']?></td>
-					<td width="10"></td>
-					<td width="10"></td>
+					<td width="10"><?php echo $value['Direccion']?></td>
+					<td width="10"><?php echo $value['idDepa']?></td>
+					<td width="10"><?php echo $value['idProv']?></td>
+					<td width="10"><?php echo $value['idDist']?></td>
+					<td width="10"><?php echo $value['Sexo']?></td>
+					<td width="10"><a  class="btn btn-success"  href="editar-dato.php"/>Editar</td>
+					<td width="10"><a  class="btn btn-danger"  href=<?php  echo $value['id']='crud-controller.php'?>  />Eliminar</td>
 				</tr>
 				<?php } ?>
 				
@@ -67,6 +77,6 @@ y luego continuara con lo de abajo-->
 </div>
 
 </body>
-<script src="../style/js/bootstrap.min.js"></script>
-<script src="../style/js/bootstrap.js"></script>
+<script src="../../public/style/js/bootstrap.min.js"></script>
+<script src="../../public/style/js/bootstrap.js"></script>
 </html>

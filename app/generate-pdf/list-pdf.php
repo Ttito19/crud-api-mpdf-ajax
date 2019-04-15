@@ -1,14 +1,14 @@
 <?php
-require_once '../vendor/autoload.php';
+require_once '../../vendor/autoload.php';
 
 ob_start();
-require '../views/inicio.php';
+require '../../app/views/inicio.php';
 $html= ob_get_clean();
 $day = date('d');
 $year = date('Y');
 $month = date('F');
 $mpdf = new \Mpdf\Mpdf([
-    'mode' => 'utf-8', 
+/*    'mode' => 'utf-8', 
     'format' => [297, 210], 
 'margin_bottom' => 25,
 'margin_left' => 10,
@@ -16,20 +16,21 @@ $mpdf = new \Mpdf\Mpdf([
 'margin_top' =>48,
 'margin_header' => 10,
 'margin_footer' => 5,
-'orientation' => 'L'//P o L
+'orientation' => 'L'//P o L*/
+'margin_top' =>20,
 ]);
 //print_r($html);
 
-$mpdf->SetHTMLHeader('<div style="text-align: center; color:blue;">Datos del Alumno</div>');
-
 for ($i=1; $i <=3 ; $i++) {
+    $mpdf->SetHTMLHeader('<div style="text-align: center; color:blue;"><h1>Datos del Alumno</h1></div>');
     $mpdf->addPage ('');
-    $mpdf->SetHTMLFooter("$day  $month  $year "." Pág:$i/3");
+    $mpdf->SetHTMLFooter( "$day  $month  $year ". "<div  style='text-align:center'>  Pág:$i/3 </div>");
     $mpdf->writeHTML($html);
     
     
 }
     
+
 
 
 

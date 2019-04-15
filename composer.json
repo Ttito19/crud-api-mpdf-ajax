@@ -1,12 +1,10 @@
 {
-    "name": "dgich/crud-api-mpdf-ajax",
+    "name": "oeraae20191-01/crud-api-mpdf-ajax",
     "authors": [
         {
             "name": "Ttito19",
             "email": "andrezchavez.2000@gmail.com"
         }
     ],
-    "require": {
-        "mpdf/mpdf": "^8.0"
-    }
+    "require": {}
 }
