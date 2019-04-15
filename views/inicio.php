@@ -10,51 +10,57 @@ y luego continuara con lo de abajo-->
 <html>
 <head>
     <title>Listar en Pdf </title>
-    <link rel="stylesheet" type="text/css" href="../style/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="../style/css/bootstrap.css">
+    <!--<link rel="stylesheet" type="text/css" href="../style/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../style/css/bootstrap.css">-->
+	<link rel="stylesheet" type="text/css" href="../style/css/reboot.css">
+	<link rel="stylesheet" type="text/css" href="../style/css/bootstrap-grid.css">
 
 </head>
-<body>
+<body>	
 <div class="container">
 <div class="content-justify-center">
-<div class="col-sm-4">
+<div class="col-sm-12">
 <form method="post" class="form-group">
+	
+	<!--
 <div class="form-group">
-<label>Buscar por Nombre:</label> 
+<h3>Buscar por Nombre:</h3> 
 <input  type="text" class="form-control" name="txt-buscar"/>
 </div>
 <input  type="submit" class="btn btn-primary" id="btn-buscar" />
-
+-->
 </form>
 
-
-
-	<table class="table-bordered" >
+	<table class="table-bordered">
 		<thead>
 			<tr class="table-primary">
-				<td width="20" >Codigo</td>
-				<td width="20">Alumno</td>
-				<td width="20">Apellido</td>
-				<td width="20">Direcion</td>
-				<td width="20">Telefono</td>
-				<td width="20">Editar</td>
-				<td width="20">Eliminar</td>
+			<!--<td style="color:green" >Codigo:</td>
+					<td style="color:green">Nombres</td>
+				<td style="color:green">Apellido</td>
+				<td style="color:green">Direcion</td>
+				<td style="color:green">Telefono</td>
+				<td style="color:green">Editar</td>
+				<td style="color:green">Eliminar</td>-->
 			</tr>	
 		</thead>
 		<tbody>
 			<tr>
 			<!-- la variable $res1 esta definida en el controlador-->
 			<!-- foreach recorre arrays(si pudes mirate un video corto de como funciona el foreach; es muy pero muy útil)-->
-				<?php foreach ($res1 as $value) { ?>
+				<?php foreach ($res1 as $value) {  ?>
+			
 				<tr>
-					<td width="10"><?php echo $value['id']?></td>
-					<td width="10"><?php echo $value['nombres']?></td>
-					<td width="10"><?php echo $value['apellidos']?></td>
-					<td width="10"><?php echo $value['direccion']?></td>
-					<td width="10"><?php echo $value['telefono']?></td>
-					<td width="10"></td>
-					<td width="10"></td>
+				<td style="color:green"><?php echo $value['id'].': '.  $value['nombre']?></td>
+				<!--	<td width="10"<?php //echo $value['nombre']?>--></td>
 				</tr>
+				<tr>
+					<td style="width:20"><?php echo $value['apellido']?></td>
+					<td style="width:20"><?php echo $value['Direccion']?></td>
+					<td style="width:20"><?php echo $value['telefono']?></td>
+					<td style="width:20"></td>
+					<td style="width:20"></td>
+				</tr>
+				
 				<?php } ?>
 				
 			</tr>

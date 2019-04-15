@@ -1,9 +1,13 @@
+
+
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Form-Crud</title>
- <!--   <link rel="stylesheet" type="text/css" href="../style/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="../style/css/bootstrap.css">-->
+  <link rel="stylesheet" type="text/css" href="../style/css/reboot.css">
+	<link rel="stylesheet" type="text/css" href="../style/css/bootstrap-grid.css">
+ 
+ 
 
 </head>
 <body>
@@ -24,17 +28,19 @@
     <label>Dirección:</label>
     <input type="text"  name="txtdir" id="direccion" class="form-control"/> 
     </div>
-    <div class="form-group">
+    <div class="form-group"  style="color:red;"  >
     <label>Celular:</label>
     <input type="tel"  name="txtcel" id="celular" class="form-control"/> 
     </div>
-    <input type="submit" id="btn-enviar" class="btn btn-success" />
+    <input type="submit" id="btn-enviar" class="btn btn-success" value="Registrar"  />
     </form>
     </div>
   </div>
 <div>
 
 </body>
+
+
 <!--<script src="../style/js/bootstrap.min.js"></script>
 <script src="../style/js/bootstrap.js"></script>-->
 </html>

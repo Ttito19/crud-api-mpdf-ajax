@@ -11,7 +11,7 @@ class  crud {
 public function Listar(){ 
     $cn=new ClassConexion(); //Instancia de la clase conexión
     $mysqli=$cn->Conectar();//se llama a la funcion Conectar; se supone que te retorno el objeto el cúal tiene a la clase mysqli
-    $sql=$mysqli->prepare("call sp_listar_alumo()");//prepare: Permite hacer sentencias más preparada como el uso de parametros etc.
+    $sql=$mysqli->prepare("call sp_listar_alumno()");//prepare: Permite hacer sentencias más preparada como el uso de parametros etc.
     $sql->execute();//Ejecuta una sentencia preparada(*prepare), devuelve el numero de filas afectado, nro de columnas entre otras
     $array=[];
     if($sql->{'error'}==''){//validamos al ejecutar el error es igual a  "" (osea nada)

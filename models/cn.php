@@ -9,7 +9,7 @@ Class ClassConexion{
     public function  __construct(){  //El constructor siempre es lo primero a ejecutarse cuando se instancia una clase(Su uso es opcional); se puede parametros si se desea
         $this->host='localhost';
         $this->usuario='root';  //En este caso al instanciar esta clase lo primero que se hará es asignarle valores a tus variables(también llamadas propiedades)
-        $this->bd='aulas';
+        $this->bd='ubigeo_peru';
         $this->pass='';
     }
     Public function Conectar(){
