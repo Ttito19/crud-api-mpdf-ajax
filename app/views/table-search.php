@@ -6,29 +6,31 @@ y luego continuara con lo de abajo-->
 	-Es como si ese archivo se uniera con este.
 -->
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Listar en Pdf </title>
-   <link rel="stylesheet" type="text/css" href="../../public/style/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="../../public/style/css/bootstrap.css">
-</head>
+<?php include 'header/header.php'  ?>
+<?php include 'menu/cabecera.php'  ?>
 <body>	
 <div class="container">
-<div class="content-justify-center">
-<div class="col-sm-4 offset-sm-1">
+<div class="col-sm-7 offset-sm-2">
 <form method="post" class="form-group">
-	
-	
-<div class="form-group">
-<h3>Buscar por Nombre:</h3> 
-<input  type="text" class="form-control" name="txt-buscar"/>
-</div>
-<input  type="submit" class="btn btn-primary" id="btn-buscar" />
+<table class="table">
+<tbody>
+<tr>
+<td><h4>Buscar por Nombre:</h4></td>
+<td><input  type="text" class="form-control" name="txt-buscar"/></td> 
 
+<td><input  type="submit" class="btn btn-primary" id="btn-buscar" /></td> 
+</tr>
+</tbody>
+<table>
 </form>
 
-	<table class="table-active" >
+
+
+
+
+
+
+	<table class="table-bordered " >
 		<thead>
 			<tr class="table-primary">
 				<td style="color:green">Codigo</td>
@@ -62,8 +64,8 @@ y luego continuara con lo de abajo-->
 					<td width="10"><?php echo $value['idProv']?></td>
 					<td width="10"><?php echo $value['idDist']?></td>
 					<td width="10"><?php echo $value['Sexo']?></td>
-					<td width="10"><a  class="btn btn-success"  href="editar-dato.php"/>Editar</td>
-					<td width="10"><a  class="btn btn-danger"  href=<?php  echo $value['id']='crud-controller.php'?>  />Eliminar</td>
+					<td width="10"><a  class="btn btn-success"  href="form-crud.php">Editar</a></td>
+					<td width="10"><a  class="btn btn-danger"  href="../controllers/crud-controller.php?id=<?php echo $value["id"]?>">Eliminar</a></td>
 				</tr>
 				<?php } ?>
 				
@@ -71,12 +73,6 @@ y luego continuara con lo de abajo-->
 			
 		</tbody>
 	</table>
-<!-- B B C I T A-->
-	    </div>
-	</div>
+  </div>
 </div>
-
-</body>
-<script src="../../public/style/js/bootstrap.min.js"></script>
-<script src="../../public/style/js/bootstrap.js"></script>
-</html>
+<?php  include 'footer/footer.php'  ?>
