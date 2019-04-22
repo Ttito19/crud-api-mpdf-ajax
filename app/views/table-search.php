@@ -1,4 +1,5 @@
 <?php require  '../controllers/listar-controller.php'; //Ruta del controlador ?>
+
 <!-- En el navegador ejecutas este archivo(inicio.php) pero arriba esta la ruta del controlador, por lo cual ese archivo se ejecutara primero 
 y luego continuara con lo de abajo-->
 
@@ -10,8 +11,8 @@ y luego continuara con lo de abajo-->
 <?php include 'menu/cabecera.php'  ?>
 <body>	
 <div class="container">
-<div class="col-sm-7 offset-sm-2">
-<form method="post" class="form-group">
+<div class="col-sm-7">
+<form method="post" class="form-group" autocomplete="off" >
 <table class="table">
 <tbody>
 <tr>
@@ -30,7 +31,7 @@ y luego continuara con lo de abajo-->
 
 
 
-	<table class="table-bordered " >
+	<table class="table table-bordered horario-tabla" >
 		<thead>
 			<tr class="table-primary">
 				<td style="color:green">Codigo</td>
@@ -64,8 +65,9 @@ y luego continuara con lo de abajo-->
 					<td width="10"><?php echo $value['idProv']?></td>
 					<td width="10"><?php echo $value['idDist']?></td>
 					<td width="10"><?php echo $value['Sexo']?></td>
-					<td width="10"><a  class="btn btn-success"  href="form-crud.php">Editar</a></td>
-					<td width="10"><a  class="btn btn-danger"  href="../controllers/crud-controller.php?id=<?php echo $value["id"]?>">Eliminar</a></td>
+					<td width="10"><a  class="btn btn-success"  href="../controllers/edit-controller.php?id=<?php echo $value["id"]?> ">Editar</a></td>
+			
+					<td width="10"><a  class="btn btn-danger"  href="../controllers/eliminar-controller.php?id=<?php echo $value["id"]?>">Eliminar</a></td>
 				</tr>
 				<?php } ?>
 				

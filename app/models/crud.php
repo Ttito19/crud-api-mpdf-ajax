@@ -54,6 +54,38 @@ public function Insertar($dni,$apellido,$nombre,$telefono,$direccion,$departamen
 }
 
 
+public function EditarId($id){
+    $cn=new ClassConexion();
+    $mysqli=$cn->Conectar();
+    $sql=$mysqli->prepare("call sp_procedure_edit_id(?)");
+    $sql->bind_param('i',$id);
+    $sql->execute();
+    if($sql->{'error'}==""){
+        $result=$sql->get_result();
+        $res=$result->fetch_assoc();
+        return $res;
+    }else{
+        $result=$sql->{'error'};
+        return $result;
+    }
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 public function Editar($dni,$apellido,$nombre,$telefono,$direccion,$departamento,$provincia,$distrito,$sexo,$id){
     $cn=new ClassConexion();
     $mysqli=$cn->Conectar();
@@ -70,6 +102,10 @@ public function Editar($dni,$apellido,$nombre,$telefono,$direccion,$departamento
     }
     
 }
+
+
+
+
 
 
 

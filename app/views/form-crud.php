@@ -1,3 +1,4 @@
+<?php require  '../controllers/insertar-controller.php'; //Ruta del controlador ?>
 <?php include 'header/header.php'  ?>
 <?php include 'menu/cabecera.php'  ?>
 <div class="container" >

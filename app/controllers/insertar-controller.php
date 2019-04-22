@@ -14,8 +14,6 @@ $sex=$_POST['txtsex'];
 $res2=$crud->Insertar($dni,$ape,$nom,$cel,$dir,$depar,$prov,$dis,$sex);
 echo header('location:../views/table-search.php');
 
-$res4=$crud->Eliminar($id);
-echo "Eliminado Correctamente";
 
 
 
