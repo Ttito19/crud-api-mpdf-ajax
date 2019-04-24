@@ -68,23 +68,7 @@ public function EditarId($id){
         $result=$sql->{'error'};
         return $result;
     }
-
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 public function Editar($dni,$apellido,$nombre,$telefono,$direccion,$departamento,$provincia,$distrito,$sexo,$id){
     $cn=new ClassConexion();
@@ -99,15 +83,8 @@ public function Editar($dni,$apellido,$nombre,$telefono,$direccion,$departamento
     }else{
         $result=$sql->{'error'};
         return $result;
-    }
-    
+    } 
 }
-
-
-
-
-
-
 
 public function Eliminar($id){
     $cn=new ClassConexion();
@@ -123,6 +100,34 @@ public function Eliminar($id){
         return $result;
     }
 }
+
+public function BuscarXnom($nombre){
+    $cn=new ClassConexion();
+    $mysqli=$cn->Conectar();
+                          // SELECT * FROM alumno WHERE nombre LIKE '%' 'david' '%'
+    $sql=$mysqli->prepare("SELECT * FROM alumno WHERE nombre LIKE '%" .$nombre. "%' ");
+   // $sql->bind_param('s',$nombre);
+    $sql->execute();
+    $array=[];
+    if($sql->{'error'}==''){
+    	$result=$sql->get_result();
+        if (mysqli_num_rows($result)>0) {
+        while($myrow=$result->fetch_assoc()){ 
+        
+                $array[]=$myrow;       
+        }
+    }else{
+        echo '<script>  alert("No hay resultados en la BBDD"); </script>' ;
+    }
+    $res=$array;
+    }else{
+    	$res=$sql->{'error'};
+    }
+    return $res;
+
+}
+
+
 
 
 }

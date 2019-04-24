@@ -1,5 +1,6 @@
 <?php require  '../controllers/listar-controller.php'; //Ruta del controlador ?>
 
+
 <!-- En el navegador ejecutas este archivo(inicio.php) pero arriba esta la ruta del controlador, por lo cual ese archivo se ejecutara primero 
 y luego continuara con lo de abajo-->
 
@@ -7,24 +8,19 @@ y luego continuara con lo de abajo-->
 	-Es como si ese archivo se uniera con este.
 -->
 
-<?php include 'header/header.php'  ?>
-<?php include 'menu/cabecera.php'  ?>
-<body>	
-<div class="container">
-<div class="col-sm-7">
-<form method="post" class="form-group" autocomplete="off" >
-<table class="table">
-<tbody>
-<tr>
-<td><h4>Buscar por Nombre:</h4></td>
-<td><input  type="text" class="form-control" name="txt-buscar"/></td> 
+<?php include 'header/header.php';  ?>
 
-<td><input  type="submit" class="btn btn-primary" id="btn-buscar" /></td> 
-</tr>
-</tbody>
-<table>
+<?php include 'menu/cabecera-login.php'  ?>
+<div class="container"> 
+<div class="col-sm-6 offset-sm-1" >
+<form method="post" class="form-inline" autocomplete="off" action="../controllers/buscar-controller.php"style="margin-top:30px;" >
+<h4>Buscar por Nombre:</h4>
+<div class="form-group mx-sm-3 mb-2">
+<input  type="text" class="form-control" name="txtnom"> 
+</div>
+<button type="submit" class="btn btn-primary mb-2">Buscar</button>
+
 </form>
-
 
 
 

@@ -1,10 +1,10 @@
-<?php require  '../controllers/insertar-controller.php'; //Ruta del controlador ?>
+<?php //require  '../controllers/insertar-controller.php'; //Ruta del controlador ?>
 <?php include 'header/header.php'  ?>
-<?php include 'menu/cabecera.php'  ?>
+<?php include 'menu/cabecera-login.php'  ?>
 <div class="container" >
   <div class="content-justify-center">
     <div class="col-sm-4 offset-sm-4"  >
-    <form method="post" autocomplete="off" class="form-group" action="../controllers/crud-controller.php" >
+    <form method="post" autocomplete="off" class="form-group" action="../controllers/insert-edit-controller.php" >
     <h1>Crud con Ajax</h1>
     <div class="form-group">
     <label>Dni:</label>
@@ -40,20 +40,20 @@
     <label>Provincia:</label>
     <select  name='txtprov' id="provincia" class="form-control" >
       <option>Selecciones Provincia</option>
-      <option value="5" >Lima</option>
-      <option value="6" >Urubamba</option>
-      <option value="7" >Huancané</option>
-      <option value="8" >Islay</option>
+      <option value="1" >Lima</option>
+      <option value="2" >Urubamba</option>
+      <option value="3" >Huancané</option>
+      <option value="4" >Islay</option>
     </select>
     </div>
     <div class="form-group">
     <label>Distrito:</label>
     <select  name='txtdis' id="distrito" class="form-control" >
       <option>Seleccione Distrito</option>
-      <option value="9">S.J.L</option>
-      <option value="10">La Molina</option>
-      <option value="11">Miraflores</option>
-      <option value="12">Surco</option>
+      <option value="1">S.J.L</option>
+      <option value="2">La Molina</option>
+      <option value="3">Miraflores</option>
+      <option value="4">Surco</option>
     </select>
     </div>
     <div class="form-group">
