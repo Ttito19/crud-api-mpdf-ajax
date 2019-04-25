@@ -22,13 +22,16 @@ public function Listar(){
     $array=[];
     if($sql->{'error'}==''){//validamos al ejecutar el error es igual a  "" (osea nada)
     	$result=$sql->get_result(); //obtenemos el resultado de la ejecución
-
+        if (mysqli_num_rows($result)>0) {
+            echo "Existen ".    mysqli_num_rows($result)  . "resultados" ;
         while($myrow=$result->fetch_assoc()){ //fetch_assoc: Devuelve un array asociativo de strings que representa a
             //la fila obtenida del conjunto de resultados, donde cada clave del array representa el nombre de una de las columnas de éste; o NULL si no hubieran más filas en dicho conjunto de resultados.
     		$array[]=$myrow;//insertara los conjuntos de registros por separado en el array
  
     	}
-
+    }else{
+        echo "No hay resultados";
+    }
     	$res=$array;
 
     }else{//si hubo error entonces:
@@ -104,9 +107,8 @@ public function Eliminar($id){
 public function BuscarXnom($nombre){
     $cn=new ClassConexion();
     $mysqli=$cn->Conectar();
-                          // SELECT * FROM alumno WHERE nombre LIKE '%' 'david' '%'
-    $sql=$mysqli->prepare("SELECT * FROM alumno WHERE nombre LIKE '%" .$nombre. "%' ");
-   // $sql->bind_param('s',$nombre);
+    $sql=$mysqli->prepare("call sp_buscar_alumno(?) ");
+    $sql->bind_param('s',$nombre);
     $sql->execute();
     $array=[];
     if($sql->{'error'}==''){
@@ -117,11 +119,15 @@ public function BuscarXnom($nombre){
                 $array[]=$myrow;       
         }
     }else{
-        echo '<script>  alert("No hay resultados en la BBDD"); </script>' ;
+        
+       // echo '<script>  alert("No hay resultados en la BBDD"); </script>' ;
+
+       echo "No hay resultados";
+    
     }
     $res=$array;
     }else{
-    	$res=$sql->{'error'};
+        $res=$sql->{'error'};
     }
     return $res;
 

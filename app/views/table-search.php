@@ -1,4 +1,5 @@
-<?php require  '../controllers/listar-controller.php'; //Ruta del controlador ?>
+
+
 
 
 <!-- En el navegador ejecutas este archivo(inicio.php) pero arriba esta la ruta del controlador, por lo cual ese archivo se ejecutara primero 
@@ -24,7 +25,7 @@ y luego continuara con lo de abajo-->
 
 
 
-
+<?php //require  '../controllers/listar-controller.php'; //Ruta del controlador ?>
 
 
 	<table class="table table-bordered horario-tabla" >
@@ -48,6 +49,7 @@ y luego continuara con lo de abajo-->
 			<tr>
 			<!-- la variable $res1 esta definida en el controlador-->
 			<!-- foreach recorre arrays(si pudes mirate un video corto de como funciona el foreach; es muy pero muy útil)-->
+			    
 				<?php foreach ($res1 as $value) {  ?>
 			
 				<tr>
@@ -61,11 +63,13 @@ y luego continuara con lo de abajo-->
 					<td width="10"><?php echo $value['idProv']?></td>
 					<td width="10"><?php echo $value['idDist']?></td>
 					<td width="10"><?php echo $value['Sexo']?></td>
-					<td width="10"><a  class="btn btn-success"  href="../controllers/edit-controller.php?id=<?php echo $value["id"]?> ">Editar</a></td>
-			
+					<td width="10"><a  class="btn btn-success"  href="../controllers/edit-controller.php?id=<?php echo $value["id"]?> ">Editar</a></td>			
 					<td width="10"><a  class="btn btn-danger"  href="../controllers/eliminar-controller.php?id=<?php echo $value["id"]?>">Eliminar</a></td>
+					
 				</tr>
-				<?php } ?>
+			
+
+				<?php } 	 ?>
 				
 			</tr>
 			
