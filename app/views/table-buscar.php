@@ -7,12 +7,13 @@ y luego continuara con lo de abajo-->
 	-Es como si ese archivo se uniera con este.
 -->
 
+<?php include '../controllers/buscar-controller.php'?>
 <?php include 'header/header.php';  ?>
 
 <?php include 'menu/cabecera-login.php'  ?>
 <div class="container"> 
 <div class="col-sm-6 offset-sm-1" >
-<form method="post" class="form-inline" autocomplete="off" action="table-buscar.php"style="margin-top:30px;" >
+<form method="post" class="form-inline" autocomplete="off" action="../views/table-buscar.php"style="margin-top:30px;" >
 <h4>Buscar por Nombre:</h4>
 <div class="form-group mx-sm-3 mb-2">
 <input  type="text" class="form-control" name="txtnom"> 
@@ -23,7 +24,6 @@ y luego continuara con lo de abajo-->
 
 
 
-<?php require  '../controllers/listar-controller.php'; //Ruta del controlador ?>
 
 
 	<table class="table table-bordered horario-tabla" >

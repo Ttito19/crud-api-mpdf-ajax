@@ -22,8 +22,8 @@ public function Listar(){
     $array=[];
     if($sql->{'error'}==''){//validamos al ejecutar el error es igual a  "" (osea nada)
     	$result=$sql->get_result(); //obtenemos el resultado de la ejecución
-        if (mysqli_num_rows($result)>0) {
-            echo "Existen ".    mysqli_num_rows($result)  . "resultados" ;
+        if ($result->num_rows>0) {
+            echo "Existen ".    mysqli_num_rows($result)  . " resultados" ;
         while($myrow=$result->fetch_assoc()){ //fetch_assoc: Devuelve un array asociativo de strings que representa a
             //la fila obtenida del conjunto de resultados, donde cada clave del array representa el nombre de una de las columnas de éste; o NULL si no hubieran más filas en dicho conjunto de resultados.
     		$array[]=$myrow;//insertara los conjuntos de registros por separado en el array
@@ -113,7 +113,8 @@ public function BuscarXnom($nombre){
     $array=[];
     if($sql->{'error'}==''){
     	$result=$sql->get_result();
-        if (mysqli_num_rows($result)>0) {
+        if ($result->num_rows>0) {
+            //echo "Existen ".    mysqli_num_rows($result)  . " resultados" ;
         while($myrow=$result->fetch_assoc()){ 
         
                 $array[]=$myrow;       

@@ -1,6 +1,6 @@
 <?php
-require  '../models/cn.php'; // <--Nota
-require  '../models/crud.php'; 
+ require  '../models/cn.php'; // <--Nota
+ require  '../models/crud.php'; 
 
 $crud=new crud(); /*Si te das cuenta no se instancia la clase conexión, solo lo haces en tu misma clase crud, pero aún asi se pone la ruta de la conexión 
             para cuando tu clase crud busque la clase conexion al instanciarla la encuentre*/
