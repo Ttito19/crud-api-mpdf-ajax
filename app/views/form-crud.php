@@ -4,7 +4,7 @@
 <div class="container" >
   <div class="content-justify-center">
     <div class="col-sm-4 offset-sm-4"  >
-    <form method="post" autocomplete="off" class="form-group"  id="form" action="../controllers/insert-edit-controller.php" >
+    <form method="post" autocomplete="off" class="form-group"  id="form"  >
     <h1>Crud con Ajax</h1>
     <div class="form-group">
     <label>Dni:</label>

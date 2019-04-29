@@ -11,22 +11,25 @@ y luego continuara con lo de abajo-->
 
 <?php include 'menu/cabecera-login.php'  ?>
 <div class="container"> 
-<div class="col-sm-6 offset-sm-1" >
+
 <form method="post" class="form-inline" autocomplete="off" action="table-buscar.php"style="margin-top:30px;" >
 <h4>Buscar por Nombre:</h4>
 <div class="form-group mx-sm-3 mb-2">
 <input  type="text" class="form-control" name="txtnom"> 
 </div>
-<button type="submit" class="btn btn-primary mb-2">Buscar</button>
+<button type="submit" class="btn btn-primary mb-2 ">Buscar</button>
+
+<a href="form-crud.php" class="btn btn-warning mb-2  offset-5  "  >Registrar Datos </a>
 
 </form>
+
 
 
 
 <?php require  '../controllers/listar-controller.php'; //Ruta del controlador ?>
 
 
-	<table class="table table-bordered horario-tabla" >
+	<table class="table table-bordered " >
 		<thead>
 			<tr class="table-primary">
 				<td style="color:green">Codigo</td>
@@ -61,9 +64,10 @@ y luego continuara con lo de abajo-->
 					<td width="10"><?php echo $value['idProv']?></td>
 					<td width="10"><?php echo $value['idDist']?></td>
 					<td width="10"><?php echo $value['Sexo']?></td>
-					<td width="10"><a  class="btn btn-success"  href="../controllers/edit-controller.php?id=<?php echo $value["id"]?> ">Editar</a></td>			
-					<td width="10"><a  class="btn btn-danger"  href="../controllers/eliminar-controller.php?id=<?php echo $value["id"]?>">Eliminar</a></td>
-					
+					<td width="10"><a  class="btn btn-success" id="btn-editar"  href="../controllers/edit-controller.php?id=<?php echo $value["id"]?> ">Editar</a></td>			
+					<div class="eliminar">
+					<td width="10"><a  class="btn btn-danger"  id="btn-eliminar"  href="../controllers/eliminar-controller.php?id=<?php echo $value["id"]?>">Eliminar</a></td>
+					</div>
 				</tr>
 			
 
@@ -73,6 +77,5 @@ y luego continuara con lo de abajo-->
 			
 		</tbody>
 	</table>
-  </div>
 </div>
 <?php  include 'footer/footer.php'  ?>

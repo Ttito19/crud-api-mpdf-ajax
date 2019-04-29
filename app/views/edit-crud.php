@@ -5,7 +5,7 @@
   <div class="content-justify-center">
     <div class="col-sm-4 offset-sm-4"  >
     <form method="post" autocomplete="off" class="form-group" action="../controllers/insert-edit-controller.php" >
-    <h1>Editar Datos</h1>
+    <h3>Editar Datos de <?php echo $edit['nombre']  ?> </h4>
     <input  type="hidden" name="txtid"  value="<?php echo $edit['id']  ?>"  />
     <div class="form-group">
     <label>Dni:</label>
@@ -72,7 +72,7 @@
     
     
     <input type="submit" id="btn-enviar" class="btn btn-success" value="Editar"  />
-    <a  href="../views/table-search.php" class="btn btn-danger">Cancelar<a/>
+    <a  href="../views/table-search.php" class="btn btn-danger">Cancelar</a>
     </form>
     </div>
   </div>

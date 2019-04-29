@@ -12,23 +12,17 @@ $prov=$_POST['txtprov'];
 $dis=$_POST['txtdis'];
 $sex=$_POST['txtsex'];
 
-
+   
 if ( !empty( $dni) || !empty($ape) || !empty($nom) || !empty($cel) ||  !empty($dir)  ||  !empty($sex) ) {
     echo $res2=$crud->Insertar($dni,$ape,$nom,$cel,$dir,$depar,$prov,$dis,$sex);
    // echo "bien";
 }else{
-    echo "error ";
+    echo "campos vacios ";
 }
 
-
-
-
-
     
-    
-    
-    
-    // echo header('location:../views/table-search.php');
+
+   
 
 
 
