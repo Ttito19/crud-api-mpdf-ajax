@@ -12,13 +12,30 @@ $prov=$_POST['txtprov'];
 $dis=$_POST['txtdis'];
 $sex=$_POST['txtsex'];
 
-   
-if ( !empty( $dni) || !empty($ape) || !empty($nom) || !empty($cel) ||  !empty($dir)  ||  !empty($sex) ) {
-    echo $res2=$crud->Insertar($dni,$ape,$nom,$cel,$dir,$depar,$prov,$dis,$sex);
-   // echo "bien";
+$id=(isset($_POST['id']))?$_POST['id']:"";
+
+if($id==""){
+    if ( !empty( $dni) || !empty($ape) || !empty($nom) || !empty($cel) ||  !empty($dir)  ||  !empty($sex) ) {
+        echo $res2=$crud->Insertar($dni,$ape,$nom,$cel,$dir,$depar,$prov,$dis,$sex);
+    }else{
+         echo "campos vacios";
+    }
+
 }else{
-    echo "campos vacios ";
+        if  ( !empty( $dni) || !empty($ape) || !empty($nom) || !empty($cel) ||  !empty($dir)  ||  !empty($sex)  ||  !empty($id) )  {
+        echo $res2=$crud->Editar( $dni,$ape,$nom,$cel,$dir,$depar,$prov,$dis,$sex,$id);
+    }
 }
+
+   // echo "bien";
+
+
+
+
+   
+   
+
+
 
     
 

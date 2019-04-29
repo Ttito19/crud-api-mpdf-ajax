@@ -3,9 +3,10 @@ require '../app/models/cn.php';
 require '../app/models/crud.php';
 
 $crud=new crud();
-
-$id=$_GET['id'];
-$res4=$crud->Eliminar($id);
+// print_r($_POST);
+$id=$_POST['id'];
+ echo $res4=$crud->Eliminar($id);
+// echo "bien";
 
 
 ?>

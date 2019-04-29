@@ -66,7 +66,8 @@ public function EditarId($id){
     if($sql->{'error'}==""){
         $result=$sql->get_result();
         $res=$result->fetch_assoc();
-        return $res;
+        $rs=json_encode($res,JSON_FORCE_OBJECT);
+        return $rs;
     }else{
         $result=$sql->{'error'};
         return $result;
@@ -96,8 +97,12 @@ public function Eliminar($id){
     $sql->bind_param('i',$id);
     $sql->execute();
     if($sql->{'error'}==""){
-        $result=$sql->get_result();
-        return true;
+        if($sql->affected_rows>0){
+            return "bien";
+        }else{
+            return "mal";
+        }
+        
     }else{
         $result=$sql->{'error'};
         return $result;
