@@ -11,21 +11,11 @@ y luego continuara con lo de abajo-->
 
 <?php include 'menu/cabecera-login.php'  ?>
 <div class="container"> 
-
-<form method="post" class="form-inline" autocomplete="off" action="table-buscar.php"style="margin-top:30px;" >
+<div class="form-group" style="margin-top:5px;" >
 <a href="form-crud.php" class="btn btn-secondary mb-2" >Registrar Datos </a>
-
-
-<h5>Buscar por Nombre:</h5>
-<div class="form-group mx-sm-3 mb-2 ">
-<input  type="text" class="form-control" name="txtnom"> 
+<a href="table-buscar.php" class="btn btn-primary mb-2" >Buscar</a>
 </div>
-<button type="submit" class="btn btn-primary mb-2">Buscar</button>
 
-
-
-
-</form>
 
 
 
@@ -72,7 +62,7 @@ y luego continuara con lo de abajo-->
 
 					<td width="10"><a  class="btn btn-danger"  id="btn-eliminar"   href="../controllers/eliminar-controller.php?id=<?php ?>">Eliminar</a></td>		-->	
 					<td width="10"><a  class="btn btn-success" id="btn-editar" data-toggle="modal" data-target="#exampleModalLong"  data-editar="<?php echo $value["id"]?>">Editar</a></td>			
-					<td width="10"><button  class="btn btn-danger"  id="btn-eliminar" data-eliminar="<?php echo $value["id"]?>" >Eliminar</button></td>			
+					<td width="10"><button class="btn btn-danger"  id="btn-eliminar" data-eliminar="<?php echo $value["id"]?>" >Eliminar</button></td>			
 				</tr>
 			
 
@@ -103,7 +93,7 @@ y luego continuara con lo de abajo-->
 			<div class="content-justify-center">
 				<div class="col-sm-8 offset-sm-2"  >
 				<form  autocomplete="off" class="form-group" >
-				<h3>Editar a  </h4>
+				<h3>Editar a <?php echo $value['nombre']?> </h4>
 				
 				<div class="form-group">
 				<label>Dni:</label>
@@ -117,7 +107,7 @@ y luego continuara con lo de abajo-->
 				<label>Nombres:</label>
 				<input type="text"  name="txtnom" id="nombre" value="" class="form-control" /> 
 				</div>
-				<div class="form-group"   >
+				<div class="form-group">
 				<label>Celular:</label>
 				<input type="tel"  name="txtcel" id="celular" value="" class="form-control"/> 
 				</div> 
@@ -169,7 +159,7 @@ y luego continuara con lo de abajo-->
 			</div>
 			<div>
 			<div class="modal-footer">
-	  <input type="submit" id="btn-actualizar" class="btn btn-success" value="Actualizar"  />
+	  <input type="submit" id="btn-actualizar" class="btn btn-success" value="Actualizar"   />
 				<a  href="../views/table-search.php" class="btn btn-danger">Cancelar</a>
       </div>
 		 

@@ -4,7 +4,7 @@
 <div class="container" >
   <div class="content-justify-center">
     <div class="col-sm-4 offset-sm-4"  >
-    <form method="post" autocomplete="off" class="form-group"  id="form"  >
+    <form method="post" autocomplete="off" class="form-group"  id="form" onsubmit="return alert();" >
     <h1>Crud con Ajax</h1>
     <div class="form-group">
     <label>Dni:</label>
@@ -68,4 +68,5 @@
   </div>
 <div>
 <?php  include 'footer/footer.php'  ?>
+
 <script  src="../../public/style/javascript/app.js"></script>

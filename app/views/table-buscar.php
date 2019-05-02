@@ -48,26 +48,29 @@ y luego continuara con lo de abajo-->
 			<!-- la variable $res1 esta definida en el controlador-->
 			<!-- foreach recorre arrays(si pudes mirate un video corto de como funciona el foreach; es muy pero muy útil)-->
 			    
-				<?php foreach ($res1 as $value) {  ?>
+			 
+			<?php foreach ($res1 as $value) {  ?>
 			
-				<tr>
-					<td width="10"><?php echo $value['id']?></td>
-					<td width="10"><?php echo $value['dni']?></td>
-					<td width="10"><?php echo $value['apellido']?></td>
-					<td width="10"><?php echo $value['nombre']?></td>
-					<td width="10"><?php echo $value['telefono']?></td>
-					<td width="10"><?php echo $value['Direccion']?></td>
-					<td width="10"><?php echo $value['idDepa']?></td>
-					<td width="10"><?php echo $value['idProv']?></td>
-					<td width="10"><?php echo $value['idDist']?></td>
-					<td width="10"><?php echo $value['Sexo']?></td>
-					<td width="10"><a  class="btn btn-success"  href="../controllers/edit-controller.php?id=<?php echo $value["id"]?> ">Editar</a></td>			
-					<td width="10"><a  class="btn btn-danger"  href="../controllers/eliminar-controller.php?id=<?php echo $value["id"]?>">Eliminar</a></td>
-					
-				</tr>
-			
+			<tr id="tr-<?php echo $value['id']?>">
+				<td width="10"><?php echo $value['id']?></td>
+				<td width="10"><?php echo $value['dni']?></td>
+				<td width="10"><?php echo $value['apellido']?></td>
+				<td width="10"><?php echo $value['nombre']?></td>
+				<td width="10"><?php echo $value['telefono']?></td>
+				<td width="10"><?php echo $value['Direccion']?></td>
+				<td width="10"><?php echo $value['idDepa']?></td>
+				<td width="10"><?php echo $value['idProv']?></td>
+				<td width="10"><?php echo $value['idDist']?></td>
+				<td width="10"><?php echo $value['Sexo']?></td>
+			<!--	<td width="10"><a  class="btn btn-success" id="btn-editar"  href="../controllers/edit-controller.php?id=<?php ?> ">Editar</a></td>			
 
-				<?php } 	 ?>
+				<td width="10"><a  class="btn btn-danger"  id="btn-eliminar"   href="../controllers/eliminar-controller.php?id=<?php ?>">Eliminar</a></td>		-->	
+				<td width="10"><a  class="btn btn-success" id="btn-editar" data-toggle="modal" data-target="#exampleModalLong"  data-editar="<?php echo $value["id"]?>">Editar</a></td>			
+				<td width="10"><button  class="btn btn-danger"  id="btn-eliminar" data-eliminar="<?php echo $value["id"]?>" >Eliminar</button></td>			
+			</tr>
+		
+
+			<?php } 	 ?>
 				
 			</tr>
 			
@@ -76,3 +79,5 @@ y luego continuara con lo de abajo-->
   </div>
 </div>
 <?php  include 'footer/footer.php'  ?>
+<script  src="../../public/style/javascript/app.js"></script>
+<script  src="../../public/style/javascript/eliminar.js"></script>

@@ -13,13 +13,15 @@ $("#btn-enviar").click(function(e){
         var res2=res;
         if(res2==true){
     // console.log("bueno");
-            alert('Registrado Correctamente');
-              window.location.replace('../../app/views/table-search.php');
+    alertify.success('Registrado Correctamente');
+    function regis(){
+        window.location.replace('../../app/views/table-search.php');
+    }
+    setTimeout(regis,2500)
         
         }else{
-        //    console.log("error");
-         //    alert("Ingrese datos");
-            alert('No se pudo registrar');
+    
+    alertify.error('Error al registrar');
           
         }
        
@@ -91,6 +93,7 @@ $(document).on("click","#btn-actualizar",function(){
      method:'POST',
      data:enviar
     }).done(function(res){
+        alertify.success('Actualizado Correctamente'+ ` ${id}`);
         $("#tr-"+id).html(`
 					<td width="10">${id}</td>
 					<td width="10">${dni}</td>
@@ -104,20 +107,31 @@ $(document).on("click","#btn-actualizar",function(){
 					<td width="10">${sexo}</td>
 				
 					<td width="10"><a  class="btn btn-success" id="btn-editar" data-toggle="modal" data-target="#exampleModalLong"  data-editar="${id}">Editar</a></td>			
-					<td width="10"><button  class="btn btn-danger"  id="btn-eliminar"                                             data-eliminar="${id}">Eliminar</button></td>			
-
-        `);
+					<td width="10"><button  class="btn btn-danger"  id="btn-eliminar"  data-eliminar="${id}">Eliminar</button></td>`);
         $('#exampleModalLong').modal('hide');
 
 
     })
 
-     
-    
+})
 
+/*
+$(document).on("click","#btn-buscar",function(){
+  var  buscar=$(this).data("id");
+   
+   $.ajax({
+     url:'../../ajax/buscar.php',
+     method:'POST',
+     data:buscar
+   }).done(function(res){
 
+   })
 
 })
+*/
+
+
+
 
 
 
