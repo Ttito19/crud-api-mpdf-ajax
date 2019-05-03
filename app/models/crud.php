@@ -23,7 +23,7 @@ public function Listar(){
     if($sql->{'error'}==''){//validamos al ejecutar el error es igual a  "" (osea nada)
     	$result=$sql->get_result(); //obtenemos el resultado de la ejecución
         if ($result->num_rows>0) {
-            echo "Existen ".    mysqli_num_rows($result)  . " resultados" ;
+            // echo "Existen ".    mysqli_num_rows($result)  . " resultados" ;
         while($myrow=$result->fetch_assoc()){ //fetch_assoc: Devuelve un array asociativo de strings que representa a
             //la fila obtenida del conjunto de resultados, donde cada clave del array representa el nombre de una de las columnas de éste; o NULL si no hubieran más filas en dicho conjunto de resultados.
     		$array[]=$myrow;//insertara los conjuntos de registros por separado en el array
@@ -37,7 +37,9 @@ public function Listar(){
     }else{//si hubo error entonces:
     	$res=$sql->{'error'}; //el mensaje de error lo almacenamos en res; es parecido a la validación del mensaje de error de la conexión
     }
-    return $res;//retornara el resultado
+    // return $res;
+    $json=json_encode($res,JSON_FORCE_OBJECT);
+    return $json;//retornara el resultado
 
 }
 public function Insertar($dni,$apellido,$nombre,$telefono,$direccion,$departamento,$provincia,$distrito,$sexo){
@@ -117,25 +119,29 @@ public function BuscarXnom($nombre){
     $sql->execute();
     $array=[];
     if($sql->{'error'}==''){
-    	$result=$sql->get_result();
+        $result=$sql->get_result();
+        
         if ($result->num_rows>0) {
             //echo "Existen ".    mysqli_num_rows($result)  . " resultados" ;
-        while($myrow=$result->fetch_assoc()){ 
-        
-                $array[]=$myrow;       
-        }
-    }else{
-        
-       // echo '<script>  alert("No hay resultados en la BBDD"); </script>' ;
+            while($myrow=$result->fetch_assoc()){ 
+                $array[]=$myrow; 
+            }
+        }else{
+            $array[]="vacio";
+        // echo '<script>  alert("No hay resultados en la BBDD"); </script>' ;
 
-       echo "No hay resultados";
-    
+        //   echo "No hay resultados";
+        
     }
     $res=$array;
+   // print_r($res);  
     }else{
         $res=$sql->{'error'};
     }
-    return $res;
+    //return $res;
+   $json=json_encode($res,JSON_FORCE_OBJECT);
+   return $json;//retornara el resultado
+
 
 }
 

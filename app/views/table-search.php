@@ -10,17 +10,24 @@ y luego continuara con lo de abajo-->
 <?php include 'header/header.php';  ?>
 
 <?php include 'menu/cabecera-login.php'  ?>
-<div class="container"> 
-<div class="form-group" style="margin-top:5px;" >
+
+<div class="offset-sm-3" style="margin-top:5px" >
 <a href="form-crud.php" class="btn btn-secondary mb-2" >Registrar Datos </a>
-<a href="table-buscar.php" class="btn btn-primary mb-2" >Buscar</a>
+
+<div class="form-inline">
+<h4>Buscar por Nombre:</h4>
+<div class="form-group mx-sm-3 mb-2">
+
+<input  type="text" class="form-control" id="nom"  name="txtnom"> 
+</div>
+<button type="submit" class="btn btn-primary mb-2 " id="btn-buscar" >Buscar</button>
+</div>
 </div>
 
 
+<div class="container"> 
 
 
-
-<?php require  '../controllers/listar-controller.php'; //Ruta del controlador ?>
 
 
 	<table class="table table-bordered " >
@@ -40,35 +47,8 @@ y luego continuara con lo de abajo-->
 				<td style="color:green">Eliminar</td>
 			</tr>	
 		</thead>
-		<tbody>
-			<tr>
-			<!-- la variable $res1 esta definida en el controlador-->
-			<!-- foreach recorre arrays(si pudes mirate un video corto de como funciona el foreach; es muy pero muy útil)-->
-			    
-				<?php foreach ($res1 as $value) {  ?>
-			
-				<tr id="tr-<?php echo $value['id']?>">
-					<td width="10"><?php echo $value['id']?></td>
-					<td width="10"><?php echo $value['dni']?></td>
-					<td width="10"><?php echo $value['apellido']?></td>
-					<td width="10"><?php echo $value['nombre']?></td>
-					<td width="10"><?php echo $value['telefono']?></td>
-					<td width="10"><?php echo $value['Direccion']?></td>
-					<td width="10"><?php echo $value['idDepa']?></td>
-					<td width="10"><?php echo $value['idProv']?></td>
-					<td width="10"><?php echo $value['idDist']?></td>
-					<td width="10"><?php echo $value['Sexo']?></td>
-				<!--	<td width="10"><a  class="btn btn-success" id="btn-editar"  href="../controllers/edit-controller.php?id=<?php ?> ">Editar</a></td>			
-
-					<td width="10"><a  class="btn btn-danger"  id="btn-eliminar"   href="../controllers/eliminar-controller.php?id=<?php ?>">Eliminar</a></td>		-->	
-					<td width="10"><a  class="btn btn-success" id="btn-editar" data-toggle="modal" data-target="#exampleModalLong"  data-editar="<?php echo $value["id"]?>">Editar</a></td>			
-					<td width="10"><button class="btn btn-danger"  id="btn-eliminar" data-eliminar="<?php echo $value["id"]?>" >Eliminar</button></td>			
-				</tr>
-			
-
-				<?php } 	 ?>
-				
-			</tr>
+		<tbody id="list" >
+		
 			
 		</tbody>
 	</table>
@@ -93,7 +73,7 @@ y luego continuara con lo de abajo-->
 			<div class="content-justify-center">
 				<div class="col-sm-8 offset-sm-2"  >
 				<form  autocomplete="off" class="form-group" >
-				<h3>Editar a <?php echo $value['nombre']?> </h4>
+				<h3 id="nom" ></h3>
 				
 				<div class="form-group">
 				<label>Dni:</label>
