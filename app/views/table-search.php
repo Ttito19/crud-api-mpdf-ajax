@@ -12,7 +12,11 @@ y luego continuara con lo de abajo-->
 <?php include 'menu/cabecera-login.php'  ?>
 
 <div class="offset-sm-3" style="margin-top:5px" >
-<a href="form-crud.php" class="btn btn-secondary mb-2" >Registrar Datos </a>
+
+
+<button type="button" class="btn btn-primary" id="btn-registrar-modal" >
+ Registro
+</button>
 
 <div class="form-inline">
 <h4>Buscar por Nombre:</h4>

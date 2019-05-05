@@ -206,12 +206,16 @@ $(document).on("click","#btn-buscar",function(){
         buscarr(buscar);
    
     }
-
-
-    
-
-
   
+  })
+
+
+
+  $(document).on("click","#btn-registrar-modal",function(){
+ console.log("si");
+
+
+
   })
   
   
