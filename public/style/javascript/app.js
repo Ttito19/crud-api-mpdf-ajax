@@ -1,23 +1,47 @@
-$("#btn-enviar").click(function(e){
-    e.preventDefault();// no es obligatorio ya que no hay una accion que te va a redirigir, pero su funcion es cancelar la redireccion de la pagina 
- //funciona cuando esta dentro de un formulario
-    var enviar=$("#form").serialize();
-    // console.log(enviar);
 
+//REGISTRAR
+
+function registrar(){
+        var enviar=$("#form").serialize();
+    // console.log(enviar);
+  
+    // var dni = $("#modal-registrar #dni").val();
+    // var apellido = $("#modal-registrar #apellido").val();
+    // var nombre = $("#modal-registrar #nombre").val();
+    // var celular = $("#modal-registrar #celular").val();
+    // var direccion = $("#modal-registrar #direccion").val();
+    // var departamento = $("#modal-registrar #departamento").val();
+    // var provincia = $("#modal-registrar #provincia").val();
+    // var distrito = $("#modal-registrar #distrito").val();
+    // var sexo = $("#modal-registrar #sexo").val();
 
     $.ajax({
         url:'../../ajax/confirm.php',
         method:'POST',
-        data:enviar
+        data:enviar,
+        dataType: 'json'
     }).done((res)=>{
         var res2=res;
-        if(res2==true){
+        console.log(res2);
+        if(res2.id>0){
     // console.log("bueno");
     alertify.success('Registrado Correctamente');
-    function regis(){
-        window.location.replace('../../app/views/table-search.php');
-    }
-    setTimeout(regis,2500)
+ 
+    $("#list").append(`
+   <td width="10">${res2.id}</td>
+   <td width="10">${res2.dni}</td>
+   <td width="10">${res2.apellido}</td>
+   <td width="10">${res2.nombre}</td>
+   <td width="10">${res2.telefono}</td>
+   <td width="10">${res2.Direccion}</td>
+   <td width="10">${res2.idDepa}</td>
+   <td width="10">${res2.idProv}</td>
+   <td width="10">${res2.idDist}</td>
+   <td width="10">${res2.Sexo}</td>
+           
+   <td width="10"><a  class="btn btn-success" id="btn-editar" data-toggle="modal" data-target="#form-editar"  data-editar=${res2.id}>Editar</a></td>			
+   <td width="10"><button  class="btn btn-danger"  id="btn-eliminar"  data-eliminar="${res2.id}">Eliminar</button></td>`);
+    // setTimeout(regis,2500)
         
         }else{
     
@@ -27,8 +51,25 @@ $("#btn-enviar").click(function(e){
        
         
     })
+}
+
+$(document).on("click","btn-enviar",function(e){
+    e.preventDefault();// no es obligatorio ya que no hay una accion que te va a redirigir, pero su funcion es cancelar la redireccion de la pagina 
+ //funciona cuando esta dentro de un formulario
+    registrar();
+
 });
 
+
+
+
+
+
+
+
+
+
+//LLAMAS POR EL ID TODO LOS CAMPOS PARA PODER EDITAR  
 $(document).on("click","#btn-editar",function(){
     $('#btn-actualizar').removeData();
     var editar=$(this).data("editar");
@@ -77,7 +118,7 @@ $(document).on("click","#btn-editar",function(){
     })
 })
 
-
+//ACTAULIZAR LOS DATOS
 $(document).on("click","#btn-actualizar",function(){
     // console.log($(this).data("id"));
     var id = $(this).data("id");
@@ -111,15 +152,15 @@ $(document).on("click","#btn-actualizar",function(){
 		<td width="10">${distrito}</td>
 		<td width="10">${sexo}</td>
 				
-		<td width="10"><a  class="btn btn-success" id="btn-editar" data-toggle="modal" data-target="#exampleModalLong"  data-editar=${id}>Editar</a></td>			
+		<td width="10"><a  class="btn btn-success" id="btn-editar" data-toggle="modal" data-target="#form-editar"  data-editar=${id}>Editar</a></td>			
 		<td width="10"><button  class="btn btn-danger"  id="btn-eliminar"  data-eliminar="${id}">Eliminar</button></td>`);
-        $('#exampleModalLong').modal('hide');
+        $('#form-editar').modal('hide');
 
 
     })
 
 })
-
+//CREAR UN FUNCION LISTAR PARA PODER INVOCARLO
 function listar(){
     $.ajax({
         url: '../../ajax/listar.php',
@@ -139,7 +180,7 @@ function listar(){
                            <td width="10">${val.idProv}</td>
                            <td width="10">${val.idDist}</td>
                            <td width="10">${val.Sexo}</td>   
-                           <td width="10"><a  class="btn btn-success" id="btn-editar" data-toggle="modal" data-target="#exampleModalLong"  data-editar="${val.id}">Editar</a></td>			
+                           <td width="10"><a  class="btn btn-success" id="btn-editar" data-toggle="modal" data-target="#form-editar"  data-editar="${val.id}">Editar</a></td>			
                            <td width="10"><button class="btn btn-danger"  id="btn-eliminar" data-eliminar="${val.id}" >Eliminar</button></td>			
                        </tr>
                    
@@ -148,14 +189,14 @@ function listar(){
            })
        })
 }
-
+//LLAMAS A LA FUNCION LISTAR
   $(document).ready(function(){
     // console.log("asdfasd")
    listar();
 
   })
 
-
+//CREAR UN FUNCION BUSCAR PARA PODER INVOCARLO
   function buscarr(buscar1){
      
     $.ajax({
@@ -184,7 +225,7 @@ function listar(){
                             <td width="10">${val.idProv}</td>
                             <td width="10">${val.idDist}</td>
                             <td width="10">${val.Sexo}</td>   
-                            <td width="10"><a  class="btn btn-success" id="btn-editar" data-toggle="modal" data-target="#exampleModalLong"  data-editar="${val.id}">Editar</a></td>			
+                            <td width="10"><a  class="btn btn-success" id="btn-editar" data-toggle="modal" data-target="#form-editar"  data-editar="${val.id}">Editar</a></td>			
                             <td width="10"><button class="btn btn-danger"  id="btn-eliminar" data-eliminar="${val.id}" >Eliminar</button></td>			
                         </tr>
         
@@ -196,29 +237,102 @@ function listar(){
       })
 }
 
-$(document).on("click","#btn-buscar",function(){
+//LLAMAR A LA FUNCION LISTAR Y BUSCAR
+// $(document).on("click","#btn-buscar",function(){
 
-    var buscar=$('#nom').val(); 
-    if(buscar==""){
-        listar();
+//     var buscar=$('#nom').val(); 
+//     if(buscar==""){
+//         listar();
         
-    }else{
-        buscarr(buscar);
+//     }else{
+//         buscarr(buscar);
    
-    }
+//     }
   
-  })
+//   })
+
+
+$(document).ready(function(){
+$("#nom").keydown(function(){
+    var buscar1=$("#nom").val();
+    //  if(buscar1.length<3){
+
+        
+        $.ajax({
+            url:'../../ajax/buscar.php',
+            method:'POST',
+            data:{txtnom: buscar1},
+            dataType:'json'
+           
+          }).done(function(res){
+            //   console.log(res)
+              $("#list").html("")
+              
+              if(res[0]=="vacio"){
+               $('#list').append('<tr><td align="center"  colspan="100%">Sin Resultados</td></tr>')
+              }else{          
+                $.each(res, function(index, val){
+                    $('#list').append(`
+                            <tr id="tr-${val.id}">
+                                <td width="10">${val.id}</td>
+                                <td width="10">${val.dni}</td>
+                                <td width="10">${val.apellido}</td>
+                                <td width="10">${val.nombre}</td>
+                                <td width="10">${val.telefono}</td>
+                                <td width="10">${val.Direccion}</td>
+                                <td width="10">${val.idDepa}</td>
+                                <td width="10">${val.idProv}</td>
+                                <td width="10">${val.idDist}</td>
+                                <td width="10">${val.Sexo}</td>   
+                                <td width="10"><a  class="btn btn-success" id="btn-editar" data-toggle="modal" data-target="#form-editar"  data-editar="${val.id}">Editar</a></td>			
+                                <td width="10"><button class="btn btn-danger"  id="btn-eliminar" data-eliminar="${val.id}" >Eliminar</button></td>			
+                            </tr>
+            
+                    `);
+     
+     
+               })
+       }
+          })
+    //  }
 
 
 
-  $(document).on("click","#btn-registrar-modal",function(){
- console.log("si");
-
-
-
-  })
+})
   
+
+
+})
+
+
+
+
+
+
+
+//LLAMAR AL REGISTRAR 
+ 
+$(document).ready(function(){
+    $("#btn-registrar").click(function(){
+        var ruta=$(this).attr("href");
+
+ $("#mostrar").load(ruta + " #modal-registrar", function(){
+    // $("#mostrar").load(ruta + " ")
+     $("#modal-registrar").modal("show");
+
+
+     $("#btn-enviar").click(function(e){
+        e.preventDefault();
+    registrar()
+    $("#modal-registrar").modal("hide");
+
+    })
+    
+ });
+          return false;
   
+    });
+  });
 
 
 

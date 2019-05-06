@@ -14,9 +14,9 @@ y luego continuara con lo de abajo-->
 <div class="offset-sm-3" style="margin-top:5px" >
 
 
-<button type="button" class="btn btn-primary" id="btn-registrar-modal" >
- Registro
-</button>
+
+<a  href="form-crud.php"  class="btn btn-secondary"  id="btn-registrar" >Registrar Usuario</a>
+
 
 <div class="form-inline">
 <h4>Buscar por Nombre:</h4>
@@ -63,7 +63,7 @@ y luego continuara con lo de abajo-->
 </button> -->
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+<div class="modal fade" id="form-editar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -77,8 +77,7 @@ y luego continuara con lo de abajo-->
 			<div class="content-justify-center">
 				<div class="col-sm-8 offset-sm-2"  >
 				<form  autocomplete="off" class="form-group" >
-				<h3 id="nom" ></h3>
-				
+				<h3 id="nom" ></h3>				
 				<div class="form-group">
 				<label>Dni:</label>
 				<input type="text"  name="txtdni" id="dni" value=""  class="form-control"/> 
@@ -152,6 +151,11 @@ y luego continuara con lo de abajo-->
     </div>
   </div>
 </div>
+</div>
+</div>
+
+<div id="mostrar"><div>
+
 <?php  include 'footer/footer.php'  ?>
 <script  src="../../public/style/javascript/app.js"></script>
 <script  src="../../public/style/javascript/eliminar.js"></script>

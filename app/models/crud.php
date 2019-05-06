@@ -50,12 +50,15 @@ public function Insertar($dni,$apellido,$nombre,$telefono,$direccion,$departamen
     $departamento,$provincia,$distrito,$sexo);
     $sql->execute();  
     if($sql->{'error'}==""){
-        $result=$sql->get_result();
-         return true;
+        $res=$sql->get_result();
+        $result=$res->fetch_assoc();
+        // exit;
+        //  return $res;
     }else{
         $result=$sql->{'error'};
-        return $result;
     }
+    $json = json_encode($result);
+    return $json;
 }
 
 

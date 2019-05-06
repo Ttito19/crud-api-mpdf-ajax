@@ -7,19 +7,13 @@ $(document).on("click","#btn-eliminar",function(){
       data:{"id" :eliminar},
      }).done(function(res){
       if(res=="bien"){
-        alertify.confirm("¿Desea proceder con esta acción?",
-        function(){
-         alertify.success('Eliminado');
-          
+           
         $("#tr-"+eliminar).html("<td align='center' colspan='100%'>ELIMINADO</td>");
         function listo(){
           $("#tr-"+eliminar).remove();
        }
-       setTimeout(listo, 1500);
-        },
-        function(){
-          alertify.error('No Eliminado');
-        });
+       setTimeout(listo, 1000);
+        
       }else{
         alert("no eliminado");
       }
