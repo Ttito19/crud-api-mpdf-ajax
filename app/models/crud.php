@@ -148,6 +148,24 @@ public function BuscarXnom($nombre){
 
 }
 
+public function login($correo,$clave){
+    $cn= new ClassConexion();
+    $mysqli=$cn->Conectar();
+    $sql=$mysqli->prepare("call sp_login(?,?)");
+    $sql->bind_param('ss',$correo,$clave);
+    $sql->execute();
+    if($sql->{'error'}==''){
+        $result=$sql->get_result();
+        
+    }else{
+        $result=$sql->{'error'};
+        
+    }
+    
+return $result;
+} 
+
+
 
 
 
