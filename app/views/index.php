@@ -11,7 +11,7 @@
 <div class="row justify-content-center">
 <div  class="col-md-6 col-offset-3"  align="center" style="background-color: #eeeeee; padding: 50px;">
 <i class="far fa-user-circle fa-8x"   ></i>
-<form method="POST"  action="../controllers/loginController.php" autocomplete="off"  onsubmit="return validarLogin();"  >
+<form method="POST"  autocomplete="off"   >
 <h1>Página Principal</h1>
 <div class="form-group">
 <label>Correo Electronico o Usuario:</label>
@@ -34,3 +34,5 @@
 </div>
 
 <?php  include 'footer/footer.php'  ?>
+
+<script src='../../public/style/javascript/app.js' ></script>

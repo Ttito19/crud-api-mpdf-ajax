@@ -335,6 +335,33 @@ $(document).ready(function(){
   });
 
 
+  //login
+
+$(document).on("click","#btn-sesión",function(e){
+    e.preventDefault();
+    var correo=$("#correoLogin").val();
+    var clave=$("#passwordLogin").val();
+  var  enviar ={txtcorreo:correo,txtclave:clave}
+     $.ajax({
+       url:'../../ajax/login.php',  
+       method:'POST',
+       data:enviar
+     }).done(function(res){
+     
+     var result = res ; 
+  //   console.log(result)  
+        if(result=="bien"){
+            document.location.replace('../../app/views/table-search.php');
+        }else{
+         alert("error");
+        }
+
+   
+
+     })
+})
+ 
+
 
 
 

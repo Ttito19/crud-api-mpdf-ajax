@@ -57,6 +57,7 @@ y luego continuara con lo de abajo-->
 		</tbody>
 	</table>
 </div>
+<a href="logout.php" class="btn btn-warning" >Cerrar Sesión</a> 
 
 <!-- <button type="button" class="btn btn-primary"  id="desplegar"  data-toggle="modal" data-target="#exampleModalLong">
   Para editar
