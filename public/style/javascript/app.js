@@ -316,23 +316,41 @@ $(document).ready(function(){
     $("#btn-registrar").click(function(){
         var ruta=$(this).attr("href");
 
- $("#mostrar").load(ruta + " #modal-registrar", function(){
-    // $("#mostrar").load(ruta + " ")
-     $("#modal-registrar").modal("show");
+        $("#mostrar").load(ruta + " #modal-registrar", function(){
+            // $("#mostrar").load(ruta + " ")
+            $("#modal-registrar").modal("show");
 
+            $("#btn-enviar").click(function(e){
+                e.preventDefault();
+                registrar()
+                $("#modal-registrar").modal("hide");
+            })    
+            
+             //seleccionar combo region
+            $.ajax({
+                url:'../../ajax/listarRegion.php',
+                method:'post',
+                dataType:"Json"
+            }).done(function(combo){
+           // console.log($('#nom'));
+           $('#region').append('<option>Seleccionar Región</option>')
+           $.each(combo, function(index,valor){
+            $('#region').append(`<option value="${valor.idDepa}">${valor.departamento}</option>`);
+           })
 
-     $("#btn-enviar").click(function(e){
-        e.preventDefault();
-    registrar()
-    $("#modal-registrar").modal("hide");
+            }).fail(function(){
+            alert('Hubo un error al cargar la región')
+            })
+            //seleccionar combo provincia
+           $('#region').change(function(){
+               
+            $('#distrito').append(`<option value="${valor.idDepa}">${valor.departamento}</option>`);
+           })
 
-    })
-    
- });
-          return false;
-  
+        });
+        return false;  
     });
-  });
+});
 
 
   //login
@@ -353,7 +371,7 @@ $(document).on("click","#btn-sesión",function(e){
         if(result=="bien"){
             document.location.replace('../../app/views/table-search.php');
         }else{
-         alert("error");
+            alertify.error('Correo o Clave incorrecta');
         }
 
    

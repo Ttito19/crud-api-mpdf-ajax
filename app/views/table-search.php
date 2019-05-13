@@ -160,3 +160,5 @@ y luego continuara con lo de abajo-->
 <?php  include 'footer/footer.php'  ?>
 <script  src="../../public/style/javascript/app.js"></script>
 <script  src="../../public/style/javascript/eliminar.js"></script>
+
+

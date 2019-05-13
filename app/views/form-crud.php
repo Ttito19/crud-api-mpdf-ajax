@@ -40,7 +40,7 @@
                                                 <label>Dirección:</label>
                                                 <input type="text" name="txtdir" id="direccion" class="form-control" />
                                             </div>
-                                            <div class="form-group">
+                                          <!--  <div class="form-group">
                                                 <label>Departamento:</label>
                                                 <select name='txtdepar' id="departamento" class="form-control">
                                                     <option>Seleccion Departamento</option>
@@ -50,8 +50,17 @@
                                                     <option value="4">Arequipa</option>
 
                                                 </select>
+                                            </div>-->
+                                            <div class="form-group">
+                                                <label>Departamento:</label>
+                                                <select name='cboregion' id="region" class="form-control"></select>
                                             </div>
                                             <div class="form-group">
+                                                <label>Departamento:</label>
+                                                <select name='cborprovincia' id="provincia" class="form-control"></select>
+                                            </div>
+
+                                      <!--      <div class="form-group">
                                                 <label>Provincia:</label>
                                                 <select name='txtprov' id="provincia" class="form-control">
                                                     <option>Selecciones Provincia</option>
@@ -60,10 +69,10 @@
                                                     <option value="3">Huancané</option>
                                                     <option value="4">Islay</option>
                                                 </select>
-                                            </div>
+                                            </div>-->
                                             <div class="form-group">
                                                 <label>Distrito:</label>
-                                                <select name='txtdis' id="distrito" class="form-control">
+                                                <select name='cbodistrito' id="distrito" class="form-control">
                                                     <option>Seleccione Distrito</option>
                                                     <option value="1">S.J.L</option>
                                                     <option value="2">La Molina</option>
@@ -92,3 +101,5 @@
                     <?php  include 'footer/footer.php'  ?>
 
                         <script src="../../public/style/javascript/app.js"></script>
+                       
+               

@@ -11,6 +11,8 @@ class  crud {
     private $provincia;
     private $distrito;
     private $sexo;
+    private $iddepa;
+    private $idprov;
     
 
 
@@ -169,6 +171,68 @@ public function login($correo,$clave){
     
 return $result;
 } 
+
+public function region(){
+$cn= new ClassConexion();
+ $mysqli=$cn->Conectar();
+ $sql=$mysqli->prepare("call sp_select_region()");
+ $sql->execute();
+ $array=[];
+ if($sql->{'error'}==""){
+     $res=$sql->get_result();
+     if($res->num_rows>0){
+         while($myrow=$res->fetch_assoc()){
+            $array[]=$myrow;
+         }
+
+     }else{
+         echo "No hay resultados";
+     }
+     $result=$array;
+
+ }else{
+    $result=$sql->{'error'};
+ }
+ $json=json_encode($result,JSON_FORCE_OBJECT);
+ return $json;
+
+}
+
+public function  provincia($iddepa){
+    $cn=new ClassConexion();
+    $mysqli=$cn->Conectar();
+    $sql=$mysqli->prepare("call sp_select_provincia(?)");
+    $sql->bind_param('i',$iddepa);
+    $sql->execute();
+    $array=[];
+    if($sql->{'error'}==''){
+        $result=$sql->get_result();
+        
+        if ($result->num_rows>0) {
+        
+            while($myrow=$result->fetch_assoc()){ 
+                $array[]=$myrow; 
+            }
+        }else{
+            $array[]="vacio";
+   
+        
+    }
+    $res=$array;
+   // print_r($res);  
+    }else{
+        $res=$sql->{'error'};
+    }
+
+   $json=json_encode($res,JSON_FORCE_OBJECT);
+   return $json;
+
+
+}
+
+
+
+
 
 
 
