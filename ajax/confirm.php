@@ -8,8 +8,8 @@ $nom=$_POST['txtnom'];
 $cel=$_POST['txtcel'];
 $dir=$_POST['txtdir'];
 $depar=$_POST['cboregion'];
-$prov=$_POST['txtprov'];
-$dis=$_POST['txtdis'];
+$prov=$_POST['cboprovincia'];
+$dis=$_POST['cbodistrito'];
 $sex=$_POST['txtsex'];
 
 $id=(isset($_POST['id']))?$_POST['id']:"";

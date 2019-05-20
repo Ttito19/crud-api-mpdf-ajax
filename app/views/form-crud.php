@@ -4,7 +4,7 @@
         <?php include 'menu/cabecera-login.php'  ?>
 
             <!-- Modal -->
-            <div class="modal fade" id="modal-registrar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <!--        <div class="modal fade" id="modal-registrar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -13,12 +13,12 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body">-->
                             <div class="container">
                                 <div class="content-justify-center">
                                     <div class="col-sm-8 offset-sm-2">
 
-                                        <form method="post" autocomplete="off" class="form-group" id="form" onsubmit="return alert();">
+                                        <form method="post" autocomplete="off" class="form-group" id="form" ">
                                             <h3>Crud con Ajax</h3>
                                             <div class="form-group">
                                                 <label>Dni:</label>
@@ -56,8 +56,8 @@
                                                 <select name='cboregion' id="region" class="form-control"></select>
                                             </div>
                                             <div class="form-group">
-                                                <label>Departamento:</label>
-                                                <select name='cborprovincia' id="provincia" class="form-control"></select>
+                                                <label>Provincia:</label>
+                                                <select name='cboprovincia' id="provincia" class="form-control"></select>
                                             </div>
 
                                       <!--      <div class="form-group">
@@ -73,27 +73,28 @@
                                             <div class="form-group">
                                                 <label>Distrito:</label>
                                                 <select name='cbodistrito' id="distrito" class="form-control">
-                                                    <option>Seleccione Distrito</option>
-                                                    <option value="1">S.J.L</option>
-                                                    <option value="2">La Molina</option>
-                                                    <option value="3">Miraflores</option>
-                                                    <option value="4">Surco</option>
+                                                <option>Selecciones Provincia</option>
+                                                    <option value="1">Lima</option>
+                                                    <option value="2">Urubamba</option>
+                                                    <option value="3">Huancané</option>
+                                                    <option value="4">Islay</option>
                                                 </select>
                                             </div>
                                             <div class="form-group">
                                                 <label>Sexo:</label>
                                                 <input type="text" name="txtsex" id="sexo" class="form-control" />
                                             </div>
+                                            <input type="submit" id="btn-enviar" class="btn btn-success" value="Registrar" />
 
                                         </form>
                                     </div>
                                 </div>
                                 <div>
                                 </div>
-                                <div class="modal-footer">
+                       <!--         <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                     <input type="submit" id="btn-enviar" class="btn btn-success" value="Registrar" />
-                                </div>
+                                </div>-->
                             </div>
                         </div>
                     </div>

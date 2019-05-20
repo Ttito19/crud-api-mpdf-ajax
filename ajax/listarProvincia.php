@@ -3,10 +3,10 @@
 require  '../app/models/cn.php'; // <--Nota
 require  '../app/models/crud.php'; 
  
- 
+ //print_r($_POST);
  $crud=new crud();
- $_POST=[''];
- $listRegion=$crud->provincia();
+$cboProv=$_POST['cboprovincia'];
+ $listRegion=$crud->provincia($cboProv);
 echo $listRegion;
 //print_r($listRegion);
 

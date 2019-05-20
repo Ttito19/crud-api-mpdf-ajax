@@ -1,10 +1,15 @@
-
 //REGISTRAR
+//function registrar() {
 
-function registrar(){
-        var enviar=$("#form").serialize();
+//$(document).on("submit","#form",function(e){})  
+    $("#btn-enviar").click(function(e){
+      //  console.log("sasds")
+        e.preventDefault(); // no es obligatorio ya que no hay una accion que te va a redirigir, pero su funcion es cancelar la redireccion de la pagina 
+        //funciona cuando esta dentro de un formulario
+        //evita la redireccion del elemento
+    var enviar = $("#form").serialize();
     // console.log(enviar);
-  
+
     // var dni = $("#modal-registrar #dni").val();
     // var apellido = $("#modal-registrar #apellido").val();
     // var nombre = $("#modal-registrar #nombre").val();
@@ -16,18 +21,19 @@ function registrar(){
     // var sexo = $("#modal-registrar #sexo").val();
 
     $.ajax({
-        url:'../../ajax/confirm.php',
-        method:'POST',
-        data:enviar,
-        dataType: 'json'
-    }).done((res)=>{
-        var res2=res;
+        url: '../../ajax/confirm.php',
+        method: 'POST',
+        data: enviar,
+     //   dataType: 'json'
+    }).done((res) => {
+        var res2 = res;
         console.log(res2);
-        if(res2.id>0){
-    // console.log("bueno");
-    alertify.success('Registrado Correctamente');
- 
-    $("#list").append(`
+        //if (res2.id > 0) {
+            if(res2==true){
+            // console.log("bueno");
+            alertify.success('Registrado Correctamente');
+            window.location.replace('../../app/views/table-search.php');
+      /*      $("#list").append(`
    <td width="10">${res2.id}</td>
    <td width="10">${res2.dni}</td>
    <td width="10">${res2.apellido}</td>
@@ -41,45 +47,41 @@ function registrar(){
            
    <td width="10"><a  class="btn btn-success" id="btn-editar" data-toggle="modal" data-target="#form-editar"  data-editar=${res2.id}>Editar</a></td>			
    <td width="10"><button  class="btn btn-danger"  id="btn-eliminar"  data-eliminar="${res2.id}">Eliminar</button></td>`);
-    // setTimeout(regis,2500)
-        
-        }else{
-    
-    alertify.error('Error al registrar');
-          
-        }
-       
-        
-    })
-}
+            // setTimeout(regis,2500)*/
 
-$(document).on("click","btn-enviar",function(e){
-    e.preventDefault();// no es obligatorio ya que no hay una accion que te va a redirigir, pero su funcion es cancelar la redireccion de la pagina 
- //funciona cuando esta dentro de un formulario
+        } else {
+
+            alertify.error('Error al registrar');
+
+        }
+
+
+    })
+})
+/*
+$(document).on("click", "btn-enviar", function(e) {
+    e.preventDefault(); // no es obligatorio ya que no hay una accion que te va a redirigir, pero su funcion es cancelar la redireccion de la pagina 
+    //funciona cuando esta dentro de un formulario
     registrar();
 
 });
 
-
-
-
-
-
-
-
+*/
 
 
 //LLAMAS POR EL ID TODO LOS CAMPOS PARA PODER EDITAR  
-$(document).on("click","#btn-editar",function(){
+$(document).on("click", "#btn-editar", function() {
     $('#btn-actualizar').removeData();
-    var editar=$(this).data("editar");
+    var editar = $(this).data("editar");
     // console.log(editar);
     $.ajax({
-        url:'../../ajax/call-id.php',
-        method:'POST',
-        data:{"id":  editar},
-        dataType:"JSON"
-    }).done(function(res){
+        url: '../../ajax/call-id.php',
+        method: 'POST',
+        data: {
+            "id": editar
+        },
+        dataType: "JSON"
+    }).done(function(res) {
         console.log(res);
         $("#dni").val(res.dni)
         $("#apellido").val(res.apellido)
@@ -87,10 +89,10 @@ $(document).on("click","#btn-editar",function(){
         $("#celular").val(res.telefono)
         $("#direccion").val(res.Direccion)
 
-    //  var op1=   (res.idDepa==1)?"selected":""; 
-    //  var op2=   (res.idDepa==2)?"selected":""; 
-    //  var op3=  (res.idDepa==3)?"selected":""; 
-    //  var op4=  (res.idDepa==4)?"selected":""; 
+        //  var op1=   (res.idDepa==1)?"selected":""; 
+        //  var op2=   (res.idDepa==2)?"selected":""; 
+        //  var op3=  (res.idDepa==3)?"selected":""; 
+        //  var op4=  (res.idDepa==4)?"selected":""; 
 
         // $("#departamento").html(`
         //     <option value="1" ${op1} >Lima</option>
@@ -102,24 +104,24 @@ $(document).on("click","#btn-editar",function(){
         $("#provincia").val(res.idProv)
         $("#distrito").val(res.idDist)
         $("#sexo").val(res.Sexo)
-        $("#btn-actualizar").attr("data-id",res.id)
-        $("#nom").html("Editar a "+res.nombre)
+        $("#btn-actualizar").attr("data-id", res.id)
+        $("#nom").html("Editar a " + res.nombre)
 
 
-    //     if(res==true){
-      
-    //     res.
+        //     if(res==true){
 
-    //   }else{
-    //     console.log("mal");
+        //     res.
 
-    //   }
+        //   }else{
+        //     console.log("mal");
+
+        //   }
 
     })
 })
 
 //ACTAULIZAR LOS DATOS
-$(document).on("click","#btn-actualizar",function(){
+$(document).on("click", "#btn-actualizar", function() {
     // console.log($(this).data("id"));
     var id = $(this).data("id");
     var dni = $("#dni").val();
@@ -127,20 +129,31 @@ $(document).on("click","#btn-actualizar",function(){
     var nombre = $("#nombre").val();
     var celular = $("#celular").val();
     var direccion = $("#direccion").val();
-    var departamento = $("#departamento").val();
+    var departamento = $("#region").val();
     var provincia = $("#provincia").val();
     var distrito = $("#distrito").val();
     var sexo = $("#sexo").val();
     // va
     //  console.log(id);
-    var enviar = {id:id, txtdni:dni,txtape:apellido,txtnom:nombre,txtcel:celular,txtdir:direccion,txtdepar:departamento,txtprov:provincia,txtdis:distrito,txtsex:sexo}
+    var enviar = {
+        id: id,
+        txtdni: dni,
+        txtape: apellido,
+        txtnom: nombre,
+        txtcel: celular,
+        txtdir: direccion,
+        cboregion: departamento,
+        cboprovincia: provincia,
+        cbodistrito: distrito,
+        txtsex: sexo
+    }
     $.ajax({
-        url:'../../ajax/confirm.php',
-     method:'POST',
-     data:enviar
-    }).done(function(res){
-        alertify.success('Actualizado Correctamente '+ `${id}`);
-        $("#tr-"+id).html(`
+        url: '../../ajax/confirm.php',
+        method: 'POST',
+        data: enviar
+    }).done(function(res) {
+        alertify.success('Actualizado Correctamente ' + `${id}`);
+        $("#tr-" + id).html(`
 		<td width="10">${id}</td>
 		<td width="10">${dni}</td>
 		<td width="10">${apellido}</td>
@@ -161,14 +174,14 @@ $(document).on("click","#btn-actualizar",function(){
 
 })
 //CREAR UN FUNCION LISTAR PARA PODER INVOCARLO
-function listar(){
+function listar() {
     $.ajax({
         url: '../../ajax/listar.php',
-        dataType:'json'
-       }).done(function(res){
+        dataType: 'json'
+    }).done(function(res) {
         $('#list').html("");
-           $.each(res, function(index, val){
-             $('#list').append(`
+        $.each(res, function(index, val) {
+            $('#list').append(`
                        <tr id="tr-${val.id}">
                            <td width="10">${val.id}</td>
                            <td width="10">${val.dni}</td>
@@ -186,33 +199,35 @@ function listar(){
                    
        
              `);
-           })
-       })
+        })
+    })
 }
 //LLAMAS A LA FUNCION LISTAR
-  $(document).ready(function(){
+$(document).ready(function() {
     // console.log("asdfasd")
-   listar();
+    listar();
 
-  })
+})
 
 //CREAR UN FUNCION BUSCAR PARA PODER INVOCARLO
-  function buscarr(buscar1){
-     
+function buscarr(buscar1) {
+
     $.ajax({
-        url:'../../ajax/buscar.php',
-        method:'POST',
-        data:{txtnom: buscar1},
-        dataType:'json'
-       
-      }).done(function(res){
-          console.log(res)
-          $("#list").html("")
-          
-          if(res[0]=="vacio"){
-           $('#list').append('<tr><td align="center"  colspan="100%">Sin Resultados</td></tr>')
-          }else{          
-            $.each(res, function(index, val){
+        url: '../../ajax/buscar.php',
+        method: 'POST',
+        data: {
+            txtnom: buscar1
+        },
+        dataType: 'json'
+
+    }).done(function(res) {
+        console.log(res)
+        $("#list").html("")
+
+        if (res[0] == "vacio") {
+            $('#list').append('<tr><td align="center"  colspan="100%">Sin Resultados</td></tr>')
+        } else {
+            $.each(res, function(index, val) {
                 $('#list').append(`
                         <tr id="tr-${val.id}">
                             <td width="10">${val.id}</td>
@@ -230,11 +245,11 @@ function listar(){
                         </tr>
         
                 `);
- 
- 
-           })
-   }
-      })
+
+
+            })
+        }
+    })
 }
 
 //LLAMAR A LA FUNCION LISTAR Y BUSCAR
@@ -243,35 +258,37 @@ function listar(){
 //     var buscar=$('#nom').val(); 
 //     if(buscar==""){
 //         listar();
-        
+
 //     }else{
 //         buscarr(buscar);
-   
+
 //     }
-  
+
 //   })
 
 
-$(document).ready(function(){
-$("#nom").keydown(function(){
-    var buscar1=$("#nom").val();
-    //  if(buscar1.length<3){
+$(document).ready(function() {
+    $("#nom").keydown(function() {
+        var buscar1 = $("#nom").val();
+        //  if(buscar1.length<3){
 
-        
+
         $.ajax({
-            url:'../../ajax/buscar.php',
-            method:'POST',
-            data:{txtnom: buscar1},
-            dataType:'json'
-           
-          }).done(function(res){
+            url: '../../ajax/buscar.php',
+            method: 'POST',
+            data: {
+                txtnom: buscar1
+            },
+            dataType: 'json'
+
+        }).done(function(res) {
             //   console.log(res)
-              $("#list").html("")
-              
-              if(res[0]=="vacio"){
-               $('#list').append('<tr><td align="center"  colspan="100%">Sin Resultados</td></tr>')
-              }else{          
-                $.each(res, function(index, val){
+            $("#list").html("")
+
+            if (res[0] == "vacio") {
+                $('#list').append('<tr><td align="center"  colspan="100%">Sin Resultados</td></tr>')
+            } else {
+                $.each(res, function(index, val) {
                     $('#list').append(`
                             <tr id="tr-${val.id}">
                                 <td width="10">${val.id}</td>
@@ -289,103 +306,118 @@ $("#nom").keydown(function(){
                             </tr>
             
                     `);
-     
-     
-               })
-       }
-          })
-    //  }
+
+
+                })
+            }
+        })
+        //  }
+
+
+
+    })
 
 
 
 })
-  
-
-
-})
 
 
 
 
 
+$(document).ready(function() {
+  /*  $("#btn-registrar").click(function() {
+        var ruta = $(this).attr("href");
 
-
-//LLAMAR AL REGISTRAR 
- 
-$(document).ready(function(){
-    $("#btn-registrar").click(function(){
-        var ruta=$(this).attr("href");
-
-        $("#mostrar").load(ruta + " #modal-registrar", function(){
+        $("#mostrar").load(ruta + " #modal-registrar", function() {
             // $("#mostrar").load(ruta + " ")
             $("#modal-registrar").modal("show");
 
-            $("#btn-enviar").click(function(e){
+            $("#btn-enviar").click(function(e) {
                 e.preventDefault();
                 registrar()
                 $("#modal-registrar").modal("hide");
-            })    
-            
-             //seleccionar combo region
-            $.ajax({
-                url:'../../ajax/listarRegion.php',
-                method:'post',
-                dataType:"Json"
-            }).done(function(combo){
-           // console.log($('#nom'));
-           $('#region').append('<option>Seleccionar Región</option>')
-           $.each(combo, function(index,valor){
-            $('#region').append(`<option value="${valor.idDepa}">${valor.departamento}</option>`);
-           })
+            })*/
 
-            }).fail(function(){
-            alert('Hubo un error al cargar la región')
+            //seleccionar combo region
+            $.ajax({
+                url: '../../ajax/listarRegion.php',
+                method: 'POST',
+                dataType: "Json"
+            }).done(function(comboDepar) {
+                // console.log($('#nom'));
+                $('#region').append('<option>Seleccionar Región</option>')
+                $.each(comboDepar, function(index, valor) {
+                   
+                    $('#region').append(`<option value="${valor.idDepa}">${valor.departamento}</option>`);
+                    
+                })
+
+            }).fail(function() {
+                alert('Hubo un error al cargar la región')
             })
+
+
             //seleccionar combo provincia
-           $('#region').change(function(){
-               
-            $('#distrito').append(`<option value="${valor.idDepa}">${valor.departamento}</option>`);
-           })
+            $('#region').change(function() {
+
+
+                var cboprov = $(this).val();
+
+
+             //   console.log(cboprov)
+                $.ajax({
+                    url: '../../ajax/listarProvincia.php',
+                    method: 'POST',
+                    dataType: 'Json',
+                    data: {cboprovincia: cboprov},
+                }).done(function(comboProv) {
+                   console.log(comboProv)
+                   $('#provincia').html("");
+                    $('#provincia').append('<option>Seleccionar Provincia</option>');
+                    $.each(comboProv, function(index, valor) {
+                         //console.log(valor)
+                        $('#provincia').append(`<option value="${valor.idProv}">${valor.provincia}</option>`);
+                    })
+
+                }).fail(function() {
+                    console.log("error");
+                })
+
+            })
+
 
         });
-        return false;  
+   /*     return false;
     });
-});
+});*/
 
 
-  //login
+//login
 
-$(document).on("click","#btn-sesión",function(e){
+$(document).on("click", "#btn-sesión", function(e) {
     e.preventDefault();
-    var correo=$("#correoLogin").val();
-    var clave=$("#passwordLogin").val();
-  var  enviar ={txtcorreo:correo,txtclave:clave}
-     $.ajax({
-       url:'../../ajax/login.php',  
-       method:'POST',
-       data:enviar
-     }).done(function(res){
-     
-     var result = res ; 
-  //   console.log(result)  
-        if(result=="bien"){
+    var correo = $("#correoLogin").val();
+    var clave = $("#passwordLogin").val();
+    var enviar = {
+        txtcorreo: correo,
+        txtclave: clave
+    }
+    $.ajax({
+        url: '../../ajax/login.php',
+        method: 'POST',
+        data: enviar
+    }).done(function(res) {
+
+        var result = res;
+        //   console.log(result)  
+        if (result == "bien") {
             document.location.replace('../../app/views/table-search.php');
-        }else{
+        } else {
             alertify.error('Correo o Clave incorrecta');
         }
 
-   
 
-     })
+
+    })
 })
- 
-
-
-
-
-
-
-
-
-
-

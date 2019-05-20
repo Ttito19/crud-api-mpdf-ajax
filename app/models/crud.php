@@ -52,15 +52,23 @@ public function Insertar($dni,$apellido,$nombre,$telefono,$direccion,$departamen
     $departamento,$provincia,$distrito,$sexo);
     $sql->execute();  
     if($sql->{'error'}==""){
-        $res=$sql->get_result();
-        $result=$res->fetch_assoc();
+        // print_r($sql);
+        // exit();
+        if($sql->affected_rows>0){
+            $result=true;
+        }else{
+            $result=false;
+        
+        }
+      //  $result=$res->fetch_assoc();
         // exit;
         //  return $res;
     }else{
         $result=$sql->{'error'};
     }
-    $json = json_encode($result);
-    return $json;
+   /* $json = json_encode($result);
+    return $json;*/
+    return $result;
 }
 
 
@@ -198,16 +206,16 @@ $cn= new ClassConexion();
 
 }
 
-public function  provincia($iddepa){
+public function provincia($iddepa){
     $cn=new ClassConexion();
     $mysqli=$cn->Conectar();
     $sql=$mysqli->prepare("call sp_select_provincia(?)");
-    $sql->bind_param('i',$iddepa);
+   $sql->bind_param('i',$iddepa);
     $sql->execute();
     $array=[];
     if($sql->{'error'}==''){
         $result=$sql->get_result();
-        
+     //   print_r($result);
         if ($result->num_rows>0) {
         
             while($myrow=$result->fetch_assoc()){ 
