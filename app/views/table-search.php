@@ -8,7 +8,7 @@ y luego continuara con lo de abajo-->
 <?php include 'header/header.php';  ?>
 
     <?php include 'menu/cabecera-login.php'  ?>
-
+    
         <div class="offset-sm-3" style="margin-top:5px">
 
             <!--<a  href="form-crud.php"  class="btn btn-secondary"  id="btn-registrar" >Registrar Usuario</a>-->
@@ -23,9 +23,8 @@ y luego continuara con lo de abajo-->
             </div>
         </div>
 
-        <div class="container">
-
-            <table class="table table-bordered ">
+        <div class="container">     
+        <table class="table table-bordered" id=table>
                 <thead>
                     <tr class="table-primary">
                         <td style="color:green">Codigo</td>
@@ -46,8 +45,19 @@ y luego continuara con lo de abajo-->
 
                 </tbody>
             </table>
+            <div class="pagination-container" id="pagination-container"></div>
         </div>
-        <a href="logout.php" class="btn btn-warning">Cerrar Sesión</a>
+
+
+
+
+
+
+
+
+
+
+     <!--   <a href="logout.php" class="btn btn-warning">Cerrar Sesión</a>-->
 
         <!-- <button type="button" class="btn btn-primary"  id="desplegar"  data-toggle="modal" data-target="#exampleModalLong">
   Para editar
@@ -100,13 +110,7 @@ y luego continuara con lo de abajo-->
 
                                         <div class="form-group">
                                             <label>Distrito:</label>
-                                            <select name='cbodistrito' id="distrito" class="form-control">
-                                                <option>Selecciones Provincia</option>
-                                                <option value="1">Lima</option>
-                                                <option value="2">Urubamba</option>
-                                                <option value="3">Huancané</option>
-                                                <option value="4">Islay</option>
-                                            </select>
+                                            <select name='cbodistrito' id="distrito" class="form-control"> </select>
                                         </div>
                                         <div class="form-group">
                                             <label>Sexo:</label>
@@ -130,9 +134,14 @@ y luego continuara con lo de abajo-->
             </div>
         </div>
 
-        <div id="mostrar">
-            <div>
+        <?php  include 'footer/footer.php'  ?>
 
-                <?php  include 'footer/footer.php'  ?>
+
+
                     <script src="../../public/style/javascript/app.js"></script>
+                    <script src="../../public/style/javascript/paginacion.js"></script>
                     <script src="../../public/style/javascript/eliminar.js"></script>
+                    <script  src="../../public/style/js/pagination.js"></script>
+                     <script src="../../public/style/js/pagination.min.js"></script>
+
+               

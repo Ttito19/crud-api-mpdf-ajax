@@ -17,9 +17,9 @@
 
     <link rel="stylesheet" href="../../public/style/css/alertify.css">
     <link rel="stylesheet" href="../../public/style/css/alertify.min.css">
- 
-   
-    
+    <link rel="stylesheet" href="../../public/style/css/pagination.css">
+    <link rel="stylesheet" href="../../public/style/css/pagination.less">
+  
 
   </head>
 

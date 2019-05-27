@@ -16,10 +16,12 @@ class  crud {
     
 
 
-public function Listar(){ 
+public function Listar($pag){ 
     $cn=new ClassConexion(); //Instancia de la clase conexión
     $mysqli=$cn->Conectar();//se llama a la funcion Conectar; se supone que te retorno el objeto el cúal tiene a la clase mysqli
-    $sql=$mysqli->prepare("call sp_listar_alumno()");//prepare: Permite hacer sentencias más preparada como el uso de parametros etc.
+ //   $sql=$mysqli->prepare("call sp_listar_alumno()");//prepare: Permite hacer sentencias más preparada como el uso de parametros etc.
+ $sql=$mysqli->prepare("call sp_pag_alumnos(?)");//prepare: Permite hacer sentencias más preparada como el uso de parametros etc.
+ $sql->bind_param('i',$pag);
     $sql->execute();//Ejecuta una sentencia preparada(*prepare), devuelve el numero de filas afectado, nro de columnas entre otras
     $array=[];
     if($sql->{'error'}==''){//validamos al ejecutar el error es igual a  "" (osea nada)
@@ -238,11 +240,39 @@ public function provincia($iddepa){
 
 }
 
+public function Paginacion(){
+  $cn=new ClassConexion();
+  $mysqli=$cn->Conectar();
+  $sql=$mysqli->prepare("call sp_total_alumnos");
+  //$sql->bind_param('i',$id);
+  $sql->execute();
+  $array=[];
+  if($sql->{"error"}==""){
+      //si el error es vacio que haga lo siguiente
+$result=$sql->get_result();
+//alamecena en una variable el resultado
+  if($result->num_rows>0){
+      //si el resultado es mayor a 0 que haga lo siguiente
+    while($myrow=$result->fetch_assoc()){
+        $array[]=$myrow;
+    }
+    //recorrer en un array 
+    //fetch assoc lo vuelve uun array asociatbo
+  }else{
+$array[]="vacio";
+//caso contraio esta vacio
+  }
+$res=$array;
+  }else{
+     $res=$sql->{"error"};
+//caso contrairio si obtiene un error en la consulta
+  }
+  $json=json_encode($res,JSON_FORCE_OBJECT);
+  return $json;
+  //retorna un json
 
 
-
-
-
+}
 
 
 
