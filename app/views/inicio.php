@@ -74,8 +74,6 @@ y luego continuara con lo de abajo-->
 			
 		</tbody>
 	</table>
-<!-- B B C I T A-->
-
 	</div>
 </div>
 

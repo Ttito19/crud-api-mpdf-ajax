@@ -207,38 +207,63 @@ $cn= new ClassConexion();
  return $json;
 
 }
-
 public function provincia($iddepa){
     $cn=new ClassConexion();
     $mysqli=$cn->Conectar();
     $sql=$mysqli->prepare("call sp_select_provincia(?)");
-   $sql->bind_param('i',$iddepa);
+    $sql->bind_param('i',$iddepa);
     $sql->execute();
     $array=[];
     if($sql->{'error'}==''){
         $result=$sql->get_result();
      //   print_r($result);
-        if ($result->num_rows>0) {
-        
+        if ($result->num_rows>0) {     
             while($myrow=$result->fetch_assoc()){ 
                 $array[]=$myrow; 
             }
         }else{
-            $array[]="vacio";
-   
-        
+            $array[]="vacio";  
     }
     $res=$array;
    // print_r($res);  
     }else{
         $res=$sql->{'error'};
     }
-
    $json=json_encode($res,JSON_FORCE_OBJECT);
    return $json;
-
-
 }
+
+public function distrito($idprov){
+$cn=new ClassConexion();
+$mysqli=$cn->Conectar();
+$sql=$mysqli->prepare("call sp_select_distrito(?)");
+$sql->bind_param('i',$idprov);
+$sql->execute();
+$array=[];
+if($sql->{'error'}==''){
+    $result=$sql->get_result();
+ //   print_r($result);
+    if ($result->num_rows>0) {     
+        while($myrow=$result->fetch_assoc()){ 
+            $array[]=$myrow; 
+        }
+    }else{
+        $array[]="vacio";  
+}
+$res=$array;
+// print_r($res);  
+}else{
+    $res=$sql->{'error'};
+}
+$json=json_encode($res,JSON_FORCE_OBJECT);
+return $json;
+}
+
+
+
+
+
+
 
 public function Paginacion(){
   $cn=new ClassConexion();

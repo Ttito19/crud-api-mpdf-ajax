@@ -103,12 +103,12 @@ y luego continuara con lo de abajo-->
                                             <label>Departamento:</label>
                                             <select name='cboregion' id="region" class="form-control"></select>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group" >
                                             <label>Provincia:</label>
-                                            <select name='cboprovincia' id="provincia" class="form-control"></select>
+                                            <select name='cboprovincia' id="provincia" class="form-control" ></select>
                                         </div>
 
-                                        <div class="form-group">
+                                        <div class="form-group"  >
                                             <label>Distrito:</label>
                                             <select name='cbodistrito' id="distrito" class="form-control"> </select>
                                         </div>
@@ -123,7 +123,7 @@ y luego continuara con lo de abajo-->
                             <div>
                                 <div class="modal-footer">
                                     <input type="submit" id="btn-actualizar" class="btn btn-success" value="Actualizar" />
-                                    <a href="../views/table-search.php" class="btn btn-danger">Cancelar</a>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                 </div>
 
                             </div>
@@ -139,9 +139,10 @@ y luego continuara con lo de abajo-->
 
 
                     <script src="../../public/style/javascript/app.js"></script>
+                    <script src="../../public/style/javascript/combos.js"></script>
                     <script src="../../public/style/javascript/paginacion.js"></script>
                     <script src="../../public/style/javascript/eliminar.js"></script>
                     <script  src="../../public/style/js/pagination.js"></script>
-                     <script src="../../public/style/js/pagination.min.js"></script>
+                    <script src="../../public/style/js/pagination.min.js"></script>
 
                
