@@ -164,9 +164,10 @@ $(document).on("click", "#btn-actualizar", function() {
 		<td width="10">${provincia}</td>
 		<td width="10">${distrito}</td>
 		<td width="10">${sexo}</td>
-				
-		<td width="10"><a  class="btn btn-success" id="btn-editar" data-toggle="modal" data-target="#form-editar"  data-editar=${id}>Editar</a></td>			
-		<td width="10"><button  class="btn btn-danger"  id="btn-eliminar"  data-eliminar="${id}">Eliminar</button></td>`);
+		
+        <td width="10"><a style='color:white' class="btn btn-success" id="btn-editar" data-toggle="modal" data-target="#form-editar"  data-editar=${id}>Editar</a></td>
+        <td width="10"><button  class="btn btn-danger"  id="btn-eliminar"  data-eliminar="${id}">Eliminar</button></td>			
+		<td width="10"><button  class="btn btn-secondary"  id="btn-pdf" ">PDF</button></td>`);
         $('#form-editar').modal('hide');
 
 
@@ -236,8 +237,9 @@ function listar(pag) {
             "<td width='10'>  ${element.idProv} </td>"+
             "<td width='10'>  ${element.idDist} </td>"+
             "<td width='10'>  ${element.Sexo} </td>"+   
-            "<td width='10'><a  class='btn btn-success' id='btn-editar' data-toggle='modal' data-target='#form-editar'  data-editar=${element.id} ">Editar</a></td>"+		
-            "<td width='10'><button class='btn btn-danger'  id='btn-eliminar' data-eliminar=${element.id } " >Eliminar</button></td></tr>`;
+            "<td width='10'><a  style='color:white' class='btn btn-success' id='btn-editar' data-toggle='modal' data-target='#form-editar'  data-editar=${element.id} ">Editar</a></td>"+	
+            "<td width='10'><button class='btn btn-danger'  id='btn-eliminar' data-eliminar=${element.id } ">Eliminar</button></td>"+		
+            "<td width='10'><button class='btn btn-secondary'  id='btn-pdf' " >PDF</button></td></tr>`;
             $('#list').html(html);
             //html = "";
         });
@@ -301,8 +303,9 @@ function buscarr(buscar1) {
                             <td width="10">${val.idProv}</td>
                             <td width="10">${val.idDist}</td>
                             <td width="10">${val.Sexo}</td>   
-                            <td width="10"><a  class="btn btn-success" id="btn-editar" data-toggle="modal" data-target="#form-editar"  data-editar="${val.id}">Editar</a></td>			
-                            <td width="10"><button class="btn btn-danger"  id="btn-eliminar" data-eliminar="${val.id}" >Eliminar</button></td>			
+                            <td width="10"><a style='color:white' class="btn btn-success" id="btn-editar" data-toggle="modal" data-target="#form-editar"  data-editar="${val.id}">Editar</a></td>			
+                            <td width="10"><button class="btn btn-danger"  id="btn-eliminar" data-eliminar="${val.id}" >Eliminar</button></td>	
+                            <td width="10"><button class="btn btn-secondary"  id="btn-pdf" " >PDF</button></td>			
                         </tr>
         
                 `);
@@ -362,8 +365,9 @@ $(document).ready(function() {
                                 <td width="10">${val.idProv}</td>
                                 <td width="10">${val.idDist}</td>
                                 <td width="10">${val.Sexo}</td>   
-                                <td width="10"><a  class="btn btn-success" id="btn-editar" data-toggle="modal" data-target="#form-editar"  data-editar="${val.id}">Editar</a></td>			
-                                <td width="10"><button class="btn btn-danger"  id="btn-eliminar" data-eliminar="${val.id}" >Eliminar</button></td>			
+                                <td width="10"><a  style='color:white' class="btn btn-success" id="btn-editar" data-toggle="modal" data-target="#form-editar"  data-editar="${val.id}">Editar</a></td>			
+                                <td width="10"><button class="btn btn-danger"  id="btn-eliminar" data-eliminar="${val.id}" >Eliminar</button></td>	
+                                <td width="10"><button class="btn btn-secondary"  id="btn-pdf" " >PDF</button></td>			
                             </tr>
             
                     `);

@@ -1,4 +1,6 @@
+<?php //require  '../../ajax/listarReport.php'; //Ruta del controlador ?>
 <?php require  '../controllers/listar-controller.php'; //Ruta del controlador ?>
+
 <!-- En el navegador ejecutas este archivo(inicio.php) pero arriba esta la ruta del controlador, por lo cual ese archivo se ejecutara primero 
 y luego continuara con lo de abajo-->
 
@@ -10,72 +12,104 @@ y luego continuara con lo de abajo-->
 <html>
 <head>
     <title>Listar en Pdf </title>
-    <!--<link rel="stylesheet" type="text/css" href="../style/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="../style/css/bootstrap.css">-->
-<!--	<link rel="stylesheet" type="text/css" href="../../public/style/css/reboot.css">-->
+  
 	<link rel="stylesheet" type="text/css" href="../../public/style/css/bootstrap-grid.css">
 	<link rel="stylesheet" type="text/css" href="../../public/style/estilos/_all-skins.min.css">
-	<!--<link rel="stylesheet" type="text/css" href="../../public/style/estilos/AdminLTE.min.css">
-	<link rel="stylesheet" type="text/css" href="../../public/style/estilos/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="../../public/style/estilos/css.css">
-	<link rel="stylesheet" type="text/css" href="../../public/style/estilos/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="../../public/style/estilos/ionicons.min.css">-->
+	<link rel="stylesheet" type="text/css" href="../../public/style/estilos/reporte.css">
+
 
 
 </head>
 <body>	
-<div class="container">
-<div class="content-justify-center">
-<div class=" offset-sm-5 "    >
-<form method="post" class="form-group">
-	
-	<!--
-<div class="form-group">
-<h3>Buscar por Nombre:</h3> 
-<input  type="text" class="form-control" name="txt-buscar"/>
-</div>
-<input  type="submit" class="btn btn-primary" id="btn-buscar" />
--->
-</form>
+<table class='table-header' >
+                        <tr>
+                            <td rowspan="3" style='width:45px;'>
+                                <img src="../../public/img/lob.jpg" height='100px'>
+                            </td>
+                            <td>
+                              Listado de Reportes
+                            </td>
+                            <td class="right">
+                                <?php echo "FECHA: ".date("d/m/Y") ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>El Lobo</td>
+                            <td class="right">
+                                <?php echo "HORA: ".date("h:m:s A")?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>:)</td>
+                            <td></td>
+                        </tr>
+                    </table>
+                    <h1 align="center">
+                       <?php // $period=substr($periodo,0,4)."-".substr($periodo,-1)?>
+                        <?php echo "LISTA DE ALUMNOS "?>
+                    </h1>   
 
-	<table class="table-bordered">
+			<style>
+                    .tabla-boleta thead tr th{
+                        font-size:12px;
+                        padding:7px;
+                    }
+                    .tabla-boleta tbody tr td{
+                        font-size:12px;
+                        padding:3px;
+                    }
+                    .tabla-boleta tr:nth-child(even) {background-color: #f2f2f2e3;}
+                    .l {
+
+                        text-align:center;
+                    }
+            </style>
+
+<table class="tabla-boleta" style="text-align:left" border=1 >
 		<thead>
-			<tr class="table-primary">
-			<!--<td style="color:green" >Codigo:</td>
-					<td style="color:green">Nombres</td>
-				<td style="color:green">Apellido</td>
-				<td style="color:green">Direcion</td>
-				<td style="color:green">Telefono</td>
-				<td style="color:green">Editar</td>
-				<td style="color:green">Eliminar</td>-->
+			<tr>
+				<th >Codigo</th>
+				<th >Nombres</th>
+				<th >Apellido</th>
+				<th >Direccion</th>
+th				<th>Telefono</th>
+				<th >Sexo</th>
+			
 			</tr>	
 		</thead>
 		<tbody>
-			<tr>
+			
+	
 			<!-- la variable $res1 esta definida en el controlador-->
 			<!-- foreach recorre arrays(si pudes mirate un video corto de como funciona el foreach; es muy pero muy útil)-->
-				<?php foreach ($res1 as $value) {  ?>
+			<?php $SDatos=sizeof($res1);
+			//sizeof->es como el count te obtiene la canitdad de elementos 
+    $count=0; 
+    if($SDatos>0){
+			 foreach ($res1 as $value) { $count++; ?>
 			
 				<tr>
-				<td style="color:green"><?php echo $value['id'].': '.  $value['nombre']?></td>
-				<!--	<td width="10"<?php //echo $value['nombre']?>--></td>
+					<td> <?php echo $count ?> </td>	
+					<td ><?php echo $value['nombre']?></td>	
+					<td ><?php echo $value['apellido']?></td>
+					<td ><?php echo $value['direccion']?></td>
+					<td ><?php echo $value['telefono']?></td>
+					<td ><?php echo $value['Sexo']?></td>
+			
 				</tr>
+				
+				<?php  }
+			}else{ ?>
 				<tr>
-					<td style="width:30"><?php echo $value['apellido']?></td>
-					<td style="width:30"><?php echo $value['Direccion']?></td>
-					<td style="width:30"><?php echo $value['telefono']?></td>
-				<!--	<td style="width:30"></td>
-					<td style="width:30"></td>-->
-				</tr>
+				<td colspan=6  align=center> Sin Datos </td>
 				
-				<?php } ?>
-				
-			</tr>
+			</tr> 
+			<?php  }?>	
+	
 			
 		</tbody>
 	</table>
-	</div>
-</div>
+	<h2 style="margin-top:10px">Cantidad de Alumnos Matriculados: <?php echo $count;?></h2>
 
 </body>
 </html>

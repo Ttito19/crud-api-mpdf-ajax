@@ -22,23 +22,30 @@ y luego continuara con lo de abajo-->
                 <button type="submit" class="btn btn-primary mb-2 " id="btn-buscar">Buscar</button>
             </div>
         </div>
-
+<style>
+#table thead tr td{
+    color:green;
+    
+}
+    
+    </style>
         <div class="container">     
         <table class="table table-bordered" id=table>
                 <thead>
-                    <tr class="table-primary">
-                        <td style="color:green">Codigo</td>
-                        <td style="color:green">Dni</td>
-                        <td style="color:green">Apellido</td>
-                        <td style="color:green">Nombre</td>
-                        <td style="color:green">Telefono</td>
-                        <td style="color:green">Direccion</td>
-                        <td style="color:green">Departamento</td>
-                        <td style="color:green">Provicia</td>
-                        <td style="color:green">Distrito</td>
-                        <td style="color:green">Sexo</td>
-                        <td style="color:green">Editar</td>
-                        <td style="color:green">Eliminar</td>
+                    <tr class="table-primary" id="td">
+                        <td >Codigo</td>
+                        <td >Dni</td>
+                        <td >Apellido</td>
+                        <td >Nombre</td>
+                        <td >Telefono</td>
+                        <td >Direccion</td>
+                        <td >Departamento</td>
+                        <td >Provicia</td>
+                        <td >Distrito</td>
+                        <td >Sexo</td>
+                        <td >Editar</td>
+                        <td >Eliminar</td>
+                        <td   >Generar PDF</td>
                     </tr>
                 </thead>
                 <tbody id="list">
