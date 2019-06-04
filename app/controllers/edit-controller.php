@@ -10,5 +10,5 @@
  $edit=$crud->EditarId($id);
  //print_r($edit['nombre']);
 
-require_once '../views/table-search.php';
+//require_once '../views/table-search.php';
 ?>

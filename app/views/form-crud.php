@@ -62,5 +62,6 @@
                     <?php  include 'footer/footer.php'  ?>
                     <script src="../../public/style/javascript/combos.js"></script>
                     <script src="../../public/style/javascript/app.js"></script>
+                    <script src="../../public/style/javascript/actualizar.js"></script>
                        
                

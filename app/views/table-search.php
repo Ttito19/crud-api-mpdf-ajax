@@ -25,7 +25,7 @@ y luego continuara con lo de abajo-->
 <style>
 #table thead tr td{
     color:green;
-    
+  
 }
     
     </style>
@@ -45,7 +45,7 @@ y luego continuara con lo de abajo-->
                         <td >Sexo</td>
                         <td >Editar</td>
                         <td >Eliminar</td>
-                        <td   >Generar PDF</td>
+                        <td style='width:9%'>Generar PDF</td>
                     </tr>
                 </thead>
                 <tbody id="list">
@@ -148,6 +148,7 @@ y luego continuara con lo de abajo-->
                     <script src="../../public/style/javascript/app.js"></script>
                     <script src="../../public/style/javascript/combos.js"></script>
                     <script src="../../public/style/javascript/paginacion.js"></script>
+                    <script src="../../public/style/javascript/actualizar.js"></script>
                     <script src="../../public/style/javascript/eliminar.js"></script>
                     <script  src="../../public/style/js/pagination.js"></script>
                     <script src="../../public/style/js/pagination.min.js"></script>

@@ -5,7 +5,7 @@ setlocale(LC_TIME, 'es_ES.UTF-8');
 date_default_timezone_set('America/Bogota');
 ob_start();
 
-require '../../app/views/list-reporte.php';
+require '../../app/views/alumno-reporte.php';
 $html= ob_get_clean();
 
 $mpdf = new \Mpdf\Mpdf([
