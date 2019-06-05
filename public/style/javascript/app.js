@@ -103,7 +103,7 @@ function buscarr(buscar1) {
                             <td width="10">${val.Sexo}</td>   
                             <td width="10"><a style='color:white' class="btn btn-success" id="btn-editar" data-toggle="modal" data-target="#form-editar"  data-editar="${val.id}">Editar</a></td>			
                             <td width="10"><button class="btn btn-danger"  id="btn-eliminar" data-eliminar="${val.id}" >Eliminar</button></td>	
-                            <td width="10"><a style='color:white' class='btn btn-secondary'  id='btn-pdf' " >PDF</a></td>			
+                            <td width="10"><a style='color:white' class='btn btn-secondary' href='.../../../generate-pdf/pdf-datos.php?id=${val.id}' id='btn-pdf' " >PDF</a></td>			
                         </tr>
         
                 `);
@@ -165,7 +165,7 @@ $(document).ready(function() {
                                 <td width="10">${val.Sexo}</td>   
                                 <td width="10"><a  style='color:white' class="btn btn-success" id="btn-editar" data-toggle="modal" data-target="#form-editar"  data-editar="${val.id}">Editar</a></td>			
                                 <td width="10"><button class="btn btn-danger"  id="btn-eliminar" data-eliminar="${val.id}" >Eliminar</button></td>	
-                                <td width="10"><a style='color:white' class='btn btn-secondary'  id='btn-pdf' " >PDF</a></td>			
+                                <td width="10"><a style='color:white' class='btn btn-secondary' href='.../../../generate-pdf/pdf-datos.php?id=${val.id}' id='btn-pdf' " >PDF</a></td>			
                             </tr>
             
                     `);
@@ -218,35 +218,3 @@ $(document).on("click", "#btn-sesión", function(e) {
 
 
 
-$(document).on("click","#btn-pdf",function(){
-console.log("dcfdf")
-   // var editar = $(this).data("editar");
-
-    $.ajax({
-
-        url: '../../ajax/call-id.php',
-        method: 'POST',
-        data: {
-            "id": editar
-        },
-        dataType: "JSON"
-
-
-    }).done(function(res){
-
-
-        $("#dni").val(res.dni),
-        $("#apellido").val(res.apellido),
-        $("#nombre").val(res.nombre),
-        $("#celular").val(res.telefono),
-        $("#direccion").val(res.Direccion),
-        $("#region").val(res.idDepa),
-        $("#provincia").val(res.idProv),
-        $("#distrito").val(res.idDist),
-        $("#sexo").val(res.Sexo)
-       
-    })
-
-
-
-})

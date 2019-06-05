@@ -29,9 +29,9 @@ $(document).on("click", "#btn-editar", function() {
         //     <option value="3" ${op3} >Puno</option>
         //     <option value="4" `+ op4 +`>Arequipa</option>
         // `)
-        $("#region").val(res.idDepa),
-        $("#provincia").val(res.idProv),
-        $("#distrito").val(res.idDist),
+        $("#region").val(res.region),
+        $("#provincia").val(res.provincia),
+        $("#distrito").val(res.distrito),
         $("#sexo").val(res.Sexo),
         $("#btn-actualizar").attr("data-id", res.id),
         $("#nom").html("Editar a " + res.nombre)
@@ -96,7 +96,7 @@ $(document).on("click", "#btn-actualizar", function() {
 		
         <td width="10"><a style='color:white' class="btn btn-success" id="btn-editar" data-toggle="modal" data-target="#form-editar"  data-editar=${id}>Editar</a></td>
         <td width="10"><button  class="btn btn-danger"  id="btn-eliminar"  data-eliminar="${id}">Eliminar</button></td>			
-		<td width="10"><a style='color:white' class='btn btn-secondary'  id='btn-pdf' " >PDF</a></td>`);
+		<td width="10"><a style='color:white' class='btn btn-secondary' href='.../../../generate-pdf/pdf-datos.php?id=${id}'   id='btn-pdf' " >PDF</a></td>`);
         $('#form-editar').modal('hide');
 
 

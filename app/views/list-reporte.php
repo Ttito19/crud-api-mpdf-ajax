@@ -72,7 +72,7 @@ y luego continuara con lo de abajo-->
 				<th >Nombres</th>
 				<th >Apellido</th>
 				<th >Direccion</th>
-th				<th>Telefono</th>
+				<th>Telefono</th>
 				<th >Sexo</th>
 			
 			</tr>	

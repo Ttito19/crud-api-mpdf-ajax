@@ -99,7 +99,7 @@ public function Insertar($dni,$apellido,$nombre,$telefono,$direccion,$departamen
 }
 
 
-public function EditarId($id){
+public function EditarId($id, $json = true){
     $cn=new ClassConexion();
     $mysqli=$cn->Conectar();
     $sql=$mysqli->prepare("call sp_procedure_edit_id(?)");
@@ -107,9 +107,8 @@ public function EditarId($id){
     $sql->execute();
     if($sql->{'error'}==""){
         $result=$sql->get_result();
-        $res=$result->fetch_assoc();
-        $rs=json_encode($res,JSON_FORCE_OBJECT);
-        return $rs;
+        $res=$result->fetch_assoc(); 
+        return $json?json_encode($res,JSON_FORCE_OBJECT):$res;
     }else{
         $result=$sql->{'error'};
         return $result;

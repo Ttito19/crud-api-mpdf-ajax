@@ -7,8 +7,9 @@
  $crud=new crud();
 
  $id=$_GET['id'];
- $edit=$crud->EditarId($id);
- //print_r($edit['nombre']);
+ $edit=$crud->EditarId($id, false);
 
-//require_once '../views/table-search.php';
+//  $edit2=array($edit);
+// print_r($edit2);
+//require_once '../views/alumno-reporte.php';
 ?>

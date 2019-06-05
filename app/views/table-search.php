@@ -45,7 +45,7 @@ y luego continuara con lo de abajo-->
                         <td >Sexo</td>
                         <td >Editar</td>
                         <td >Eliminar</td>
-                        <td style='width:9%'>Generar PDF</td>
+                        <td style='width:10%'>Generar PDF</td>
                     </tr>
                 </thead>
                 <tbody id="list">
