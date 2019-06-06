@@ -7,8 +7,8 @@ require  '../app/models/crud.php';
  $crud=new crud();
 // print_r();
  $id=$_POST['id'];
-   $edit=$crud->EditarId($id);
- print_r($edit);
+ $edit=$crud->EditarId($id);
+ echo $edit;
 
 
 ?>

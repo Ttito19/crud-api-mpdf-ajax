@@ -93,9 +93,9 @@
 				<td width="10"><?php echo $edit['nombre']?></td>
 				<td width="10"><?php echo $edit['telefono']?></td>
 				<td width="10"><?php echo $edit['Direccion']?></td>
-				<td width="10"><?php echo $edit['idDepa']?></td>
-				<td width="10"><?php echo $edit['idProv']?></td>
-				<td width="10"><?php echo $edit['idDist']?></td>
+				<td width="10"><?php echo $edit['region']?></td>
+				<td width="10"><?php echo $edit['provincia']?></td>
+				<td width="10"><?php echo $edit['distrito']?></td>
 				<td width="10"><?php echo $edit['Sexo']   ///-->te permite especificar cual deseas mostrar ?></td> 
 			</tr>
 		

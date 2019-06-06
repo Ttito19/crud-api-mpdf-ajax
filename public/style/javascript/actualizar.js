@@ -17,8 +17,14 @@ $(document).on("click", "#btn-editar", function() {
         $("#nombre").val(res.nombre),
         $("#celular").val(res.telefono),
         $("#direccion").val(res.Direccion),
+        $("#region").val(res.region),
+        $("#provincia").val(res.provincia),
+        $("#distrito").val(res.distrito),
+        $("#sexo").val(res.Sexo),
+        $("#btn-actualizar").attr("data-id", res.id),
+        $("#nom").html("Editar a " + res.nombre)
 
-        //  var op1=   (res.idDepa==1)?"selected":""; 
+      //  var op1=   (res.idDepa==1)?"selected":""; 
         //  var op2=   (res.idDepa==2)?"selected":""; 
         //  var op3=  (res.idDepa==3)?"selected":""; 
         //  var op4=  (res.idDepa==4)?"selected":""; 
@@ -29,13 +35,6 @@ $(document).on("click", "#btn-editar", function() {
         //     <option value="3" ${op3} >Puno</option>
         //     <option value="4" `+ op4 +`>Arequipa</option>
         // `)
-        $("#region").val(res.region),
-        $("#provincia").val(res.provincia),
-        $("#distrito").val(res.distrito),
-        $("#sexo").val(res.Sexo),
-        $("#btn-actualizar").attr("data-id", res.id),
-        $("#nom").html("Editar a " + res.nombre)
-
 
         //     if(res==true){
 
