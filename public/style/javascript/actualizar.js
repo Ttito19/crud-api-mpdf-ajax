@@ -11,18 +11,34 @@ $(document).on("click", "#btn-editar", function() {
         },
         dataType: "JSON"
     }).done(function(res) {
-       // console.log(res);
-        $("#dni").val(res.dni),
-        $("#apellido").val(res.apellido),
-        $("#nombre").val(res.nombre),
-        $("#celular").val(res.telefono),
-        $("#direccion").val(res.Direccion),
-        $("#region").val(res.region),
-        $("#provincia").val(res.provincia),
-        $("#distrito").val(res.distrito),
-        $("#sexo").val(res.Sexo),
+       console.log(res[0]);
+        $("#dni").val(res[0].dni),
+        $("#apellido").val(res[0].apellido),
+        $("#nombre").val(res[0].nombre),
+        $("#celular").val(res[0].telefono),
+        $("#direccion").val(res[0].Direccion),
+        $("#region").val(res[0].region),
+    //     $("#provincia").val(res[0].idProv),
+    //    $("#distrito").val(res[0].idDist),
+        $("#sexo").val(res[0].Sexo),
         $("#btn-actualizar").attr("data-id", res.id),
         $("#nom").html("Editar a " + res.nombre)
+
+
+
+        $.each(res[1],function(index,valor){
+            var selected=res[0].provincia==valor.idProv?"selected":"";
+        $("#provincia").append(`<option value=${valor.idProv}  ${selected} >${valor.provincia}</option>`)
+
+        })
+
+   
+        $.each(res[2],function(index,valor){
+            var selected=res[0].distrito==valor.idDist?"selected":"";
+            $("#distrito").append(`<option value=${valor.idDist} ${selected} >${valor.distrito}</option>`)
+
+        })
+
 
       //  var op1=   (res.idDepa==1)?"selected":""; 
         //  var op2=   (res.idDepa==2)?"selected":""; 
