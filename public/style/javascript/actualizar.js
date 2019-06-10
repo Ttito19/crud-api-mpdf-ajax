@@ -11,7 +11,7 @@ $(document).on("click", "#btn-editar", function() {
         },
         dataType: "JSON"
     }).done(function(res) {
-       console.log(res[0]);
+      // console.log(res[0]);
         $("#dni").val(res[0].dni),
         $("#apellido").val(res[0].apellido),
         $("#nombre").val(res[0].nombre),
@@ -21,7 +21,7 @@ $(document).on("click", "#btn-editar", function() {
     //     $("#provincia").val(res[0].idProv),
     //    $("#distrito").val(res[0].idDist),
         $("#sexo").val(res[0].Sexo),
-        $("#btn-actualizar").attr("data-id", res.id),
+        $("#btn-actualizar").attr("data-id", res[0].id),
         $("#nom").html("Editar a " + res.nombre)
 
 
@@ -64,7 +64,7 @@ $(document).on("click", "#btn-editar", function() {
     })
 })
 
-//ACTAULIZAR LOS DATOS
+//ACTUALIZAR LOS DATOS
 $(document).on("click", "#btn-actualizar", function() {
     // console.log($(this).data("id"));
     var id = $(this).data("id");
@@ -96,7 +96,9 @@ $(document).on("click", "#btn-actualizar", function() {
         method: 'POST',
         data: enviar
     }).done(function(res) {
-        alertify.success('Actualizado Correctamente ' + `${id}`);
+        //alertify.success('Actualizado Correctamente ' + `${id}`);
+        console.log(res)
+        console.log(id)
         $("#tr-" + id).html(`
 		<td width="10">${id}</td>
 		<td width="10">${dni}</td>
@@ -109,9 +111,9 @@ $(document).on("click", "#btn-actualizar", function() {
 		<td width="10">${distrito}</td>
 		<td width="10">${sexo}</td>
 		
-        <td width="10"><a style='color:white' class="btn btn-success" id="btn-editar" data-toggle="modal" data-target="#form-editar"  data-editar=${id}>Editar</a></td>
+        <td width="10"><a style='color:white' class="btn btn-success" id="btn-editar" data-toggle="modal" data-target="#form-editar"  data-editar="${id}">Editar</a></td>
         <td width="10"><button  class="btn btn-danger"  id="btn-eliminar"  data-eliminar="${id}">Eliminar</button></td>			
-		<td width="10"><a style='color:white' class='btn btn-secondary' href='.../../../generate-pdf/pdf-datos.php?id=${id}'   id='btn-pdf' " >PDF</a></td>`);
+		<td width="10"><a style='color:white' class='btn btn-secondary' href='.../../../generate-pdf/pdf-datos.php?id=${id}'   id='btn-pdf'>PDF</a></td>`);
         $('#form-editar').modal('hide');
 
 

@@ -79,8 +79,10 @@ public function Insertar($dni,$apellido,$nombre,$telefono,$direccion,$departamen
     $departamento,$provincia,$distrito,$sexo);
     $sql->execute();  
     if($sql->{'error'}==""){
-        // print_r($sql);
-        // exit();
+
+        // $res=$sql->get_result();
+        // $row = $res->fetch_assoc(); 
+        // $result = $row["res"];
         if($sql->affected_rows>0){
             $result=true;
         }else{

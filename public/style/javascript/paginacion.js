@@ -62,7 +62,7 @@ function listar(pag) {
             "<td width='10'>  ${element.idDist} </td>"
             "<td width='10'>  ${element.Sexo} </td>" 
             "<td width='10'><a  style='color:white' class='btn btn-success' id='btn-editar' data-toggle='modal' data-target='#form-editar'  data-editar="${element.id}">Editar</a></td>"	
-            "<td width='10'><button class='btn btn-danger'  id='btn-eliminar' data-eliminar=${element.id}">Eliminar</button></td>"	
+            "<td width='10'><button class='btn btn-danger'  id='btn-eliminar' data-eliminar="${element.id}">Eliminar</button></td>"	
             "<td width='10'><a style='color:white'  class='btn btn-secondary' href='.../../../generate-pdf/pdf-datos.php?id=${element.id}' id='btn-pdf'>PDF</a></td></tr>`;
             $('#list').html(html);
             //html = "";

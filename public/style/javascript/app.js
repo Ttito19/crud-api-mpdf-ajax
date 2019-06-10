@@ -26,13 +26,14 @@
         data: enviar,
      //   dataType: 'json'
     }).done((res) => {
+
         var res2 = res;
         console.log(res2);
         //if (res2.id > 0) {
-            if(res2==true){
+            if(res2=="inserto"){
             // console.log("bueno");
-            alertify.success('Registrado Correctamente');
-            window.location.replace('../../app/views/table-search.php');
+            alertify.success('Registrado Correctamente' );
+           // window.location.replace('../../app/views/table-search.php');
       /*      $("#list").append(`
    <td width="10">${res2.id}</td>
    <td width="10">${res2.dni}</td>
@@ -49,8 +50,10 @@
    <td width="10"><button  class="btn btn-danger"  id="btn-eliminar"  data-eliminar="${res2.id}">Eliminar</button></td>`);
             // setTimeout(regis,2500)*/
 
-        } else {
+        } else if(res2=="existe")  {
 
+            alert("este usuario ya existe");
+        }else{
             alertify.error('Error al registrar');
 
         }
@@ -103,7 +106,7 @@ function buscarr(buscar1) {
                             <td width="10">${val.Sexo}</td>   
                             <td width="10"><a style='color:white' class="btn btn-success" id="btn-editar" data-toggle="modal" data-target="#form-editar"  data-editar="${val.id}">Editar</a></td>			
                             <td width="10"><button class="btn btn-danger"  id="btn-eliminar" data-eliminar="${val.id}" >Eliminar</button></td>	
-                            <td width="10"><a style='color:white' class='btn btn-secondary' href='.../../../generate-pdf/pdf-datos.php?id=${val.id}' id='btn-pdf' " >PDF</a></td>			
+                            <td width="10"><a style='color:white' class='btn btn-secondary' href='.../../../generate-pdf/pdf-datos.php?id=${val.id}' id='btn-pdf' >PDF</a></td>			
                         </tr>
         
                 `);
