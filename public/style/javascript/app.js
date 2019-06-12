@@ -28,10 +28,11 @@
     }).done((res) => {
 
         var res2 = res;
-        console.log(res2);
+        //console.log(res2);
         //if (res2.id > 0) {
             if(res2=="inserto"){
             // console.log("bueno");
+            $("#message").css("display","none")
             alertify.success('Registrado Correctamente' );
            // window.location.replace('../../app/views/table-search.php');
       /*      $("#list").append(`
@@ -51,8 +52,8 @@
             // setTimeout(regis,2500)*/
 
         } else if(res2=="existe")  {
-
-            alert("este usuario ya existe");
+$("#message").css("display","block")
+            alertify.warning("este usuario ya existe");
         }else{
             alertify.error('Error al registrar');
 

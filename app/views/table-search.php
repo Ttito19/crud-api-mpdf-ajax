@@ -85,7 +85,7 @@ y luego continuara con lo de abajo-->
                             <div class="content-justify-center">
                                 <div class="col-sm-8 offset-sm-2">
                                     <form autocomplete="off" class="form-group">
-                                        <h3 id="nom"></h3>
+                                        <h3 id="nom-usu"></h3>
                                         <div class="form-group">
                                             <label>Dni:</label>
                                             <input type="text" name="txtdni" id="dni" value="" class="form-control" />

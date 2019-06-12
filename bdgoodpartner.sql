@@ -11,7 +11,7 @@
  Target Server Version : 80015
  File Encoding         : 65001
 
- Date: 10/06/2019 13:55:47
+ Date: 12/06/2019 10:36:18
 */
 
 SET NAMES utf8mb4;
@@ -33,18 +33,17 @@ CREATE TABLE `alumno`  (
   `idDist` int(11) NOT NULL,
   `Sexo` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 227 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 357 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of alumno
 -- ----------------------------
-INSERT INTO `alumno` VALUES (346, '', 'dgfh', 'hgfhgf', 'hgf', 'gg', 1, 2, 24, 'hh');
-INSERT INTO `alumno` VALUES (347, '', 'dgfh', 'hgfhgf', 'hgf', 'gg', 1, 2, 24, 'hh');
-INSERT INTO `alumno` VALUES (348, '', 'dgfh', 'hgfhgf', 'hgf', 'gg', 1, 2, 24, 'hh');
-INSERT INTO `alumno` VALUES (349, '', 'xxx', 'xxx', 'xxx', 'xxx', 1, 2, 24, 'xxx');
-INSERT INTO `alumno` VALUES (354, '', 'gff', 'hgh', 'hgh', 'ghg', 2, 25, 223, 'hh');
-INSERT INTO `alumno` VALUES (355, '', 'x', 'x', 'x', 'x', 15, 100, 520, 'x');
-INSERT INTO `alumno` VALUES (356, '355', 'x', 'x', 'x', 'x', 15, 100, 520, 'x');
+INSERT INTO `alumno` VALUES (346, '354', 'dgfh', 'a', 'hgf', 'gg', 1, 2, 24, 'hh');
+INSERT INTO `alumno` VALUES (347, '355', 'dgfh', 'david', 'hgf', 'gg', 1, 2, 24, 'hh');
+INSERT INTO `alumno` VALUES (377, '35804', 'adsdsd', 'fgg', 'fgf', 'fggf', 4, 37, 367, 'g');
+INSERT INTO `alumno` VALUES (378, '358', 'hgh', 'fhg', 'fhgfh', 'gfhfg', 4, 38, 390, '4');
+INSERT INTO `alumno` VALUES (379, '3558', 'hgh', 'fhg', 'fhgfh', 'gfhfg', 4, 38, 390, '4');
+INSERT INTO `alumno` VALUES (380, '35589', 'hgh', 'fhg', 'fhgfh', 'gfhfg', 4, 38, 390, '4');
 
 -- ----------------------------
 -- Table structure for cargo
@@ -54,7 +53,7 @@ CREATE TABLE `cargo`  (
   `idcargo` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   PRIMARY KEY (`idcargo`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of cargo
@@ -85,7 +84,7 @@ CREATE TABLE `cliente`  (
   INDEX `iddistrito`(`nomdiscli`) USING BTREE,
   INDEX `idprovincia`(`nomprovcli`) USING BTREE,
   CONSTRAINT `fk_cli_emple` FOREIGN KEY (`idempleado`) REFERENCES `empleados` (`idempleado`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of cliente
@@ -105,7 +104,7 @@ CREATE TABLE `curso`  (
   `nomcurso` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `descripcion` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   PRIMARY KEY (`idcurso`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of curso
@@ -129,7 +128,7 @@ CREATE TABLE `curso_profesor`  (
   INDEX `fk_profe_curpro`(`idprofesor`) USING BTREE,
   CONSTRAINT `fk_curso_curpro` FOREIGN KEY (`idcurso`) REFERENCES `curso` (`idcurso`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `fk_profe_curpro` FOREIGN KEY (`idprofesor`) REFERENCES `profesor` (`idprofesor`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for empleados
@@ -151,7 +150,7 @@ CREATE TABLE `empleados`  (
   INDEX `iddepartamento`(`nomdepa`, `nomprov`, `nomdis`) USING BTREE,
   INDEX `iddistrito`(`nomdis`) USING BTREE,
   INDEX `idprovincia`(`nomprov`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 21 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 22 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of empleados
@@ -178,7 +177,7 @@ CREATE TABLE `matricula`  (
   INDEX `idcliente`(`idcliente`) USING BTREE,
   CONSTRAINT `fk_matri_cli` FOREIGN KEY (`idcliente`) REFERENCES `cliente` (`idcliente`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `fk_matri_cur` FOREIGN KEY (`idcurso`) REFERENCES `curso` (`idcurso`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 24 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 25 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of matricula
@@ -231,7 +230,7 @@ CREATE TABLE `profesor`  (
   INDEX `iddistrito`(`nomdispro`) USING BTREE,
   INDEX `iddepartamento`(`nomdepapro`) USING BTREE,
   CONSTRAINT `fk_prof_emple` FOREIGN KEY (`idempleado`) REFERENCES `empleados` (`idempleado`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of profesor
@@ -247,7 +246,7 @@ CREATE TABLE `tipo`  (
   `tipo` int(11) NOT NULL AUTO_INCREMENT,
   `nomtipo` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   PRIMARY KEY (`tipo`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of tipo
@@ -265,7 +264,7 @@ CREATE TABLE `turno`  (
   `hora_inicio` time(0) NOT NULL,
   `hora_final` time(0) NOT NULL,
   PRIMARY KEY (`idturno`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of turno

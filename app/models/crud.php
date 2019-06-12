@@ -80,18 +80,12 @@ public function Insertar($dni,$apellido,$nombre,$telefono,$direccion,$departamen
     $sql->execute();  
     if($sql->{'error'}==""){
 
-        // $res=$sql->get_result();
+        $res=$sql->get_result();
         // $row = $res->fetch_assoc(); 
         // $result = $row["res"];
-        if($sql->affected_rows>0){
-            $result=true;
-        }else{
-            $result=false;
-        
-        }
-      //  $result=$res->fetch_assoc();
-        // exit;
-        //  return $res;
+        // print_r($sql);
+        $myrow=$res->fetch_assoc();
+        $result=$myrow["res"];
     }else{
         $result=$sql->{'error'};
     }

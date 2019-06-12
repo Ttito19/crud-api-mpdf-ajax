@@ -9,10 +9,12 @@
 
                                         <form method="post" autocomplete="off" class="form-group" id="form" ">
                                             <h3>Crud con Ajax</h3>
-                                            <div class="form-group">
+                                            <div  class="form-group" >
                                                 <label>Dni:</label>
                                                 <input type="text" name="txtdni" id="dni" class="form-control" />
+                                                <label style="display:none" id="message">*Ya existe usuario</label>
                                             </div>
+                                            
                                             <div class="form-group">
                                                 <label>Apellidos:</label>
                                                 <input type="text" name="txtape" id="apellido" class="form-control" />

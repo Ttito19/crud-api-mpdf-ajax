@@ -18,11 +18,10 @@ $(document).on("click", "#btn-editar", function() {
         $("#celular").val(res[0].telefono),
         $("#direccion").val(res[0].Direccion),
         $("#region").val(res[0].region),
-    //     $("#provincia").val(res[0].idProv),
-    //    $("#distrito").val(res[0].idDist),
+  
         $("#sexo").val(res[0].Sexo),
-        $("#btn-actualizar").attr("data-id", res[0].id),
-        $("#nom").html("Editar a " + res.nombre)
+        $("#btn-actualizar").attr("data-id", res[0].id)
+         $("#nom-usu").html("Editar a " + res[0].nombre)
 
 
 
@@ -39,7 +38,8 @@ $(document).on("click", "#btn-editar", function() {
 
         })
 
-
+        //     $("#provincia").val(res[0].idProv),
+            //    $("#distrito").val(res[0].idDist),
       //  var op1=   (res.idDepa==1)?"selected":""; 
         //  var op2=   (res.idDepa==2)?"selected":""; 
         //  var op3=  (res.idDepa==3)?"selected":""; 
