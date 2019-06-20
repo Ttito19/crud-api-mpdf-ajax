@@ -194,14 +194,21 @@ $(document).ready(function() {
 //login
 
 $(document).on("click", "#btn-sesión", function(e) {
-    e.preventDefault();
+     e.preventDefault();
+
     var correo = $("#correoLogin").val();
     var clave = $("#passwordLogin").val();
+
     var enviar = {
         txtcorreo: correo,
         txtclave: clave
     }
-    $.ajax({
+ if(correo==""  || clave=="" ){
+ $("#alertVacio").html(`<div class="alert alert-danger " role="alert" >Correo o Clave Incorrectos</div>`)
+ 
+ }else{
+
+     $.ajax({
         url: '../../ajax/login.php',
         method: 'POST',
         data: enviar
@@ -214,11 +221,16 @@ $(document).on("click", "#btn-sesión", function(e) {
         } else {
             alertify.error('Correo o Clave incorrecta');
         }
-
-
-
     })
+
+ }
+
+
+   
 })
+
+
+
 
 
 
