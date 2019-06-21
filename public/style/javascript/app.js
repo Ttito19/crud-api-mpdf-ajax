@@ -180,19 +180,10 @@ $(document).ready(function() {
         })
         //  }
 
-
-
     })
-
-
-
 })
 
-
-
-
 //login
-
 $(document).on("click", "#btn-sesión", function(e) {
      e.preventDefault();
 
@@ -205,30 +196,38 @@ $(document).on("click", "#btn-sesión", function(e) {
     }
  if(correo==""  || clave=="" ){
  $("#alertVacio").html(`<div class="alert alert-danger " role="alert" >Correo o Clave Incorrectos</div>`)
- 
  }else{
-
      $.ajax({
         url: '../../ajax/login.php',
         method: 'POST',
         data: enviar
     }).done(function(res) {
-
         var result = res;
         //   console.log(result)  
-        if (result == "bien") {
-            document.location.replace('../../app/views/table-search.php');
-        } else {
-            alertify.error('Correo o Clave incorrecta');
-        }
+      //  console.log(result);/*
+      if (result != "Usuario no encontrado") {
+        document.location.replace('../../app/views/rutas.php'); 
+    }else {
+        alertify.error('Correo o Clave incorrecta');
+    } 
     })
 
  }
 
-
-   
 })
 
+
+
+$(document).on("click","#btn-enviarReset",function() {
+var dni = $("#resetPass").val();
+
+if(dni==""){
+    $("#alertaVacio").html(`<div class="alert alert-danger " role="alert" >Campo dni Vacio</div>`)    
+}
+
+
+
+})
 
 
 

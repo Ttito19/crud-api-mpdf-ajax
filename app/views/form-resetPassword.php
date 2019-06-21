@@ -4,10 +4,13 @@
 <div class="container" >
     <div class="col-sm-4 offset-sm-4" align="center" >
         <div  class="jumbotron jumbotron-fluid" > 
-      
-        <img src="../../public/img/lob.jpg" height="100px" width="100px"> 
-            <label id="alertaVacio"></label>
-            <form  class="form-group"  id="form" autocomplete="off"  >
+        <div>
+            <img src="../../public/img/lob.jpg" height="100px" width="100px"> 
+        </div>
+            <div>
+                <label id="alertaVacio"></label>
+            </div>
+                <form  class="form-group"  id="form" autocomplete="off"  >
                 <div  class="form-group" >                 
                     <h4>Recuperacion de Cuenta</h4>
                     <input  type="text"  class="form-control"  id="resetPass" placeholder="Escriba su dni..." required="" name="reset">
@@ -22,3 +25,4 @@
 </div>
 
 <?php  include 'footer/footer.php'  ?>
+<script src="../../public/style/javascript/app.js"></script>

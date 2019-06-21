@@ -1,4 +1,12 @@
-<?php include 'header/header.php'  ?>
+<?php
+session_start();
+if(isset($_SESSION["rol"])){
+    header("Location:./rutas.php");
+}else{
+?>
+<?php
+
+include 'header/header.php'  ?>
     <?php include 'menu/cabecera-login.php'  ?>
         <div class="container" style="margin-top: 100px">
             <div class="row justify-content-center">
@@ -7,7 +15,7 @@
                     <form method="POST" autocomplete="off"  >
                         <h1>Página Principal</h1>
                         <label id="alertVacio" ></label>
-                        <div class="form-group" >
+                        <div class="form-group">
                             <label id="alertCorreo" >Correo:</label>
                             <input type="text" name="txtcorreo" id="correoLogin"  class="form-control" style="width:50%;">
                             <span id="correcto"></span>
@@ -30,3 +38,5 @@
         <?php  include 'footer/footer.php'  ?>
 
             <script src='../../public/style/javascript/app.js'></script>
+            <?php
+            }

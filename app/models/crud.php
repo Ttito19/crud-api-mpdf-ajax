@@ -187,13 +187,14 @@ public function login($correo,$clave){
     $sql->bind_param('ss',$correo,$clave);
     $sql->execute();
     if($sql->{'error'}==''){
-        $myrow=$sql->get_result();
+        $myrow=$sql->get_result();/*
         if($myrow->num_rows>0){
             $myrow="bien";
         }else{
             $myrow="mal";
-        }
-        $result=$myrow;
+        }*/
+        $resultado = $myrow->fetch_assoc();
+        $result=$resultado;
     }else{
         $result=$sql->{'error'};
         

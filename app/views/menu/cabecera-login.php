@@ -17,8 +17,18 @@
             <a class="nav-link" href="#">Contactos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" href="#">Inhabilitado</a>
+            <a class="nav-link " href="#">Inhabilitado</a>
           </li>
+          <?php
+          // session_start();
+          if(isset($_SESSION['rol'])){
+          ?>
+          <li class="nav-item">
+            <a class="nav-link " href="./destruir.php">Cerra Session</a>
+          </li>
+          <?php
+          }
+          ?>
         </ul>     
         <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
