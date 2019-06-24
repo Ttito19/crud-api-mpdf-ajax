@@ -105,6 +105,7 @@ function buscarr(buscar1) {
                             <td width="10">${val.idProv}</td>
                             <td width="10">${val.idDist}</td>
                             <td width="10">${val.Sexo}</td>   
+                            <td width="10">${val.correo}</td>   
                             <td width="10"><a style='color:white' class="btn btn-success" id="btn-editar" data-toggle="modal" data-target="#form-editar"  data-editar="${val.id}">Editar</a></td>			
                             <td width="10"><button class="btn btn-danger"  id="btn-eliminar" data-eliminar="${val.id}" >Eliminar</button></td>	
                             <td width="10"><a style='color:white' class='btn btn-secondary' href='.../../../generate-pdf/pdf-datos.php?id=${val.id}' id='btn-pdf' >PDF</a></td>			
@@ -167,6 +168,7 @@ $(document).ready(function() {
                                 <td width="10">${val.idProv}</td>
                                 <td width="10">${val.idDist}</td>
                                 <td width="10">${val.Sexo}</td>   
+                                <td width="10">${val.correo}</td>   
                                 <td width="10"><a  style='color:white' class="btn btn-success" id="btn-editar" data-toggle="modal" data-target="#form-editar"  data-editar="${val.id}">Editar</a></td>			
                                 <td width="10"><button class="btn btn-danger"  id="btn-eliminar" data-eliminar="${val.id}" >Eliminar</button></td>	
                                 <td width="10"><a style='color:white' class='btn btn-secondary' href='.../../../generate-pdf/pdf-datos.php?id=${val.id}' id='btn-pdf' " >PDF</a></td>			
@@ -218,11 +220,37 @@ $(document).on("click", "#btn-sesión", function(e) {
 
 
 
-$(document).on("click","#btn-enviarReset",function() {
+$(document).on("click","#btn-enviarReset",function(e) {
+    e.preventDefault();
 var dni = $("#resetPass").val();
+
 
 if(dni==""){
     $("#alertaVacio").html(`<div class="alert alert-danger " role="alert" >Campo dni Vacio</div>`)    
+
+
+}else{
+
+
+
+$.ajax({
+url:'../../ajax/resetCuenta.php',
+method:'POST',
+data:{txtreset:dni},
+dataType: "JSON"
+}).done(function(result){
+  
+$("#resetDni").html( 'Dni: ' + result[0].dni);
+$("#resetCorreo").html('Correo: ' +result[0].correo);   
+
+ 
+
+})
+
+
+
+
+
 }
 
 

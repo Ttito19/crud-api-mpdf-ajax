@@ -10,14 +10,21 @@
             <div>
                 <label id="alertaVacio"></label>
             </div>
-                <form  class="form-group"  id="form" autocomplete="off"  >
+                <form  class="form-group"  id="form"  autocomplete="off"  >
                 <div  class="form-group" >                 
                     <h4>Recuperacion de Cuenta</h4>
-                    <input  type="text"  class="form-control"  id="resetPass" placeholder="Escriba su dni..." required="" name="reset">
+                    <input  type="text"  class="form-control"  id="resetPass" placeholder="Escriba su dni..." required="" name="txtreset">
+                </div>
+             <div class="d-flex justify-content-center">
+                 <label class="text-muted h5"   type="text" id="resetDni"> </label>
+                </div>
+                <div class="d-flex justify-content-center">
+                 <label class="text-muted  h5 "   type="text" id="resetDni" > </label>
+                 <label class="text-muted  h5 "   type="text" id="resetCorreo" > </label>
                 </div>
 
                 <input  type="submit"  class="btn btn-primary"  value="restaurar"  id="btn-enviarReset" >
-                <a href="./"  class="btn btn-danger"  id="btn-cancelar" >cancelar</a>
+              
 
             </form>
         </div>

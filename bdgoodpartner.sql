@@ -11,11 +11,44 @@
  Target Server Version : 80015
  File Encoding         : 65001
 
- Date: 12/06/2019 10:36:18
+ Date: 21/06/2019 14:03:26
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for admin
+-- ----------------------------
+DROP TABLE IF EXISTS `admin`;
+CREATE TABLE `admin`  (
+  `idempleado` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `apellido` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `correo` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `nomdepa` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `nomprov` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `nomdis` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `dni` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `celular` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `clave` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `idRol` int(11) NOT NULL,
+  PRIMARY KEY (`idempleado`) USING BTREE,
+  INDEX `iddepartamento`(`nomdepa`, `nomprov`, `nomdis`) USING BTREE,
+  INDEX `iddistrito`(`nomdis`) USING BTREE,
+  INDEX `idprovincia`(`nomprov`) USING BTREE,
+  INDEX `fk_admin_rol`(`idRol`) USING BTREE,
+  CONSTRAINT `fk_admin_rol` FOREIGN KEY (`idRol`) REFERENCES `rol` (`idRol`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE = InnoDB AUTO_INCREMENT = 22 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of admin
+-- ----------------------------
+INSERT INTO `admin` VALUES (1, 'andres', 'ttito', 'andres@gmail.com', '3', '30', '278', '75110109', '934909835', '123', 1);
+INSERT INTO `admin` VALUES (2, 'david', 'chavez Ttito', 'david@gmail.com', '3', '30', '278', '75110109', '934909835', '123', 1);
+INSERT INTO `admin` VALUES (16, 'jorge', 'chavez', 'jorge@gmail.com', '3', '29', '271', '10581610', '969989564', '$2y$12$nP/kf7b5nRMXN934tSstluUl5dQY/MUBif8mP2HBatFs0jM8a/Gla', 1);
+INSERT INTO `admin` VALUES (17, 'daniela', 'ayama', 'da@gmail.com', '2', '9', '97', '75110109', '9643001', '$2y$12$yPfED/hdm1wPP8uCuZBE7OEqX1td2gtUpJ8U2dcBxKepPsHr3Kj6K', 1);
+INSERT INTO `admin` VALUES (21, 'daniela', 'flores', 'da@gmail.com', '2', '9', '96', '75110109', '934909835', '$2y$12$M5CDV2tMTeVXwGVPQPLvquvgNE/V3fUSEi4sRUO/2p/VZbZePOKza', 1);
 
 -- ----------------------------
 -- Table structure for alumno
@@ -31,69 +64,24 @@ CREATE TABLE `alumno`  (
   `idDepa` int(11) NOT NULL,
   `idProv` int(11) NOT NULL,
   `idDist` int(11) NOT NULL,
+  `correo` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `Sexo` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 357 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+  `idRol` int(11) NULL DEFAULT NULL,
+  `clave` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `fk_alumno_rol`(`idRol`) USING BTREE,
+  CONSTRAINT `fk_alumno_rol` FOREIGN KEY (`idRol`) REFERENCES `rol` (`idRol`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE = InnoDB AUTO_INCREMENT = 381 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of alumno
 -- ----------------------------
-INSERT INTO `alumno` VALUES (346, '354', 'dgfh', 'a', 'hgf', 'gg', 1, 2, 24, 'hh');
-INSERT INTO `alumno` VALUES (347, '355', 'dgfh', 'david', 'hgf', 'gg', 1, 2, 24, 'hh');
-INSERT INTO `alumno` VALUES (377, '35804', 'adsdsd', 'fgg', 'fgf', 'fggf', 4, 37, 367, 'g');
-INSERT INTO `alumno` VALUES (378, '358', 'hgh', 'fhg', 'fhgfh', 'gfhfg', 4, 38, 390, '4');
-INSERT INTO `alumno` VALUES (379, '3558', 'hgh', 'fhg', 'fhgfh', 'gfhfg', 4, 38, 390, '4');
-INSERT INTO `alumno` VALUES (380, '35589', 'hgh', 'fhg', 'fhgfh', 'gfhfg', 4, 38, 390, '4');
-
--- ----------------------------
--- Table structure for cargo
--- ----------------------------
-DROP TABLE IF EXISTS `cargo`;
-CREATE TABLE `cargo`  (
-  `idcargo` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  PRIMARY KEY (`idcargo`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
-
--- ----------------------------
--- Records of cargo
--- ----------------------------
-INSERT INTO `cargo` VALUES (1, 'admin');
-INSERT INTO `cargo` VALUES (2, 'secretaria');
-
--- ----------------------------
--- Table structure for cliente
--- ----------------------------
-DROP TABLE IF EXISTS `cliente`;
-CREATE TABLE `cliente`  (
-  `idcliente` int(11) NOT NULL AUTO_INCREMENT,
-  `nomcli` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `apecli` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `corcli` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `nomdepacli` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `nomprovcli` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `nomdiscli` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `dnicli` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `celcli` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `clavecli` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `idempleado` int(11) NOT NULL,
-  `tipo` int(11) NOT NULL,
-  PRIMARY KEY (`idcliente`) USING BTREE,
-  INDEX `idempleado`(`idempleado`) USING BTREE,
-  INDEX `iddepartamento`(`nomdepacli`, `nomprovcli`, `nomdiscli`, `idempleado`) USING BTREE,
-  INDEX `iddistrito`(`nomdiscli`) USING BTREE,
-  INDEX `idprovincia`(`nomprovcli`) USING BTREE,
-  CONSTRAINT `fk_cli_emple` FOREIGN KEY (`idempleado`) REFERENCES `empleados` (`idempleado`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
-
--- ----------------------------
--- Records of cliente
--- ----------------------------
-INSERT INTO `cliente` VALUES (1, 'carla', 'flores', 'carla@gmail.com', '3', '30', '278', '454545545', '964523552', '123', 2, 2);
-INSERT INTO `cliente` VALUES (2, 'danielaaaaaaaaaaa', 'zaragoza', 'daniell@gmail.com', 'Lima', 'Lima', 'Rimac', '97859561', '788888887', '123', 2, 2);
-INSERT INTO `cliente` VALUES (3, 'Juan', 'Chese', 'Juan@gmail.com', 'Lima', 'Lima', 'San Juan de Lurigancho', '40650124', '9932165487', '123', 2, 2);
-INSERT INTO `cliente` VALUES (4, 'Maria', 'Sefue', 'Maria@gmail.com', 'Lima', 'Lima', 'Agustino', '60154658', '996548721', '123', 2, 2);
-INSERT INTO `cliente` VALUES (6, 'osvaldo', 'lorem', 'lorem@gmail.com', '1', '2', '23', '45455447', '956321561', '$2y$12$PmLzDMx9JGHenXv2JdscNegJFx7Z6tWbrgfGs7g77A7nSueX/LKsm', 2, 2);
+INSERT INTO `alumno` VALUES (346, '354', 'dgfh', 'a', 'hgf', 'gg', 1, 2, 24, 'correo1@gmail.com', 'hh', 3, '123456');
+INSERT INTO `alumno` VALUES (347, '355', 'dgfh', 'david', 'hgf', 'gg', 1, 2, 24, 'correo2@gmail.com', 'hh', 3, '123456');
+INSERT INTO `alumno` VALUES (377, '35804', 'adsdsd', 'fgg', 'fgf', 'fggf', 4, 37, 367, 'correo3@gmail.com', 'g', 3, '123456');
+INSERT INTO `alumno` VALUES (378, '358', 'hgh', 'fhg', 'fhgfh', 'gfhfg', 4, 38, 390, 'correo4@gmail.com', '4', 3, '123456');
+INSERT INTO `alumno` VALUES (379, '3558', 'hgh', 'fhg', 'fhgfh', 'gfhfg', 4, 38, 390, 'correo5@gmail.com', '4', 3, '123456');
+INSERT INTO `alumno` VALUES (380, '35589', 'hgh', 'fhg', 'fhgfh', 'gfhfg', 4, 38, 390, 'correo6@gmail.com', '4', 3, '123456');
 
 -- ----------------------------
 -- Table structure for curso
@@ -127,133 +115,58 @@ CREATE TABLE `curso_profesor`  (
   INDEX `fk_curso_curpro`(`idcurso`) USING BTREE,
   INDEX `fk_profe_curpro`(`idprofesor`) USING BTREE,
   CONSTRAINT `fk_curso_curpro` FOREIGN KEY (`idcurso`) REFERENCES `curso` (`idcurso`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `fk_profe_curpro` FOREIGN KEY (`idprofesor`) REFERENCES `profesor` (`idprofesor`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  CONSTRAINT `fk_profe_curpro` FOREIGN KEY (`idprofesor`) REFERENCES `docentes` (`idprofesor`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
--- Table structure for empleados
+-- Table structure for docentes
 -- ----------------------------
-DROP TABLE IF EXISTS `empleados`;
-CREATE TABLE `empleados`  (
-  `idempleado` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `apellido` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `correo` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `nomdepa` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `nomprov` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `nomdis` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `dni` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `celular` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `clave` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `tipo` int(11) NOT NULL,
-  PRIMARY KEY (`idempleado`) USING BTREE,
-  INDEX `iddepartamento`(`nomdepa`, `nomprov`, `nomdis`) USING BTREE,
-  INDEX `iddistrito`(`nomdis`) USING BTREE,
-  INDEX `idprovincia`(`nomprov`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 22 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
-
--- ----------------------------
--- Records of empleados
--- ----------------------------
-INSERT INTO `empleados` VALUES (1, 'andres', 'ttito', 'andres@gmail.com', '3', '30', '278', '75110109', '934909835', '123', 1);
-INSERT INTO `empleados` VALUES (2, 'david', 'chavez Ttito', 'david@gmail.com', '3', '30', '278', '75110109', '934909835', '123', 1);
-INSERT INTO `empleados` VALUES (16, 'jorge', 'chavez', 'jorge@gmail.com', '3', '29', '271', '10581610', '969989564', '$2y$12$nP/kf7b5nRMXN934tSstluUl5dQY/MUBif8mP2HBatFs0jM8a/Gla', 1);
-INSERT INTO `empleados` VALUES (17, 'daniela', 'ayama', 'da@gmail.com', '2', '9', '97', '75110109', '9643001', '$2y$12$yPfED/hdm1wPP8uCuZBE7OEqX1td2gtUpJ8U2dcBxKepPsHr3Kj6K', 0);
-INSERT INTO `empleados` VALUES (21, 'daniela', 'flores', 'da@gmail.com', '2', '9', '96', '75110109', '934909835', '$2y$12$M5CDV2tMTeVXwGVPQPLvquvgNE/V3fUSEi4sRUO/2p/VZbZePOKza', 1);
-
--- ----------------------------
--- Table structure for matricula
--- ----------------------------
-DROP TABLE IF EXISTS `matricula`;
-CREATE TABLE `matricula`  (
-  `idmatricula` int(11) NOT NULL AUTO_INCREMENT,
-  `idcurso` int(11) NOT NULL,
-  `idcliente` int(11) NOT NULL,
-  `fecha_inicio` date NOT NULL,
-  `fecha_termino` date NOT NULL,
-  PRIMARY KEY (`idmatricula`) USING BTREE,
-  INDEX `idcurso`(`idcurso`, `idcliente`) USING BTREE,
-  INDEX `idcurso_2`(`idcurso`, `idcliente`) USING BTREE,
-  INDEX `idcliente`(`idcliente`) USING BTREE,
-  CONSTRAINT `fk_matri_cli` FOREIGN KEY (`idcliente`) REFERENCES `cliente` (`idcliente`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `fk_matri_cur` FOREIGN KEY (`idcurso`) REFERENCES `curso` (`idcurso`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 25 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
-
--- ----------------------------
--- Records of matricula
--- ----------------------------
-INSERT INTO `matricula` VALUES (1, 3, 3, '0000-00-00', '0000-00-00');
-INSERT INTO `matricula` VALUES (2, 3, 3, '0000-00-00', '0000-00-00');
-INSERT INTO `matricula` VALUES (3, 2, 2, '0000-00-00', '0000-00-00');
-INSERT INTO `matricula` VALUES (4, 2, 2, '0000-00-00', '0000-00-00');
-INSERT INTO `matricula` VALUES (5, 3, 3, '0000-00-00', '0000-00-00');
-INSERT INTO `matricula` VALUES (6, 3, 3, '0000-00-00', '0000-00-00');
-INSERT INTO `matricula` VALUES (7, 3, 3, '0000-00-00', '0000-00-00');
-INSERT INTO `matricula` VALUES (8, 3, 3, '0000-00-00', '0000-00-00');
-INSERT INTO `matricula` VALUES (9, 3, 3, '0000-00-00', '0000-00-00');
-INSERT INTO `matricula` VALUES (10, 3, 3, '0000-00-00', '0000-00-00');
-INSERT INTO `matricula` VALUES (11, 2, 2, '0000-00-00', '0000-00-00');
-INSERT INTO `matricula` VALUES (12, 3, 3, '0000-00-00', '0000-00-00');
-INSERT INTO `matricula` VALUES (13, 2, 2, '0000-00-00', '0000-00-00');
-INSERT INTO `matricula` VALUES (14, 2, 2, '0000-00-00', '0000-00-00');
-INSERT INTO `matricula` VALUES (15, 2, 2, '0000-00-00', '0000-00-00');
-INSERT INTO `matricula` VALUES (16, 2, 2, '0000-00-00', '0000-00-00');
-INSERT INTO `matricula` VALUES (17, 3, 3, '0000-00-00', '0000-00-00');
-INSERT INTO `matricula` VALUES (18, 2, 2, '0000-00-00', '0000-00-00');
-INSERT INTO `matricula` VALUES (19, 3, 3, '0000-00-00', '0000-00-00');
-INSERT INTO `matricula` VALUES (20, 2, 2, '0000-00-00', '0000-00-00');
-INSERT INTO `matricula` VALUES (21, 3, 3, '0000-00-00', '0000-00-00');
-INSERT INTO `matricula` VALUES (22, 1, 1, '0000-00-00', '0000-00-00');
-INSERT INTO `matricula` VALUES (23, 1, 1, '0000-00-00', '0000-00-00');
-INSERT INTO `matricula` VALUES (24, 4, 4, '0000-00-00', '0000-00-00');
-
--- ----------------------------
--- Table structure for profesor
--- ----------------------------
-DROP TABLE IF EXISTS `profesor`;
-CREATE TABLE `profesor`  (
+DROP TABLE IF EXISTS `docentes`;
+CREATE TABLE `docentes`  (
   `idprofesor` int(11) NOT NULL AUTO_INCREMENT,
   `nompro` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `apepro` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `corpro` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `correo` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `nomdepapro` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `nomprovpro` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `nomdispro` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `dnipro` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `celpro` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `clavepro` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `clave` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `idempleado` int(11) NOT NULL,
-  `tipo` int(11) NOT NULL,
+  `idRol` int(11) NOT NULL,
   PRIMARY KEY (`idprofesor`) USING BTREE,
   INDEX `idempleado`(`idempleado`) USING BTREE,
   INDEX `idprovincia`(`nomprovpro`) USING BTREE,
   INDEX `iddistrito`(`nomdispro`) USING BTREE,
   INDEX `iddepartamento`(`nomdepapro`) USING BTREE,
-  CONSTRAINT `fk_prof_emple` FOREIGN KEY (`idempleado`) REFERENCES `empleados` (`idempleado`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  INDEX `fk_prof_rol`(`idRol`) USING BTREE,
+  CONSTRAINT `fk_prof_emple` FOREIGN KEY (`idempleado`) REFERENCES `admin` (`idempleado`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `fk_prof_rol` FOREIGN KEY (`idRol`) REFERENCES `rol` (`idRol`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
--- Records of profesor
+-- Records of docentes
 -- ----------------------------
-INSERT INTO `profesor` VALUES (1, 'ian', 'mendez', 'ian@gmail.com', '3', '30', '278', '75100239', '964523552', '123', 2, 3);
-INSERT INTO `profesor` VALUES (5, 'angie', 'Floresxx', 'angie@gmail.com', '3', '30', '278', '45455447', '956321561', '123', 2, 3);
+INSERT INTO `docentes` VALUES (1, 'ian', 'mendez', 'ian@gmail.com', '3', '30', '278', '75100239', '964523552', '123', 2, 2);
+INSERT INTO `docentes` VALUES (5, 'angie', 'Floresxx', 'angie@gmail.com', '3', '30', '278', '45455447', '956321561', '123', 2, 2);
 
 -- ----------------------------
--- Table structure for tipo
+-- Table structure for rol
 -- ----------------------------
-DROP TABLE IF EXISTS `tipo`;
-CREATE TABLE `tipo`  (
-  `tipo` int(11) NOT NULL AUTO_INCREMENT,
-  `nomtipo` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  PRIMARY KEY (`tipo`) USING BTREE
+DROP TABLE IF EXISTS `rol`;
+CREATE TABLE `rol`  (
+  `idRol` int(11) NOT NULL AUTO_INCREMENT,
+  `nom_Rol` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  PRIMARY KEY (`idRol`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
--- Records of tipo
+-- Records of rol
 -- ----------------------------
-INSERT INTO `tipo` VALUES (1, 'admin');
-INSERT INTO `tipo` VALUES (2, 'cliente');
-INSERT INTO `tipo` VALUES (3, 'profesor');
+INSERT INTO `rol` VALUES (1, 'admin');
+INSERT INTO `rol` VALUES (2, 'docente');
+INSERT INTO `rol` VALUES (3, 'alumno');
 
 -- ----------------------------
 -- Table structure for turno
@@ -2438,9 +2351,27 @@ delimiter ;
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `sp_login`;
 delimiter ;;
-CREATE PROCEDURE `sp_login`(in _correo varchar(50) , in _clave varchar(50))
-begin
-select id, correo,clave from alumno  where correo=_correo and  clave=_clave;
+CREATE PROCEDURE `sp_login`(IN _correo varchar(255),IN _clave varchar(255))
+BEGIN
+DECLARE total_ad int;
+DECLARE total_pro int;
+DECLARE total_alu int;
+SET total_ad=(select count(*) from admin where correo=_correo and clave=_clave);
+SET total_pro=(select count(*) from docentes where correo=_correo and clave=_clave);
+SET total_alu=(select count(*) from alumno where correo=_correo and clave=_clave);
+IF(total_ad=0)THEN
+			IF(total_pro=0)THEN
+							IF(total_alu=0)THEN
+							SELECT "Usuario no encontrado" as res;
+							ELSE 
+							select a.*,"enconntrado" as res from alumno a where a.correo=_correo and a.clave=_clave;
+							END IF;
+			ELSE 
+			select d.*,"encontrado" as res from docentes d where d.correo=_correo and d.clave=_clave;
+			END IF;
+ELSE 
+	select ad.*,"encontrado" as res from admin ad where ad.correo=_correo and ad.clave=_clave;
+	END IF;
 end
 ;;
 delimiter ;

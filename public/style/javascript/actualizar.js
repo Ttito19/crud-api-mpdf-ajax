@@ -11,15 +11,16 @@ $(document).on("click", "#btn-editar", function() {
         },
         dataType: "JSON"
     }).done(function(res) {
-      // console.log(res[0]);
+       console.log(res[0]);
+     
         $("#dni").val(res[0].dni),
         $("#apellido").val(res[0].apellido),
         $("#nombre").val(res[0].nombre),
         $("#celular").val(res[0].telefono),
         $("#direccion").val(res[0].Direccion),
         $("#region").val(res[0].region),
-  
         $("#sexo").val(res[0].Sexo),
+        $("#correo").val(res[0].correo),
         $("#btn-actualizar").attr("data-id", res[0].id)
          $("#nom-usu").html("Editar a " + res[0].nombre)
 
@@ -77,6 +78,7 @@ $(document).on("click", "#btn-actualizar", function() {
     var provincia = $("#provincia").val();
     var distrito = $("#distrito").val();
     var sexo = $("#sexo").val();
+    var correo = $("#correo").val();
     // va
     //  console.log(id);
     var enviar = {
@@ -89,7 +91,8 @@ $(document).on("click", "#btn-actualizar", function() {
         cboregion: departamento,
         cboprovincia: provincia,
         cbodistrito: distrito,
-        txtsex: sexo
+        txtsex: sexo,
+        txtcorreo:correo
     }
     $.ajax({   
         url: '../../ajax/confirm.php',
@@ -109,7 +112,8 @@ $(document).on("click", "#btn-actualizar", function() {
 		<td width="10">${departamento}</td>
 		<td width="10">${provincia}</td>
 		<td width="10">${distrito}</td>
-		<td width="10">${sexo}</td>
+        <td width="10">${sexo}</td>
+        <td width="10">${correo}</td>
 		
         <td width="10"><a style='color:white' class="btn btn-success" id="btn-editar" data-toggle="modal" data-target="#form-editar"  data-editar="${id}">Editar</a></td>
         <td width="10"><button  class="btn btn-danger"  id="btn-eliminar"  data-eliminar="${id}">Eliminar</button></td>			

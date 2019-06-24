@@ -11,6 +11,9 @@ class crud {
     private $provincia;
     private $distrito;
     private $sexo;
+    private $correo;
+    private $clave;
+    private $idrol;
     private $iddepa;
     private $idprov;
     
@@ -71,12 +74,12 @@ public function Listar(){
 
 
 
-public function Insertar($dni,$apellido,$nombre,$telefono,$direccion,$departamento,$provincia,$distrito,$sexo){
+public function Insertar($dni,$apellido,$nombre,$telefono,$direccion,$departamento,$provincia,$distrito,$sexo,$correo,$clave,$idrol){
     $cn=new ClassConexion();
     $mysqli=$cn->Conectar();
-    $sql=$mysqli->prepare("call sp_insertar_alumno(?,?,?,?,?,?,?,?,?)");
-    $sql->bind_param('sssssiiis',$dni,$apellido,$nombre,$telefono,$direccion,
-    $departamento,$provincia,$distrito,$sexo);
+    $sql=$mysqli->prepare("call sp_insertar_alumno(?,?,?,?,?,?,?,?,?,?,?,?)");
+    $sql->bind_param('sssssiiisssi',$dni,$apellido,$nombre,$telefono,$direccion,
+    $departamento,$provincia,$distrito,$sexo,$correo,$clave,$idrol);
     $sql->execute();  
     if($sql->{'error'}==""){
 
@@ -111,12 +114,12 @@ public function EditarId($id, $json = true){
     }
 }
 
-public function Editar($dni,$apellido,$nombre,$telefono,$direccion,$departamento,$provincia,$distrito,$sexo,$id){
+public function Editar($dni,$apellido,$nombre,$telefono,$direccion,$departamento,$provincia,$distrito,$sexo,$correo,$id){
     $cn=new ClassConexion();
     $mysqli=$cn->Conectar();
-    $sql=$mysqli->prepare("call sp_actualizar_alumno(?,?,?,?,?,?,?,?,?,?)");
-    $sql->bind_param('sssssiiisi',$dni,$apellido,$nombre,$telefono,$direccion,
-    $departamento,$provincia,$distrito,$sexo,$id);
+    $sql=$mysqli->prepare("call sp_actualizar_alumno(?,?,?,?,?,?,?,?,?,?,?)");
+    $sql->bind_param('sssssiiissi',$dni,$apellido,$nombre,$telefono,$direccion,
+    $departamento,$provincia,$distrito,$sexo,$correo,$id);
     $sql->execute();
     if($sql->{'error'}==""){
         $result=$sql->get_result();
@@ -319,6 +322,38 @@ $res=$array;
 
 
 }
+
+
+
+public function ResetCuenta($dni){
+$cn=new ClassConexion();
+$mysqli=$cn->Conectar();
+$sql=$mysqli->prepare("call sp_reset_cuenta(?)");
+$sql->bind_Param("s",$dni);
+$sql->execute();
+$array=[];
+if($sql->{"error"}==""){
+ $result=$sql->get_result();
+if($result->num_rows>0){
+    while($myrow=$result->fetch_assoc()){
+$array[]=$myrow;
+    }
+}else{
+
+    $array[]="vacio";
+}
+$res=$array;
+}else{
+    $res=$sql->{"error"};
+}
+
+$json=json_encode($res,JSON_FORCE_OBJECT);
+return $json;
+
+
+
+}
+
 
 
 

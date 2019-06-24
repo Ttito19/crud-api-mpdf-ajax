@@ -10,4 +10,4 @@ if($_SESSION["rol"] == 1){
 }
 }else{
     header("Location:./");
-}//http://localhost/crud-api-mpdf-ajax/app/views/
+}

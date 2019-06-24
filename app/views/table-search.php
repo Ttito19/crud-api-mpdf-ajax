@@ -13,6 +13,8 @@ if(isset($_SESSION["rol"])) {
 
 <?php include 'menu/cabecera-login.php'  ?>
 
+<h2  align="center" >Administrador: <?php echo($_SESSION["nomCompleto"]);?></h2>
+
    <div class="offset-sm-3" style="margin-top:5px">
 
        <!--<a  href="form-crud.php"  class="btn btn-secondary"  id="btn-registrar" >Registrar Usuario</a>-->
@@ -36,7 +38,7 @@ color:green;
            <thead>
                <tr class="table-primary" id="td">
                    <td >Codigo</td>
-                   <td ><?php print_r($_SESSION["nomCompleto"]);?></td>
+                   <td >Dni</td>               
                    <td >Apellido</td>
                    <td >Nombre</td>
                    <td >Telefono</td>
@@ -45,6 +47,7 @@ color:green;
                    <td >Provicia</td>
                    <td >Distrito</td>
                    <td >Sexo</td>
+                   <td >Correo</td>
                    <td >Editar</td>
                    <td >Eliminar</td>
                    <td style='width:10%'>Generar PDF</td>
@@ -109,6 +112,10 @@ color:green;
                                    <div class="form-group">
                                        <label>Sexo:</label>
                                        <input type="text" name="txtsex" id="sexo" value="" class="form-control" />
+                                   </div>
+                                   <div class="form-group">
+                                       <label>Correo:</label>
+                                       <input type="text" name="txtcorreo" id="correo" value="" class="form-control" />
                                    </div>
 
                                </form>

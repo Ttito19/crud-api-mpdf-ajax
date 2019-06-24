@@ -49,6 +49,18 @@
                                                 <label>Sexo:</label>
                                                 <input type="text" name="txtsex" id="sexo" class="form-control" />
                                             </div>
+                                            <div class="form-group">
+                                                <label>Correo:</label>
+                                                <input type="text" name="txtcorreo" id="correo" class="form-control" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Clave:</label>
+                                                <input type="text" name="txtclave" id="clave" class="form-control" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label>idrol:</label>
+                                                <input type="text" name="txtidrol" id="rol" class="form-control" />
+                                            </div>
                                             <input type="submit" id="btn-enviar" class="btn btn-success" value="Registrar" />
 
                                         </form>
