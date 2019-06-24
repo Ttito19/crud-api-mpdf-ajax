@@ -21,11 +21,10 @@
                 <div class="d-flex justify-content-center">
                  <label class="text-muted  h5 "   type="text" id="resetDni" > </label>
                  <label class="text-muted  h5 "   type="text" id="resetCorreo" > </label>
-                </div>
-
-                <input  type="submit"  class="btn btn-primary"  value="restaurar"  id="btn-enviarReset" >
-              
-
+                </div >      
+                <div id="input">
+                     <input  type="submit"  class="btn btn-primary"  value="restaurar"  id="btn-enviarReset" >
+               </div>
             </form>
         </div>
     </div>

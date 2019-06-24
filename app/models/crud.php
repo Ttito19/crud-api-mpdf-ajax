@@ -323,6 +323,12 @@ $res=$array;
 
 }
 
+function hide($email){
+    $mail_segmentos=explode("@",$email);
+    $mail_segmentos[0]=str_repeat("*",strlen($mail_segmentos[0]));
+    return implode("@", $mail_segmentos);
+}
+
 
 
 public function ResetCuenta($dni){
@@ -335,9 +341,19 @@ $array=[];
 if($sql->{"error"}==""){
  $result=$sql->get_result();
 if($result->num_rows>0){
-    while($myrow=$result->fetch_assoc()){
-$array[]=$myrow;
-    }
+    $myrow=$result->fetch_assoc();
+    $email=explode("@",$myrow["correo"]);
+    $total= strlen($email[0])/2;
+    $newstring=substr($email[0], 0,$total);
+
+   $emailfinal = str_pad($newstring, strlen($email[0]), "*") . "@" . $email[1];
+   $myrow["correo"]=$emailfinal;
+   $array[]=$myrow;
+
+
+
+
+
 }else{
 
     $array[]="vacio";

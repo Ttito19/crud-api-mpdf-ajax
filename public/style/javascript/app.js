@@ -231,19 +231,33 @@ if(dni==""){
 
 }else{
 
-
-
 $.ajax({
 url:'../../ajax/resetCuenta.php',
 method:'POST',
 data:{txtreset:dni},
 dataType: "JSON"
 }).done(function(result){
-  
-$("#resetDni").html( 'Dni: ' + result[0].dni);
-$("#resetCorreo").html('Correo: ' +result[0].correo);   
+console.log(result);
+if(result[0]=="vacio"){
 
+
+    alertify.error("No se encuentra datos de este dni");
+
+}else{
+   $("#resetDni").html( 'Dni: ' + result[0].dni);
+$("#resetCorreo").html('Correo: ' +result[0].correo);   
+$("#input").html('<input  type="submit" class="btn btn-primary"  value="Enviar a este correo" id="btn-enviar"/>   <a href="./" class="btn btn-danger">Cancelar</a>')
  
+
+
+}
+
+
+
+
+
+
+
 
 })
 
@@ -252,6 +266,7 @@ $("#resetCorreo").html('Correo: ' +result[0].correo);
 
 
 }
+
 
 
 
