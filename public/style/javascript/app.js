@@ -19,8 +19,16 @@
     // var provincia = $("#modal-registrar #provincia").val();
     // var distrito = $("#modal-registrar #distrito").val();
     // var sexo = $("#modal-registrar #sexo").val();
-
-    $.ajax({
+    var insertar = false;
+    //se hace un each con el proposito de no hacer if ya que si se llegar hacer este ultimo tendriamos que hacerlo para cara indice
+       $.each($("input[name='example1']"), function(index, val){
+            if($(val).prop("checked")==true){
+                insertar=true;
+            }
+       })
+       
+if(insertar==true){
+        $.ajax({
         url: '../../ajax/confirm.php',
         method: 'POST',
         data: enviar,
@@ -58,9 +66,12 @@ $("#message").css("display","block")
             alertify.error('Error al registrar');
 
         }
-
-
     })
+}else{
+    alertify.warning("seleccione el rol");
+}
+
+
 })
 /*
 $(document).on("click", "btn-enviar", function(e) {
@@ -75,49 +86,49 @@ $(document).on("click", "btn-enviar", function(e) {
 
 
 //CREAR UN FUNCION BUSCAR PARA PODER INVOCARLO
-function buscarr(buscar1) {
+// function buscarr(buscar1) {
 
-    $.ajax({
-        url: '../../ajax/buscar.php',
-        method: 'POST',
-        data: {
-            txtnom: buscar1
-        },
-        dataType: 'json'
+//     $.ajax({
+//         url: '../../ajax/buscar.php',
+//         method: 'POST',
+//         data: {
+//             txtnom: buscar1
+//         },
+//         dataType: 'json'
 
-    }).done(function(res) {
-        console.log(res)
-        $("#list").html("")
+//     }).done(function(res) {
+//         console.log(res)
+//         $("#list").html("")
 
-        if (res[0] == "vacio") {
-            $('#list').append('<tr><td align="center"  colspan="100%">Sin Resultados</td></tr>')
-        } else {
-            $.each(res, function(index, val) {
-                $('#list').append(`
-                        <tr id="tr-${val.id}">
-                            <td width="10">${val.id}</td>
-                            <td width="10">${val.dni}</td>
-                            <td width="10">${val.apellido}</td>
-                            <td width="10">${val.nombre}</td>
-                            <td width="10">${val.telefono}</td>
-                            <td width="10">${val.Direccion}</td>
-                            <td width="10">${val.idDepa}</td>
-                            <td width="10">${val.idProv}</td>
-                            <td width="10">${val.idDist}</td>
-                            <td width="10">${val.Sexo}</td>   
-                            <td width="10">${val.correo}</td>   
-                            <td width="10"><a style='color:white' class="btn btn-success" id="btn-editar" data-toggle="modal" data-target="#form-editar"  data-editar="${val.id}">Editar</a></td>			
-                            <td width="10"><button class="btn btn-danger"  id="btn-eliminar" data-eliminar="${val.id}" >Eliminar</button></td>	
-                            <td width="10"><a style='color:white' class='btn btn-secondary'  href="javascript:window.open('.../../../generate-pdf/pdf-datos.php?id=${val.id}')" id='btn-pdf' >PDF</a></td>			
-                        </tr>
+//         if (res[0] == "vacio") {
+//             $('#list').append('<tr><td align="center"  colspan="100%">Sin Resultados</td></tr>')
+//         } else {
+//             $.each(res, function(index, val) {
+//                 $('#list').append(`
+//                         <tr id="tr-${val.id}">
+//                             <td width="10">${val.id}</td>
+//                             <td width="10">${val.dni}</td>
+//                             <td width="10">${val.apellido}</td>
+//                             <td width="10">${val.nombre}</td>
+//                             <td width="10">${val.telefono}</td>
+//                             <td width="10">${val.Direccion}</td>
+//                             <td width="10">${val.idDepa}</td>
+//                             <td width="10">${val.idProv}</td>
+//                             <td width="10">${val.idDist}</td>
+//                             <td width="10">${val.Sexo}</td>   
+//                             <td width="10">${val.correo}</td>   
+//                             <td width="10"><a style='color:white' class="btn btn-success" id="btn-editar" data-toggle="modal" data-target="#form-editar"  data-editar="${val.id}">Editar</a></td>			
+//                             <td width="10"><button class="btn btn-danger"  id="btn-eliminar" data-eliminar="${val.id}" >Eliminar</button></td>	
+//                             <td width="10"><a style='color:white' class='btn btn-secondary'  href="javascript:window.open('.../../../generate-pdf/pdf-datos.php?id=${val.id}')" id='btn-pdf' >PDF</a></td>			
+//                         </tr>
         
-                `);
+//                 `);
 
 
-            })
-        }
-    })
-}
+//             })
+//         }
+//     })
+// }
 
 //LLAMAR A LA FUNCION LISTAR Y BUSCAR
 // $(document).on("click","#btn-buscar",function(){
@@ -134,56 +145,56 @@ function buscarr(buscar1) {
 //   })
 
 
-$(document).ready(function() {
-    $("#nom").keydown(function() {
-        var buscar1 = $("#nom").val();
-        //  if(buscar1.length<3){
+// $(document).ready(function() {
+//     $("#nom").keydown(function() {
+//         var buscar1 = $("#nom").val();
+//         //  if(buscar1.length<3){
 
 
-        $.ajax({
-            url: '../../ajax/buscar.php',
-            method: 'POST',
-            data: {
-                txtnom: buscar1
-            },
-            dataType: 'json'
+//         $.ajax({
+//             url: '../../ajax/buscar.php',
+//             method: 'POST',
+//             data: {
+//                 txtnom: buscar1
+//             },
+//             dataType: 'json'
 
-        }).done(function(res) {
-            //   console.log(res)
-            $("#list").html("")
+//         }).done(function(res) {
+//             //   console.log(res)
+//             $("#list").html("")
 
-            if (res[0] == "vacio") {
-                $('#list').append('<tr><td align="center"  colspan="100%">Sin Resultados</td></tr>')
-            } else {
-                $.each(res, function(index, val) {
-                    $('#list').append(`
-                            <tr id="tr-${val.id}">
-                                <td width="10">${val.id}</td>
-                                <td width="10">${val.dni}</td>
-                                <td width="10">${val.apellido}</td>
-                                <td width="10">${val.nombre}</td>
-                                <td width="10">${val.telefono}</td>
-                                <td width="10">${val.Direccion}</td>
-                                <td width="10">${val.idDepa}</td>
-                                <td width="10">${val.idProv}</td>
-                                <td width="10">${val.idDist}</td>
-                                <td width="10">${val.Sexo}</td>   
-                                <td width="10">${val.correo}</td>   
-                                <td width="10"><a  style='color:white' class="btn btn-success" id="btn-editar" data-toggle="modal" data-target="#form-editar"  data-editar="${val.id}">Editar</a></td>			
-                                <td width="10"><button class="btn btn-danger"  id="btn-eliminar" data-eliminar="${val.id}" >Eliminar</button></td>	
-                                <td width="10"><a style='color:white' class='btn btn-secondary'  href="javascript:window.open('.../../../generate-pdf/pdf-datos.php?id=${val.id}')" id='btn-pdf' " >PDF</a></td>			
-                            </tr>
+//             if (res[0] == "vacio") {
+//                 $('#list').append('<tr><td align="center"  colspan="100%">Sin Resultados</td></tr>')
+//             } else {
+//                 $.each(res, function(index, val) {
+//                     $('#list').append(`
+//                             <tr id="tr-${val.id}">
+//                                 <td width="10">${val.id}</td>
+//                                 <td width="10">${val.dni}</td>
+//                                 <td width="10">${val.apellido}</td>
+//                                 <td width="10">${val.nombre}</td>
+//                                 <td width="10">${val.telefono}</td>
+//                                 <td width="10">${val.Direccion}</td>
+//                                 <td width="10">${val.idDepa}</td>
+//                                 <td width="10">${val.idProv}</td>
+//                                 <td width="10">${val.idDist}</td>
+//                                 <td width="10">${val.Sexo}</td>   
+//                                 <td width="10">${val.correo}</td>   
+//                                 <td width="10"><a  style='color:white' class="btn btn-success" id="btn-editar" data-toggle="modal" data-target="#form-editar"  data-editar="${val.id}">Editar</a></td>			
+//                                 <td width="10"><button class="btn btn-danger"  id="btn-eliminar" data-eliminar="${val.id}" >Eliminar</button></td>	
+//                                 <td width="10"><a style='color:white' class='btn btn-secondary'  href="javascript:window.open('.../../../generate-pdf/pdf-datos.php?id=${val.id}')" id='btn-pdf' " >PDF</a></td>			
+//                             </tr>
             
-                    `);
+//                     `);
 
 
-                })
-            }
-        })
-        //  }
+//                 })
+//             }
+//         })
+//         //  }
 
-    })
-})
+//     })
+// })
 
 //login
 $(document).on("click", "#btn-sesión", function(e) {

@@ -1,12 +1,13 @@
 
 function pagination(){
-
+    var buscar = $("#nom").val();
     $('#pagination-container').pagination({
          pageSize: 5,
         dataSource: function(done){
             $.ajax({
                 url: '../../ajax/paginacion.php',
                 method: 'POST',
+                data:{txtnom:buscar},
                 dataType: 'JSON',
             }).done(function(data){
                 if(data.res=="No"){  //<--ese NO duda
@@ -23,7 +24,7 @@ function pagination(){
         },
         callback: function(data, pagination){
             if(pagination.totalNumber>0){
-                listar(pagination.pageNumber);
+                listar(pagination.pageNumber,buscar);
             }else{
                 // $('#table-syllabus tbody').html(`<tr><td colspan="100%" align='center'>SIN REGISTROS</td></tr>`);
             }
@@ -36,10 +37,10 @@ function pagination(){
 }
 //CREAR UN FUNCION LISTAR PARA PODER INVOCARLO
 
-function listar(pag) {
+function listar(pag,buscar) {
     $.ajax({
         url: '../../ajax/listar.php',
-        data:{txtpag:pag},
+        data:{txtpag:pag,txtnom:buscar},
         method:"POST",
         dataType: 'JSON'
     }).done(function(data) {
@@ -92,7 +93,11 @@ function listar(pag) {
 }
 //LLAMAS A LA FUNCION LISTAR
 $(document).ready(function() {
-    // console.log("asdfasd")
+   
     pagination();
 
 })
+
+    $("#nom").keyup(function() {
+        pagination();
+    })

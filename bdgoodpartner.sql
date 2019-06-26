@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : localhostMysql
+ Source Server         : localhost2
  Source Server Type    : MySQL
- Source Server Version : 100135
+ Source Server Version : 80015
  Source Host           : localhost:3306
  Source Schema         : bdgoodpartner
 
  Target Server Type    : MySQL
- Target Server Version : 100135
+ Target Server Version : 80015
  File Encoding         : 65001
 
- Date: 25/06/2019 17:05:21
+ Date: 26/06/2019 14:05:41
 */
 
 SET NAMES utf8mb4;
@@ -47,8 +47,12 @@ CREATE TABLE `admin`  (
 -- Records of admin
 -- ----------------------------
 INSERT INTO `admin` VALUES (22, '775757575', 'ssss', 'sss', 'sss', 'sss', 10, 200, 500, 'f', 'sasasa', 'aaaaa', 1);
-INSERT INTO `admin` VALUES (23, '77878', 'admin', 'admin', 'admin', 'admin', 10, 100, 500, 'admin', 'admin', 'admin', 1);
+INSERT INTO `admin` VALUES (23, '77878', 'admin', 'admin', 'admin', 'admin', 10, 100, 500, 'admin', 'admin', '123', 1);
 INSERT INTO `admin` VALUES (24, 'aaaa', 'aaaaa', 'aaaa', 'aaaaa', 'aaaaaaa', 2, 25, 224, 'aaaaa', 'aaaa', '123', 1);
+INSERT INTO `admin` VALUES (25, 'abc', 'abc', 'abc', 'abc', 'abc', 2, 9, 97, 'abc', 'abc', 'abc', 1);
+INSERT INTO `admin` VALUES (26, 'SGDFGd', 'FG', 'GFDG', 'FDGFD', 'FDGFD', 1, 2, 23, 'GFDG', 'FDG', 'FDGFDG', 1);
+INSERT INTO `admin` VALUES (27, '7787898sds', 'sds', 'sds', 'ds', 'sd', 2, 9, 98, 'ds', 'dsds', 'dsd', 1);
+INSERT INTO `admin` VALUES (28, 'rgfdgdfgfd', 'gfd', 'fdgf', 'dgfdg', 'dgfd', 1, 1, 1, 'gfdgf', 'fgfdgf', 'dgfdgfd', 1);
 
 -- ----------------------------
 -- Table structure for alumno
@@ -90,7 +94,10 @@ INSERT INTO `alumno` VALUES (11, '45s', 'sara', 'connor', 'hgf', 'gg', 1, 2, 24,
 INSERT INTO `alumno` VALUES (386, '455415', 'cxvcx', 'xcvxcv', 'xcvcxv', 'xccxv', 6, 56, 568, 'v', 'cv', '', 3);
 INSERT INTO `alumno` VALUES (387, '4554155', 'cxvcx', 'xcvxcv', 'xcvcxv', 'xccxv', 6, 56, 568, 'v', 'cv', 'vc', 3);
 INSERT INTO `alumno` VALUES (388, '775757575', 'ssss', 'sss', 'sss', 'sss', 10, 200, 500, 'f', 'sasasa', 'aaaaa', 3);
-INSERT INTO `alumno` VALUES (389, '77878', 'alumno', 'alumno', 'alumno', 'alumno', 10, 100, 500, 'alumno', 'alumno', 'alumno', 3);
+INSERT INTO `alumno` VALUES (389, '778789912', 'alumno', 'alumno', 'alumno', 'alumno', 10, 100, 500, 'alumno', 'alumno', 'alumno', 3);
+INSERT INTO `alumno` VALUES (390, '', 'fffff', '', 'fffff', '', 2, 9, 97, 'm', 'asaddsadsds', 'sdsds', 3);
+INSERT INTO `alumno` VALUES (391, 'abcd', 'abcd', 'abcd', 'abcd', 'abcd', 2, 9, 97, 'abcd', 'abcd', 'abcd', 3);
+INSERT INTO `alumno` VALUES (392, 'SGDFG', 'FG', 'GFDG', 'FDGFD', 'FDGFD', 1, 2, 23, 'GFDG', 'FDG', 'FDGFDG', 3);
 
 -- ----------------------------
 -- Table structure for curso
@@ -155,7 +162,13 @@ CREATE TABLE `docentes`  (
 -- ----------------------------
 -- Records of docentes
 -- ----------------------------
-INSERT INTO `docentes` VALUES (6, '77878', 'docente', 'docente', 'docente', 'docente', 10, 100, 500, 'docente', 'docente', 'docente', 2);
+INSERT INTO `docentes` VALUES (6, '7787898', 'docente', 'docente', 'docente', 'docente', 10, 100, 500, 'docente', 'docente', 'docente', 2);
+INSERT INTO `docentes` VALUES (7, '12345678', 'fffff', '', 'fffff', '', 2, 9, 97, 'm', 'asaddsadsds', 'sdsds', 2);
+INSERT INTO `docentes` VALUES (8, 'ab', 'ab', 'ab', 'ab', 'ab', 2, 9, 97, 'ab', 'ab', 'ab', 2);
+INSERT INTO `docentes` VALUES (9, 'abcd', 'abcd', 'abcd', 'abcd', 'abcd', 2, 9, 97, 'abcd', 'abcd', 'abcd', 2);
+INSERT INTO `docentes` VALUES (10, 'SGDFG', 'FG', 'GFDG', 'FDGFD', 'FDGFD', 1, 2, 23, 'GFDG', 'FDG', 'FDGFDG', 2);
+INSERT INTO `docentes` VALUES (11, 'il', 'kjl', 'kl', 'kjl', 'jljk', 2, 8, 84, 'lkjl', 'hkl', 'jkl', 2);
+INSERT INTO `docentes` VALUES (12, 'df', 'dfd', 'fdf', 'fdf', 'dfd', 2, 8, 84, 'df', 'dfdf', 'dfdf', 2);
 
 -- ----------------------------
 -- Table structure for rol
@@ -198,7 +211,7 @@ CREATE TABLE `ubdepartamento`  (
   `idDepa` int(5) NOT NULL DEFAULT 0,
   `departamento` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`idDepa`) USING BTREE
-) ENGINE = MyISAM CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of ubdepartamento
@@ -238,7 +251,7 @@ CREATE TABLE `ubdistrito`  (
   `distrito` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `idProv` int(5) NULL DEFAULT NULL,
   PRIMARY KEY (`idDist`) USING BTREE
-) ENGINE = MyISAM CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of ubdistrito
@@ -2084,7 +2097,7 @@ CREATE TABLE `ubprovincia`  (
   `provincia` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `idDepa` int(5) NULL DEFAULT NULL,
   PRIMARY KEY (`idProv`) USING BTREE
-) ENGINE = MyISAM CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of ubprovincia
@@ -2327,20 +2340,24 @@ delimiter ;;
 CREATE PROCEDURE `sp_insertar_alumno`(IN `_dni` VARCHAR(50), IN `ape` VARCHAR(50), IN `nom` VARCHAR(50), IN `tel` VARCHAR(50), IN `dir` VARCHAR(50), IN `depar` INT, IN `prov` INT, IN `dis` INT, IN `sex` VARCHAR(50)  , IN `_cor` VARCHAR(255) , IN `_cla` VARCHAR(100) , IN `_idr` int)
 BEGIN
 DECLARE total int;
+DECLARE ValidarDni int ;
+
+set ValidarDni =(SELECT COUNT(*) FROM (SELECT * from admin where dni=_dni UNION SELECT * from docentes where dni=_dni UNION SELECT * FROM alumno WHERE dni=_dni) as total);
 
 
-SET total= (select COUNT(*) from alumno where dni=_dni);
+SET total= (ValidarDni);
 IF(total=0)THEN
-IF(_idr=1)THEN
-
+	IF(_idr=1)THEN
 	insert INTO admin values(null,_dni,ape,nom,tel,dir,depar,prov,dis,sex,_cor,_cla,_idr);
 	SELECT "inserto" as "res";
 	ELSEIF(_idr=2)THEN
 	insert INTO docentes values(null,_dni,ape,nom,tel,dir,depar,prov,dis,sex,_cor,_cla,_idr);
 	SELECT "inserto" as "res";
-	ELSE
+	ELSEIF(_idr=3)THEN
 	insert INTO alumno values(null,_dni,ape,nom,tel,dir,depar,prov,dis,sex,_cor,_cla,_idr);
 	SELECT "inserto" as "res";
+	ELSE 
+	SELECT "No se pudo insertar" as "res";
   END IF;
 ELSE 
 	SELECT "existe" as "res";
@@ -2396,13 +2413,13 @@ delimiter ;
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `sp_pag_alumnos`;
 delimiter ;;
-CREATE PROCEDURE `sp_pag_alumnos`(pag int)
+CREATE PROCEDURE `sp_pag_alumnos`(IN pag int,IN _buscar VARCHAR(45))
 begin
 declare p1 int;
 declare p2 int;
 set p1=(pag*5)-5;
 set p2=5;
-SELECT * from alumno limit p1, p2;
+SELECT * from alumno WHERE nombre LIKE CONCAT(   _buscar , '%') OR dni LIKE CONCAT(   _buscar , '%') limit p1, p2;
 end
 ;;
 delimiter ;
@@ -2492,9 +2509,9 @@ delimiter ;
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `sp_total_alumnos`;
 delimiter ;;
-CREATE PROCEDURE `sp_total_alumnos`()
+CREATE PROCEDURE `sp_total_alumnos`(IN _buscar VARCHAR(45))
 begin
-select count(*) as Total from alumno;
+select count(*) as Total from alumno WHERE nombre LIKE CONCAT(   _buscar , '%') OR dni LIKE CONCAT(   _buscar , '%');
 end
 ;;
 delimiter ;

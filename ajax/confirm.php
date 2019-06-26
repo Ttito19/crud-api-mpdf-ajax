@@ -18,7 +18,8 @@ $correo=$_POST['txtcorreo'];
 
 $id=(isset($_POST['id']))?$_POST['id']:"";
 $clave=(isset($_POST['txtclave']))?$_POST['txtclave']:"";
-$idr=(isset($_POST['txtidrol']))?$_POST['txtidrol']:"";
+
+$idr=(isset($_POST['example1']))?$_POST['example1']:"";
 
 if($id==""  ){
     if ( !empty( $dni) || !empty($ape) || !empty($nom) || !empty($cel) ||  !empty($dir)  ||  !empty($sex) ||  !empty($correo) ||  !empty($clave) ||  !empty($idr) ) {
