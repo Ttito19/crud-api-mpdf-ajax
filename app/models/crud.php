@@ -349,11 +349,6 @@ if($result->num_rows>0){
    $emailfinal = str_pad($newstring, strlen($email[0]), "*") . "@" . $email[1];
    $myrow["correo"]=$emailfinal;
    $array[]=$myrow;
-
-
-
-
-
 }else{
 
     $array[]="vacio";

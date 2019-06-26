@@ -6,5 +6,7 @@
             "email": "andrezchavez.2000@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "phpoffice/phpspreadsheet": "^1.7"
+    }
 }

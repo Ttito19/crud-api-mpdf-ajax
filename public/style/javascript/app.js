@@ -108,7 +108,7 @@ function buscarr(buscar1) {
                             <td width="10">${val.correo}</td>   
                             <td width="10"><a style='color:white' class="btn btn-success" id="btn-editar" data-toggle="modal" data-target="#form-editar"  data-editar="${val.id}">Editar</a></td>			
                             <td width="10"><button class="btn btn-danger"  id="btn-eliminar" data-eliminar="${val.id}" >Eliminar</button></td>	
-                            <td width="10"><a style='color:white' class='btn btn-secondary' href='.../../../generate-pdf/pdf-datos.php?id=${val.id}' id='btn-pdf' >PDF</a></td>			
+                            <td width="10"><a style='color:white' class='btn btn-secondary'  href="javascript:window.open('.../../../generate-pdf/pdf-datos.php?id=${val.id}')" id='btn-pdf' >PDF</a></td>			
                         </tr>
         
                 `);
@@ -171,7 +171,7 @@ $(document).ready(function() {
                                 <td width="10">${val.correo}</td>   
                                 <td width="10"><a  style='color:white' class="btn btn-success" id="btn-editar" data-toggle="modal" data-target="#form-editar"  data-editar="${val.id}">Editar</a></td>			
                                 <td width="10"><button class="btn btn-danger"  id="btn-eliminar" data-eliminar="${val.id}" >Eliminar</button></td>	
-                                <td width="10"><a style='color:white' class='btn btn-secondary' href='.../../../generate-pdf/pdf-datos.php?id=${val.id}' id='btn-pdf' " >PDF</a></td>			
+                                <td width="10"><a style='color:white' class='btn btn-secondary'  href="javascript:window.open('.../../../generate-pdf/pdf-datos.php?id=${val.id}')" id='btn-pdf' " >PDF</a></td>			
                             </tr>
             
                     `);
@@ -237,14 +237,15 @@ method:'POST',
 data:{txtreset:dni},
 dataType: "JSON"
 }).done(function(result){
-console.log(result);
+// console.log(result);
 if(result[0]=="vacio"){
 
 
     alertify.error("No se encuentra datos de este dni");
 
 }else{
-   $("#resetDni").html( 'Dni: ' + result[0].dni);
+  
+   $("#resetDni").html('Dni: ' + dni);
 $("#resetCorreo").html('Correo: ' +result[0].correo);   
 $("#input").html('<input  type="submit" class="btn btn-primary"  value="Enviar a este correo" id="btn-enviar"/>   <a href="./" class="btn btn-danger">Cancelar</a>')
  

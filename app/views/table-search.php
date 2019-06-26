@@ -7,18 +7,20 @@ y luego continuara con lo de abajo-->
 <?php
 session_start();
 if(isset($_SESSION["rol"])) {
-    if($_SESSION["rol"] == 1){
-    ?>
+    if($_SESSION["rol"] == 1){?>
        <?php include 'header/header.php';  ?>
 
 <?php include 'menu/cabecera-login.php'  ?>
+<style>
+#table thead tr td{
+color:green;
+}
+</style> 
 
 <h2  align="center" >Administrador: <?php echo($_SESSION["nomCompleto"]);?></h2>
-
-   <div class="offset-sm-3" style="margin-top:5px">
-
-       <!--<a  href="form-crud.php"  class="btn btn-secondary"  id="btn-registrar" >Registrar Usuario</a>-->
-
+<div class="d-flex flex-column main-content border px-3 pt-2 rounded">
+    <div class="form-row">
+    <div  class="form-group col-lg-4 col-md-6" > 
        <div class="form-inline">
            <h4>Buscar por Nombre:</h4>
            <div class="form-group mx-sm-3 mb-2">
@@ -27,35 +29,39 @@ if(isset($_SESSION["rol"])) {
            </div>
            <button type="submit" class="btn btn-primary mb-2 " id="btn-buscar">Buscar</button>
        </div>
+     </div>
    </div>
-<style>
-#table thead tr td{
-color:green;
-}
-</style>
-   <div class="container">     
-   <table class="table table-bordered" id=table>
-           <thead>
+   </div>
+</div>
+  
+
+    
+
+
+<div class="col-12 col-sm-12 col-md-12 col-lg-12" style="margin: auto;margin-bottom:50px;">
+     <div class="table-responsive" style="min-height:600px;"  >
+   <table class="table table-sm table-bordered table-hover table-striped" id=table>
+           <thead style="text-align:center;">
                <tr class="table-primary" id="td">
-                   <td >Codigo</td>
-                   <td >Dni</td>               
-                   <td >Apellido</td>
-                   <td >Nombre</td>
-                   <td >Telefono</td>
-                   <td >Direccion</td>
-                   <td >Departamento</td>
-                   <td >Provicia</td>
-                   <td >Distrito</td>
-                   <td >Sexo</td>
-                   <td >Correo</td>
-                   <td >Editar</td>
-                   <td >Eliminar</td>
-                   <td style='width:10%'>Generar PDF</td>
+                   <th >Codigo</td>
+                   <th >Dni</th>               
+                   <th >Apellido</th>
+                   <th >Nombre</th>
+                   <th >Telefono</th>
+                   <th >Direccion</th>
+                   <th >Departamento</th>
+                   <th >Provicia</th>
+                   <th >Distrito</th>
+                   <th >Sexo</th>
+                   <th >Correo</th>
+                   <th >Editar</th>
+                   <th >Eliminar</th>
+                   <th style='width:10%'>Generar PDF</th>
                </tr>
            </thead>
-           <tbody id="list">
+           <tbody id="list" style="text-align:center;">
 
-           </tbody>
+           </tbody >
        </table>
        <div class="pagination-container" id="pagination-container"></div>
    </div>
@@ -98,16 +104,16 @@ color:green;
                                    </div>
                                    <div class="form-group">
                                        <label>Departamento:</label>
-                                       <select name='cboregion' id="region" class="form-control"></select>
+                                       <select name='cboregion' id="region" class="form-control" style="width: 100%"></select>
                                    </div>
                                    <div class="form-group" >
                                        <label>Provincia:</label>
-                                       <select name='cboprovincia' id="provincia" class="form-control" ></select>
+                                       <select name='cboprovincia' id="provincia" class="form-control" style="width: 100%"></select>
                                    </div>
 
                                    <div class="form-group"  >
                                        <label>Distrito:</label>
-                                       <select name='cbodistrito' id="distrito" class="form-control"> </select>
+                                       <select name='cbodistrito' id="distrito" class="form-control" style="width: 100%"> </select>
                                    </div>
                                    <div class="form-group">
                                        <label>Sexo:</label>
