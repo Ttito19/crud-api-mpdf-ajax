@@ -22,7 +22,7 @@ color:green;
     <div class="form-row">
     <div  class="form-group col-lg-4 col-md-6" > 
        <div class="form-inline">
-           <h4>Buscar por Nombre:</h4>
+           <h4>Buscar por Nombre o Dni:</h4>
            <div class="form-group mx-sm-3 mb-2">
 
                <input type="text" class="form-control" id="nom" name="txtnom">

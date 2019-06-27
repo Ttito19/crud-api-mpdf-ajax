@@ -2,6 +2,15 @@
 //function registrar() {
 
 //$(document).on("submit","#form",function(e){})  
+
+
+
+ 
+
+
+
+
+
     $("#btn-enviar").click(function(e){
       //  console.log("sasds")
         e.preventDefault(); // no es obligatorio ya que no hay una accion que te va a redirigir, pero su funcion es cancelar la redireccion de la pagina 
@@ -26,8 +35,12 @@
                 insertar=true;
             }
        })
+
+//expresion regular
+       var regex = /[\w-\.]{2,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
+
        
-if(insertar==true){
+if(insertar==true || regex.test($('#correo').val().trim()) ){
         $.ajax({
         url: '../../ajax/confirm.php',
         method: 'POST',
@@ -69,6 +82,7 @@ $("#message").css("display","block")
     })
 }else{
     alertify.warning("seleccione el rol");
+    $("#messageCorreo").css("display","block");
 }
 
 
@@ -197,6 +211,7 @@ $(document).on("click", "btn-enviar", function(e) {
 // })
 
 //login
+
 $(document).on("click", "#btn-sesión", function(e) {
      e.preventDefault();
 
@@ -266,24 +281,12 @@ $("#input").html('<input  type="submit" class="btn btn-primary"  value="Enviar a
 
 
 
-
-
-
-
-
 })
-
-
-
 
 
 }
 
-
-
-
 })
-
 
 
 

@@ -21,9 +21,11 @@ if(isset($_SESSION['rol'])){
             }
 
             .titulo-rol{
-                position: relative;
-                left:7px;
                 
+                left:40px;
+                margin-top:-19px;
+                position:absolute;
+             
             }
             .titulo-rol span{
             background-color:#eef0f4;
@@ -32,17 +34,17 @@ if(isset($_SESSION['rol'])){
            
             }
             .contenedor-img{
-               
+              
                padding:5px;
                width: 105px;            
                border: 1px solid #000000;
                margin-right:60px;
-               
+               margin-top:-11px;
                position:relative;
-               left: 65%;
+               left: 250px;
                background: wheat;
                height: 105px;
-
+               border-radius: 4px;
              
            }
 
@@ -50,7 +52,7 @@ if(isset($_SESSION['rol'])){
             </style>
                                      <h1 align="center">Registrar Usuarios</h1>
 
-                        <div class="container mt-4">
+                        <div class="container mt-4" >
                                     <form method="post" autocomplete="off"    id="form" >                                                                              
                             <div class="form-row col-sm-8 mx-auto" >                                    
                                     <div class="titulo-rol">
@@ -79,65 +81,67 @@ if(isset($_SESSION['rol'])){
                                     <div  class="contenedor-img">
                                         <img src="../../public/img/usuario.png" height="100px" width="100px">    
                                     </div>
-                                    <div  class="form-group col-md-5" >
+                                    <div  class="form-group col-md-6" >
                                             <label>Dni:</label>
-                                            <input type="text" name="txtdni" id="dni" class="form-control" />
+                                          
+                                            <input type="text" name="txtdni"   maxlength="8" onkeypress="return valida(event)"  placeholder="Introduce tu dni..." class="form-control"  required="" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" id="dni" class="form-control" />
                                             <label style="display:none" id="message">*Ya existe usuario</label>
                                     </div>
                                             
-                                    <div class="form-group col-md-5">
+                                    <div class="form-group col-md-6">
                                             <label>Apellidos:</label>
-                                            <input type="text" name="txtape" id="apellido" class="form-control" />
+                                            <input type="text" name="txtape"  placeholder="Introduce el Apellidos..." required=""  id="apellido" class="form-control" />
                                     </div>
 
-                                    <div class="form-group col-md-5">
+                                    <div class="form-group col-md-6">
                                             <label>Nombres:</label>
-                                            <input type="text" name="txtnom" id="nombre" class="form-control" />
+                                            <input type="text" name="txtnom" id="nombre"  placeholder="Introduce el nombre..." required="" class="form-control" />
                                     </div>
-
-                                    <div class="form-group col-md-5">
+                                   
+                                    <div class="form-group col-md-6">
                                             <label>Celular:</label>
-                                            <input type="tel" name="txtcel" id="celular" class="form-control" />
+                                            <input type="tel" name="txtcel"  maxlength="9" onkeypress="return valida(event)" placeholder="Introduce el celular..." required="" class="form-control" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" id="celular" class="form-control" />
                                     </div>
 
-                                    <div class="form-group col-md-5">
+                                    <div class="form-group col-md-6">
                                             <label>Dirección:</label>
-                                            <input type="text" name="txtdir" id="direccion" class="form-control" />
+                                            <input type="text" name="txtdir" id="direccion"  placeholder="Introduce el Dirección..." required="" class="form-control" />
                                     </div>
                                       
-                                    <div class="form-group col-md-5">
+                                    <div class="form-group col-md-6">
                                             <label>Departamento:</label>
                                             <select name='cboregion' id="region" class="form-control" style="width: 100%"></select>
                                     </div>
 
-                                    <div class="form-group col-md-5" id="div-prov" hidden>
+                                    <div class="form-group col-md-6" id="div-prov" hidden>
                                             <label>Provincia:</label>
                                             <select name='cboprovincia' id="provincia" class="form-control" style="width: 100%"></select>
                                     </div>
 
-                                    <div class="form-group col-md-5" id="div-dis" hidden>
+                                    <div class="form-group col-md-6" id="div-dis" hidden>
                                             <label>Distrito:</label>
                                             <select name='cbodistrito' id="distrito" class="form-control" style="width: 100%"></select>
                                     </div>
 
-                                    <div class="form-group col-md-5">
+                                    <div class="form-group col-md-6">
                                             <label>Sexo:</label>
-                                            <input type="text" name="txtsex" id="sexo" class="form-control" />
+                                            <input type="text" name="txtsex" id="sexo"  placeholder="Introduce el Sexo..." required="" class="form-control" />
                                     </div>
 
-                                    <div class="form-group col-md-5">
+                                    <div class="form-group col-md-6">
                                             <label>Correo:</label>
-                                            <input type="text" name="txtcorreo" id="correo" class="form-control" />
+                                            <input type="email" name="txtcorreo"  placeholder="Introduce el email..." required="" id="correo" class="form-control" />
+                                            <label style="display:none"  id="messageCorreo">*Escriba correctamente el correo</label>
                                     </div>
 
-                                    <div class="form-group col-md-5">
+                                    <div class="form-group col-md-6">
                                             <label>Clave:</label>
-                                            <input type="text" name="txtclave" id="clave" class="form-control" />
+                                            <input type="password" name="txtclave"  placeholder="******" required=""  id="clave" class="form-control" />
                                     </div>
                                             
                             </div>
 
-                                    <div class="form-row col-sm-7 mx-auto" >      
+                                    <div class="form-row col-sm-8 mx-auto" >      
                                             <input type="submit" id="btn-enviar" class="btn btn-success" value="Registrar" />
                                     </div>
                                     </form>
@@ -149,6 +153,10 @@ if(isset($_SESSION['rol'])){
                     <script src="../../public/style/javascript/combos.js"></script>
                     <script src="../../public/style/javascript/app.js"></script>
                     <script src="../../public/style/javascript/actualizar.js"></script>
+                    <script>
+                        function valida(e){tecla = (document.all) ? e.keyCode : e.which;if (tecla==8){return true;}patron =/[0-9]/;tecla_final = String.fromCharCode(tecla);return patron.test(tecla_final);}
+                    </script> 
+        
                        
           <?php
           }else{

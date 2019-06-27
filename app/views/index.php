@@ -12,7 +12,7 @@ include 'header/header.php'  ?>
             <div class="row justify-content-center">
                 <div class="col-md-6 col-offset-3" align="center" style="background-color: #eeeeee; padding: 50px;">
                     <i class="far fa-user-circle fa-8x"></i>
-                    <form method="POST" autocomplete="off"  >
+                    <form method="POST" autocomplete="off" id=form-login  >
                         <h1>Página Principal</h1>
                         <label id="alertVacio" ></label>
                         <div class="form-group">
@@ -26,7 +26,7 @@ include 'header/header.php'  ?>
                             <input type="password" name="txtclave" id="passwordLogin"  class="form-control" style="width:50%;">
                         </div>
                         <input type="submit" id="btn-sesión" class="btn btn-primary">
-                        <input type="submit" id="btn-google" value="Google" class="btn btn-danger">
+                        <!-- <input type="submit" id="btn-google" value="Google" class="btn btn-danger"> -->
 
                     </form>
                     <br>
@@ -36,6 +36,8 @@ include 'header/header.php'  ?>
         </div>
 
         <?php  include 'footer/footer.php'  ?>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/additional-methods.min.js"></script>
 
             <script src='../../public/style/javascript/app.js'></script>
             <?php
