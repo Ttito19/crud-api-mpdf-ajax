@@ -23,6 +23,13 @@
             <a class="nav-link " href="./form-crud.php">Registrar Usuarios</a>
           </li>
           <?php }   ?>
+          <?php         
+          if(isset($_SESSION['rol']))
+          if($_SESSION["rol"] == 1){?>
+          <li class="nav-item">
+            <a class="nav-link " href="./table-search.php">Datos del Alumno</a>
+          </li>
+          <?php }   ?>
 
           <?php         
           if(isset($_SESSION['rol'])){

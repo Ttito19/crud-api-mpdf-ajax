@@ -26,7 +26,7 @@ include 'header/header.php'  ?>
                             <input type="password" name="txtclave" id="passwordLogin"  class="form-control" style="width:50%;">
                         </div>
                         <input type="submit" id="btn-sesión" class="btn btn-primary">
-                        <!-- <input type="submit" id="btn-google" value="Google" class="btn btn-danger"> -->
+                            <input type="submit" id="btn-google" value="Google" class="btn btn-danger">
 
                     </form>
                     <br>

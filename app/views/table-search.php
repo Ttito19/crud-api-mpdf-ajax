@@ -129,7 +129,7 @@ color:green;
                        </div>
                        <div>
                            <div class="modal-footer">
-                               <input type="submit" id="btn-actualizar" class="btn btn-success" value="Actualizar" />
+                               <input type="submit" id="btn-actualizar"   class="btn btn-success" value="Actualizar" />
                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                            </div>
 

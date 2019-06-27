@@ -11,7 +11,7 @@ $(document).on("click", "#btn-editar", function() {
         },
         dataType: "JSON"
     }).done(function(res) {
-       console.log(res[0]);
+      
      
         $("#dni").val(res[0].dni),
         $("#apellido").val(res[0].apellido),
@@ -23,7 +23,8 @@ $(document).on("click", "#btn-editar", function() {
         $("#correo").val(res[0].correo),
         $("#btn-actualizar").attr("data-id", res[0].id)
          $("#nom-usu").html("Editar a " + res[0].nombre)
-
+      
+         
 
 
         $.each(res[1],function(index,valor){
@@ -38,6 +39,7 @@ $(document).on("click", "#btn-editar", function() {
             $("#distrito").append(`<option value=${valor.idDist} ${selected} >${valor.distrito}</option>`)
 
         })
+
 
         //     $("#provincia").val(res[0].idProv),
             //    $("#distrito").val(res[0].idDist),
@@ -65,6 +67,16 @@ $(document).on("click", "#btn-editar", function() {
     })
 })
 
+$(document).on("change","#distrito",function(){
+    if($(this).val()!=0){     
+            $("#btn-actualizar").prop("disabled",false);      
+  
+        }else{
+            $("#btn-actualizar").prop("disabled",true);    
+        }
+})
+
+
 //ACTUALIZAR LOS DATOS
 $(document).on("click", "#btn-actualizar", function() {
     // console.log($(this).data("id"));
@@ -79,6 +91,10 @@ $(document).on("click", "#btn-actualizar", function() {
     var distrito = $("#distrito").val();
     var sexo = $("#sexo").val();
     var correo = $("#correo").val();
+
+
+
+
     // va
     //  console.log(id);
     var enviar = {
@@ -100,8 +116,7 @@ $(document).on("click", "#btn-actualizar", function() {
         data: enviar
     }).done(function(res) {
         //alertify.success('Actualizado Correctamente ' + `${id}`);
-        console.log(res)
-        console.log(id)
+      
         $("#tr-" + id).html(`
 		<td width="10">${id}</td>
 		<td width="10">${dni}</td>

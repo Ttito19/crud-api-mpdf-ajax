@@ -10,7 +10,7 @@ Class ClassConexion{
         $this->host='localhost';
         $this->usuario='root';  //En este caso al instanciar esta clase lo primero que se hará es asignarle valores a tus variables(también llamadas propiedades)
         $this->bd='bdgoodpartner';
-        $this->pass='';
+        $this->pass='123456';
     }
     Public function Conectar(){
         $this->cn=new mysqli($this->host,$this->usuario,$this->pass,$this->bd); /*En la variable cn se instancia la clase mysqli

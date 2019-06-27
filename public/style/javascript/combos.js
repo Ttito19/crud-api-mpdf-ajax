@@ -22,7 +22,7 @@ $(document).ready(function() {
                 dataType: "Json"
             }).done(function(comboDepar) {
                 // console.log($('#nom'));
-                $('#region').append('<option>Seleccionar Región</option>')
+                $('#region').append('<option value=0>Seleccionar Región</option>')
                 $.each(comboDepar, function(index, valor) {
                    
                     $('#region').append(`<option value="${valor.idDepa}">${valor.departamento}</option>`);
@@ -34,6 +34,7 @@ $(document).ready(function() {
             })
             //seleccionar combo provincia
             $('#region').change(function() {
+
                 var cboprov = $(this).val();
              //   console.log(cboprov)
              $("#div-prov").removeAttr('hidden');
@@ -43,17 +44,24 @@ $(document).ready(function() {
                     dataType: 'Json',
                     data: {cboprovincia: cboprov},
                 }).done(function(comboProv) {
-                   console.log(comboProv)
-                   $('#provincia').html("");
-                    $('#provincia').append('<option>Seleccionar Provincia</option>');
+                //    console.log(comboProv)
+                   $('#provincia').html("");                  
+                    $('#provincia').append('<option value="0">Seleccionar Provincia</option>');
+                    $('#distrito').html("");
+                    $('#distrito').append('<option value="0">Seleccionar Distrito</option>');
+                    if($("#distrito").val()==0){     
+                        $("#btn-actualizar").prop("disabled",true);      
+              
+                    } 
                     $.each(comboProv, function(index, valor) {
                          //console.log(valor)
                         $('#provincia').append(`<option value="${valor.idProv}">${valor.provincia}</option>`);
                     })
                 }).fail(function() {
-                    console.log("error");
+                 alertify.error("error")
                 })
             })
+
             $("#provincia").change(function(){
                 var cbodis=$(this).val();
                 $("#div-dis").removeAttr('hidden');
@@ -66,7 +74,10 @@ $(document).ready(function() {
                 }).done(function(comboDis){
 
                     $("#distrito").html("");
-                    $("#distrito").append(`<option>Seleccione el Distrito</option>`)
+                    $("#distrito").append('<option value=0>Seleccione el Distrito</option>')
+                    if($("#distrito").val()==0){     
+                        $("#btn-actualizar").prop("disabled",true);      
+              }
                     $.each(comboDis,function(index,valor){
                         $("#distrito").append(`<option value=${valor.idDist}>${valor.distrito}</option>`);
 
@@ -74,7 +85,7 @@ $(document).ready(function() {
 
 
                 }).fail(function() {
-                    console.log("error");
+                    alertify.error("error")
                 })
             })
 

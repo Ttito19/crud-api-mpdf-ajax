@@ -11,7 +11,7 @@
  Target Server Version : 80015
  File Encoding         : 65001
 
- Date: 26/06/2019 14:05:41
+ Date: 27/06/2019 13:57:18
 */
 
 SET NAMES utf8mb4;
@@ -41,7 +41,7 @@ CREATE TABLE `admin`  (
   INDEX `idprovincia`(`idProv`) USING BTREE,
   INDEX `fk_admin_rol`(`idRol`) USING BTREE,
   CONSTRAINT `fk_admin_rol` FOREIGN KEY (`idRol`) REFERENCES `rol` (`idRol`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 25 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 29 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of admin
@@ -49,10 +49,10 @@ CREATE TABLE `admin`  (
 INSERT INTO `admin` VALUES (22, '775757575', 'ssss', 'sss', 'sss', 'sss', 10, 200, 500, 'f', 'sasasa', 'aaaaa', 1);
 INSERT INTO `admin` VALUES (23, '77878', 'admin', 'admin', 'admin', 'admin', 10, 100, 500, 'admin', 'admin', '123', 1);
 INSERT INTO `admin` VALUES (24, 'aaaa', 'aaaaa', 'aaaa', 'aaaaa', 'aaaaaaa', 2, 25, 224, 'aaaaa', 'aaaa', '123', 1);
-INSERT INTO `admin` VALUES (25, 'abc', 'abc', 'abc', 'abc', 'abc', 2, 9, 97, 'abc', 'abc', 'abc', 1);
-INSERT INTO `admin` VALUES (26, 'SGDFGd', 'FG', 'GFDG', 'FDGFD', 'FDGFD', 1, 2, 23, 'GFDG', 'FDG', 'FDGFDG', 1);
-INSERT INTO `admin` VALUES (27, '7787898sds', 'sds', 'sds', 'ds', 'sd', 2, 9, 98, 'ds', 'dsds', 'dsd', 1);
-INSERT INTO `admin` VALUES (28, 'rgfdgdfgfd', 'gfd', 'fdgf', 'dgfdg', 'dgfd', 1, 1, 1, 'gfdgf', 'fgfdgf', 'dgfdgfd', 1);
+INSERT INTO `admin` VALUES (25, 'abc', 'abc', 'abc', 'abc', 'abc', 2, 9, 97, 'abc', 'abc', '123', 1);
+INSERT INTO `admin` VALUES (26, 'SGDFGd', 'FG', 'GFDG', 'FDGFD', 'FDGFD', 1, 2, 23, 'GFDG', 'FDG', '123', 1);
+INSERT INTO `admin` VALUES (27, '7787898sds', 'sds', 'sds', 'ds', 'sd', 2, 9, 98, 'ds', 'dsds', '123', 1);
+INSERT INTO `admin` VALUES (28, 'rgfdgdfgfd', 'gfd', 'fdgf', 'dgfdg', 'dgfd', 1, 1, 1, 'gfdgf', 'andres@gmail', '123', 1);
 
 -- ----------------------------
 -- Table structure for alumno
@@ -75,7 +75,7 @@ CREATE TABLE `alumno`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `fk_alumno_rol`(`idRol`) USING BTREE,
   CONSTRAINT `fk_alumno_rol` FOREIGN KEY (`idRol`) REFERENCES `rol` (`idRol`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 390 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 393 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of alumno
@@ -83,8 +83,8 @@ CREATE TABLE `alumno`  (
 INSERT INTO `alumno` VALUES (1, '7', 'sara', 'connor', 'hgf', 'gg', 3, 29, 260, 'k', 'correo1@gmail.com', '123456', 3);
 INSERT INTO `alumno` VALUES (2, '355', 'dgfh', 'david', 'hgf', 'gg', 1, 2, 24, 'hh', 'correo2@gmail.com', '123456', 3);
 INSERT INTO `alumno` VALUES (3, '35804', 's', 's', 's', 's', 1, 1, 16, 'k', 'correo3@gmail.com', '123456', 3);
-INSERT INTO `alumno` VALUES (4, '358saaaa', 'hgh', 'fhg', 'fhgfh', 'gfhfg', 1, 0, 390, '', 'correo4@gmail.com', '123456', 3);
-INSERT INTO `alumno` VALUES (5, '3558aaaa', 'aaa', 'aa', 'a', 'aaa', 3, 28, 251, '4', 'correo5@gmail.com', '123456', 3);
+INSERT INTO `alumno` VALUES (4, '358saaaa', 'hgh', 'fhg', 'fhgfh', 'gfhfg', 2, 10, 103, 'm', 'correo4@gmail.com', '123456', 3);
+INSERT INTO `alumno` VALUES (5, '256415', 'aaa', 'aa', 'a', 'aaa', 13, 10, 103, 'm', 'correo5@gmail.com', '123456', 3);
 INSERT INTO `alumno` VALUES (6, '35589', 'hgh', 'fhg', 'fhgfh', 'gfhfg', 4, 38, 390, '4', 'correo6@gmail.com', '123456', 3);
 INSERT INTO `alumno` VALUES (7, '74577', 'jhghjh', 'jggj', '4545', 'dfh', 3, 31, 299, 'h', 'hgh', 'hnghh', 3);
 INSERT INTO `alumno` VALUES (8, '555554', 'jhghjh', 'jggj', '4545', 'dfh', 3, 31, 299, 'h', 'hgh', '$2y$12$5u4yeI/s2TduYGOMqQtMKuDzjTxlgj5.v2KmANy0ljN8AQFVtFLi.', 3);
@@ -108,7 +108,7 @@ CREATE TABLE `curso`  (
   `nomcurso` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `descripcion` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   PRIMARY KEY (`idcurso`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of curso
@@ -157,7 +157,7 @@ CREATE TABLE `docentes`  (
   INDEX `iddistrito`(`idProv`) USING BTREE,
   INDEX `iddepartamento`(`telefono`) USING BTREE,
   INDEX `fk_prof_rol`(`idRol`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of docentes
@@ -178,7 +178,7 @@ CREATE TABLE `rol`  (
   `idRol` int(11) NOT NULL AUTO_INCREMENT,
   `nom_Rol` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   PRIMARY KEY (`idRol`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of rol
@@ -196,7 +196,7 @@ CREATE TABLE `turno`  (
   `hora_inicio` time(0) NOT NULL,
   `hora_final` time(0) NOT NULL,
   PRIMARY KEY (`idturno`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of turno
@@ -2463,7 +2463,7 @@ DROP PROCEDURE IF EXISTS `sp_reset_cuenta`;
 delimiter ;;
 CREATE PROCEDURE `sp_reset_cuenta`(in _dni varchar(50))
 begin
-select dni, correo from alumno where dni=_dni;
+select correo from admin  where dni=_dni union select correo from docentes  where dni=_dni union select correo from alumno  where dni=_dni;
 end
 ;;
 delimiter ;

@@ -14,52 +14,56 @@ if(isset($_SESSION['rol'])){
                 padding:10px;
                 width: 250px;            
                 border: 1px solid #a6a6a6;
-                margin-right:60px;
-                margin-top:-10px;
+                
                 border-radius: 4px;
+       
                
             }
 
-            .titulo-rol{
-                
-                left:40px;
-                margin-top:-19px;
-                position:absolute;
-             
-            }
+            
             .titulo-rol span{
-            background-color:#eef0f4;
+          background: #eef0f4;
             padding: 0px 5px;
-       
-           
+            position:absolute;
+            margin-top:-22px;
             }
             .contenedor-img{
               
                padding:5px;
                width: 105px;            
                border: 1px solid #000000;
-               margin-right:60px;
-               margin-top:-11px;
-               position:relative;
-               left: 250px;
-               background: wheat;
+            
+               /* margin-top:-11px; */
+                /* position:relative; */
+                /* left: 250px;  */
+                background: wheat; 
                height: 105px;
                border-radius: 4px;
-             
+              margin-bottom:20px;
            }
+
 
            
             </style>
                                      <h1 align="center">Registrar Usuarios</h1>
 
-                        <div class="container mt-4" >
+                        <div class="container mt-4"  >
                                     <form method="post" autocomplete="off"    id="form" >                                                                              
-                            <div class="form-row col-sm-8 mx-auto" >                                    
-                                    <div class="titulo-rol">
-                                        <span >Rol</span>
+                            <div class="form-row col-sm-8 mx-auto"  >   
+                                    
+                            
+                                    <div  class="col-md-6" >
+                                            <div class="contenedor-img " >
+                                                  <img src="../../public/img/usuario.png" height="100px" class="mx-auto" width="100px">    
+                                            </div>
                                     </div>
-                                       
-                                    <div  class="contenedor">   
+                      
+                                    <div  class="contenedor col-md-6"   style="margin-bottom:20px"> 
+
+                                        <div class="titulo-rol">
+                                            <span >Rol</span>
+                                        </div>
+
                                         <div class="custom-control custom-radio">
                                             <input type="radio" class="custom-control-input" name="example1"  id="admin"  value="1" >
                                             <label class="custom-control-label" for="admin">Admin</label>
@@ -75,12 +79,11 @@ if(isset($_SESSION['rol'])){
                                              <input type="radio" class="custom-control-input" name="example1" id="alumno"  value="3">
                                              <label class="custom-control-label" for="alumno">Alumno</label>
                                         </div>
-                                    </div>
+                                </div>
+                                  
                                   
 
-                                    <div  class="contenedor-img">
-                                        <img src="../../public/img/usuario.png" height="100px" width="100px">    
-                                    </div>
+                                    
                                     <div  class="form-group col-md-6" >
                                             <label>Dni:</label>
                                           
