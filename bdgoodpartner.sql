@@ -1,17 +1,17 @@
-/*
+﻿/*
  Navicat Premium Data Transfer
 
- Source Server         : localhostMysql
+ Source Server         : localhost2
  Source Server Type    : MySQL
- Source Server Version : 100135
+ Source Server Version : 80015
  Source Host           : localhost:3306
  Source Schema         : bdgoodpartner
 
  Target Server Type    : MySQL
- Target Server Version : 100135
+ Target Server Version : 80015
  File Encoding         : 65001
 
- Date: 01/07/2019 06:33:22
+ Date: 01/07/2019 13:32:47
 */
 
 SET NAMES utf8mb4;
@@ -26,7 +26,7 @@ CREATE TABLE `admin`  (
   `dni` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `apellido` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `nombre` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `celular` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `telefono` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `direccion` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `idDepa` int(11) NOT NULL,
   `idProv` int(11) NOT NULL,
@@ -41,83 +41,54 @@ CREATE TABLE `admin`  (
   INDEX `idprovincia`(`idProv`) USING BTREE,
   INDEX `fk_admin_rol`(`idRol`) USING BTREE,
   CONSTRAINT `fk_admin_rol` FOREIGN KEY (`idRol`) REFERENCES `rol` (`idRol`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 29 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of admin
 -- ----------------------------
-INSERT INTO `admin` VALUES (22, '775757575', 'ssss', 'sss', 'sss', 'sss', 10, 200, 500, 'f', 'sasasa', 'aaaaa', 1);
-INSERT INTO `admin` VALUES (23, '77878', 'admin', 'admin', 'admin', 'admin', 10, 100, 500, 'admin', 'admin', '123', 1);
-INSERT INTO `admin` VALUES (24, 'aaaa', 'aaaaa', 'aaaa', 'aaaaa', 'aaaaaaa', 2, 25, 224, 'aaaaa', 'aaaa', '123', 1);
-INSERT INTO `admin` VALUES (25, 'abc', 'abc', 'abc', 'abc', 'abc', 2, 9, 97, 'abc', 'abc', '123', 1);
-INSERT INTO `admin` VALUES (26, 'SGDFGd', 'FG', 'GFDG', 'FDGFD', 'FDGFD', 1, 2, 23, 'GFDG', 'FDG', '123', 1);
-INSERT INTO `admin` VALUES (27, '7787898sds', 'sds', 'sds', 'ds', 'sd', 2, 9, 98, 'ds', 'dsds', '123', 1);
-INSERT INTO `admin` VALUES (28, 'rgfdgdfgfd', 'gfd', 'fdgf', 'dgfdg', 'dgfd', 1, 1, 1, 'gfdgf', 'andres@gmail', '123', 1);
+INSERT INTO `admin` VALUES (1, '775757575', 'ssss', 'sss', 'sss', 'sss', 10, 200, 500, 'f', 'sasasa', 'aaaaa', 1);
+INSERT INTO `admin` VALUES (2, '77878', 'admin', 'admin', 'admin', 'admin', 10, 100, 500, 'admin', 'admin', '123', 1);
+INSERT INTO `admin` VALUES (3, 'aaaa', 'aaaaa', 'aaaa', 'aaaaa', 'aaaaaaa', 2, 25, 224, 'aaaaa', 'aaaa', '123', 1);
+INSERT INTO `admin` VALUES (4, 'abc', 'abc', 'abc', 'abc', 'abc', 2, 9, 97, 'abc', 'abc', '123', 1);
+INSERT INTO `admin` VALUES (5, 'SGDFGd', 'FG', 'GFDG', 'FDGFD', 'FDGFD', 1, 2, 23, 'GFDG', 'FDG', '123', 1);
+INSERT INTO `admin` VALUES (6, '7787898sds', 'sds', 'sds', 'ds', 'sd', 2, 9, 98, 'ds', 'dsds', '123', 1);
+INSERT INTO `admin` VALUES (7, 'rgfdgdfgfd', 'gfd', 'fdgf', 'dgfdg', 'dgfd', 1, 1, 1, 'gfdgf', 'andres@gmail.com', '123', 1);
 
 -- ----------------------------
 -- Table structure for alumno
 -- ----------------------------
 DROP TABLE IF EXISTS `alumno`;
 CREATE TABLE `alumno`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `dni` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `apellido` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `nombre` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `telefono` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `Direccion` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `idDepa` int(11) NOT NULL,
-  `idProv` int(11) NOT NULL,
-  `idDist` int(11) NOT NULL,
-  `Sexo` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `correo` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `clave` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `idRol` int(11) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE,
-  INDEX `fk_alumno_rol`(`idRol`) USING BTREE,
-  CONSTRAINT `fk_alumno_rol` FOREIGN KEY (`idRol`) REFERENCES `rol` (`idRol`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 393 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+  `idalumno` int(11) NOT NULL AUTO_INCREMENT,
+  `dni` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `apellido` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `nombre` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `telefono` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `direccion` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `idDepa` varchar(11) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `idProv` varchar(11) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `idDist` varchar(11) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `sexo` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `correo` varchar(255) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `clave` varchar(100) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `idRol` varchar(11) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  PRIMARY KEY (`idalumno`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_spanish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of alumno
 -- ----------------------------
-INSERT INTO `alumno` VALUES (1, '7', 'Sara', 'Connor', 'hgf', 'gg', 3, 29, 260, 'k', 'correo1@gmail.com', '123456', 3);
-INSERT INTO `alumno` VALUES (2, '355', 'dgfh', 'david', 'hgf', 'gg', 1, 2, 24, 'hh', 'correo2@gmail.com', '123456', 3);
-INSERT INTO `alumno` VALUES (3, '35804', 's', 's', 's', 's', 1, 1, 16, 'k', 'correo3@gmail.com', '123456', 3);
-INSERT INTO `alumno` VALUES (4, '755454', 'Mendiola', 'Alfredo', '35448485', 'Alamos', 2, 10, 103, 'm', 'correo4@gmail.com', '123456', 3);
-INSERT INTO `alumno` VALUES (5, '256415', 'aaa', 'aa', 'a', 'aaa', 3, 28, 257, 'm', 'correo5@gmail.com', '123456', 3);
-INSERT INTO `alumno` VALUES (6, '35589', 'hgh', 'fhg', 'fhgfh', 'gfhfg', 4, 38, 390, '4', 'correo6@gmail.com', '123456', 3);
-INSERT INTO `alumno` VALUES (7, '74577', 'jhghjh', 'jggj', '4545', 'dfh', 3, 31, 299, 'h', 'hgh', 'hnghh', 3);
-INSERT INTO `alumno` VALUES (8, '555554', 'jhghjh', 'jggj', '4545', 'dfh', 3, 31, 299, 'h', 'hgh', '$2y$12$5u4yeI/s2TduYGOMqQtMKuDzjTxlgj5.v2KmANy0ljN8AQFVtFLi.', 3);
-INSERT INTO `alumno` VALUES (9, '75110109', 'chavez', 'David', '934909335', 'totorita', 15, 127, 1282, 'M', 'andrezchavez.2000@gmail.com', '$2y$12$6tByXJWy2QrFsERVWoZ/y.F5F5UsmCYMpJE2RZ0cpiJw5I2zzKwvm', 3);
-INSERT INTO `alumno` VALUES (10, '35582', 'aaa', 'aa', 'a', 'aaa', 4, 38, 390, '4', 'correo5@gmail.com', '$2y$12$52IFv.MuxuUlfPloRVK6pu1AQ5c.AhT1c5cpgeL4qJtJYvJ019vCq', 3);
-INSERT INTO `alumno` VALUES (11, '45s', 'sara', 'connor', 'hgf', 'gg', 1, 2, 24, 'hh', 'correo1@gmail.com', '$2y$12$tOGLrW8GJcWRYRmLDPuyxO/FipmYUVUDyr.XQzRROl2vEIk0AuoTC', 3);
-INSERT INTO `alumno` VALUES (386, '455415', 'cxvcx', 'xcvxcv', 'xcvcxv', 'xccxv', 6, 56, 568, 'v', 'cv', '', 3);
-INSERT INTO `alumno` VALUES (387, '4554155', 'cxvcx', 'xcvxcv', 'xcvcxv', 'xccxv', 6, 56, 568, 'v', 'cv', 'vc', 3);
-INSERT INTO `alumno` VALUES (388, '775757575', 'ssss', 'sss', 'sss', 'sss', 10, 200, 500, 'f', 'sasasa', 'aaaaa', 3);
-INSERT INTO `alumno` VALUES (389, '778789912', 'alumno', 'alumno', 'alumno', 'alumno', 10, 100, 500, 'alumno', 'alumno', 'alumno', 3);
-INSERT INTO `alumno` VALUES (390, '', 'fffff', '', 'fffff', '', 2, 9, 97, 'm', 'asaddsadsds', 'sdsds', 3);
-INSERT INTO `alumno` VALUES (391, 'abcd', 'abcd', 'abcd', 'abcd', 'abcd', 2, 9, 97, 'abcd', 'abcd', 'abcd', 3);
-INSERT INTO `alumno` VALUES (392, 'SGDFG', 'FG', 'GFDG', 'FDGFD', 'FDGFD', 1, 2, 23, 'GFDG', 'FDG', 'FDGFDG', 3);
-
--- ----------------------------
--- Table structure for alumno_docente
--- ----------------------------
-DROP TABLE IF EXISTS `alumno_docente`;
-CREATE TABLE `alumno_docente`  (
-  `id_docente_alumno` int(11) NOT NULL,
-  `iddocente` int(11) NOT NULL,
-  `id` int(11) NOT NULL,
-  `nota1` double(50, 0) NOT NULL,
-  `nota2` double(50, 0) NOT NULL,
-  `nota3` double(50, 0) NOT NULL,
-  `examen_parcial` double(50, 0) NOT NULL,
-  `examen_final` double(50, 0) NOT NULL,
-  PRIMARY KEY (`id_docente_alumno`) USING BTREE,
-  INDEX `fk_A_D_docentes`(`iddocente`) USING BTREE,
-  INDEX `fk_A_D_allumnos`(`id`) USING BTREE,
-  CONSTRAINT `fk_A_D_allumnos` FOREIGN KEY (`id`) REFERENCES `alumno` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fk_A_D_docentes` FOREIGN KEY (`iddocente`) REFERENCES `docentes` (`iddocente`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_spanish_ci ROW_FORMAT = Compact;
+INSERT INTO `alumno` VALUES (1, '8888888', 'fdgfdg', 'gfdgfd', '546546546', 'dfg', '4', '36', '360', 'fdgfdg', 'fdgfd', 'fdgfdg', '3');
+INSERT INTO `alumno` VALUES (2, '75757', 'fdgfdg', 'gfdgfd', '546546546', 'dfg', '4', '36', '360', 'fdgfdg', 'fdgfd', 'fdgfdg', '3');
+INSERT INTO `alumno` VALUES (3, '7575775', 'fdgfdg', 'gfdgfd', '546546546', 'dfg', '4', '36', '360', 'fdgfdg', 'fdgfd', 'fdgfdg', '3');
+INSERT INTO `alumno` VALUES (4, '7', 'fdgfdg', 'gfdgfd', '546546546', 'dfg', '4', '36', '360', 'fdgfdg', 'fdgfd', 'fdgfdg', '3');
+INSERT INTO `alumno` VALUES (5, '77', 'fdgfdg', 'gfdgfd', '546546546', 'dfg', '4', '36', '360', 'fdgfdg', 'fdgfd', 'fdgfdg', '3');
+INSERT INTO `alumno` VALUES (6, '777', 'fdgfdg', 'gfdgfd', '546546546', 'dfg', '4', '36', '360', 'fdgfdg', 'fdgfd', 'fdgfdg', '3');
+INSERT INTO `alumno` VALUES (7, '7777', 'fdgfdg', 'gfdgfd', '546546546', 'dfg', '4', '36', '360', 'fdgfdg', 'fdgfd', 'fdgfdg', '3');
+INSERT INTO `alumno` VALUES (8, '77777', 'fdgfdg', 'gfdgfd', '546546546', 'dfg', '4', '36', '360', 'fdgfdg', 'fdgfd', 'fdgfdg', '3');
+INSERT INTO `alumno` VALUES (9, '7777747', 'fdgfdg', 'gfdgfd', '546546546', 'dfg', '4', '36', '360', 'fdgfdg', 'fdgfd', 'fdgfdg', '3');
+INSERT INTO `alumno` VALUES (10, '44', 'fdgfdg', 'gfdgfd', '546546546', 'dfg', '4', '36', '360', 'fdgfdg', 'fdgfd', 'fdgfdg', '3');
+INSERT INTO `alumno` VALUES (11, '70521117', 'Espinoza Ilizarbe', 'Aaron', '936060107', 'El pais del nunca j´smas', '15', '127', '1286', 'M', 'aaronespinozadr@gmail.com', '12345', '3');
 
 -- ----------------------------
 -- Table structure for curso
@@ -140,19 +111,24 @@ INSERT INTO `curso` VALUES (4, 'quimica', 'nada');
 INSERT INTO `curso` VALUES (5, 'matematica', 'nada');
 
 -- ----------------------------
--- Table structure for curso_profesor
+-- Table structure for detalle_notas
 -- ----------------------------
-DROP TABLE IF EXISTS `curso_profesor`;
-CREATE TABLE `curso_profesor`  (
-  `id_curso_profesor` int(11) NOT NULL AUTO_INCREMENT,
-  `idcurso` int(11) NOT NULL,
-  `idprofesor` int(11) NOT NULL,
-  PRIMARY KEY (`id_curso_profesor`) USING BTREE,
-  INDEX `fk_curso_curpro`(`idcurso`) USING BTREE,
-  INDEX `fk_profe_curpro`(`idprofesor`) USING BTREE,
-  CONSTRAINT `fk_curso_curpro` FOREIGN KEY (`idcurso`) REFERENCES `curso` (`idcurso`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `fk_profe_curpro` FOREIGN KEY (`idprofesor`) REFERENCES `docentes` (`iddocente`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+DROP TABLE IF EXISTS `detalle_notas`;
+CREATE TABLE `detalle_notas`  (
+  `id_detalle_notas` int(11) NOT NULL,
+  `nota1` double(50, 0) NOT NULL,
+  `nota2` double(50, 0) NOT NULL,
+  `nota3` double(50, 0) NOT NULL,
+  `examen_parcial` double(50, 0) NOT NULL,
+  `examen_final` double(50, 0) NOT NULL,
+  `idMatricula` int(11) NOT NULL,
+  `iddocente` int(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`id_detalle_notas`) USING BTREE,
+  INDEX `fk_A_D_docentes`(`iddocente`) USING BTREE,
+  INDEX `fk_A_D_allumnos`(`idMatricula`) USING BTREE,
+  CONSTRAINT `fk_this_docente` FOREIGN KEY (`iddocente`) REFERENCES `docentes` (`iddocente`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_this_matricula` FOREIGN KEY (`idMatricula`) REFERENCES `matricula` (`idMatricula`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_spanish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for docentes
@@ -180,15 +156,20 @@ CREATE TABLE `docentes`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
--- Records of docentes
+-- Table structure for matricula
 -- ----------------------------
-INSERT INTO `docentes` VALUES (6, '7787898', 'Raul', 'Ramos', 'docente', 'docente', 10, 100, 500, 'docente', 'asas@gmail.com', '123', 2);
-INSERT INTO `docentes` VALUES (7, '12345678', 'fffff', '', 'fffff', '', 2, 9, 97, 'm', 'asas@gmail.com', '123', 2);
-INSERT INTO `docentes` VALUES (8, 'ab', 'ab', 'ab', 'ab', 'ab', 2, 9, 97, 'ab', 'asas@gmail.com', '123', 2);
-INSERT INTO `docentes` VALUES (9, 'abcd', 'abcd', 'abcd', 'abcd', 'abcd', 2, 9, 97, 'abcd', 'asas@gmail.com', '123', 2);
-INSERT INTO `docentes` VALUES (10, 'SGDFG', 'FG', 'GFDG', 'FDGFD', 'FDGFD', 1, 2, 23, 'GFDG', 'asas@gmail.com', '123', 2);
-INSERT INTO `docentes` VALUES (11, 'il', 'kjl', 'kl', 'kjl', 'jljk', 2, 8, 84, 'lkjl', 'asas@gmail.com', '123', 2);
-INSERT INTO `docentes` VALUES (12, 'df', 'dfd', 'fdf', 'fdf', 'dfd', 2, 8, 84, 'df', 'asas@gmail.com', '123', 2);
+DROP TABLE IF EXISTS `matricula`;
+CREATE TABLE `matricula`  (
+  `idMatricula` int(11) NOT NULL AUTO_INCREMENT,
+  `idcurso` int(11) NOT NULL,
+  `seccion` varchar(11) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `idalumno` int(11) NOT NULL,
+  PRIMARY KEY (`idMatricula`) USING BTREE,
+  INDEX `fk_matricula_curso`(`idcurso`) USING BTREE,
+  INDEX `fk_this_alumno`(`idalumno`) USING BTREE,
+  CONSTRAINT `fk_matricula_curso` FOREIGN KEY (`idcurso`) REFERENCES `curso` (`idcurso`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_this_alumno` FOREIGN KEY (`idalumno`) REFERENCES `alumno` (`idalumno`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for rol
@@ -208,22 +189,6 @@ INSERT INTO `rol` VALUES (2, 'docente');
 INSERT INTO `rol` VALUES (3, 'alumno');
 
 -- ----------------------------
--- Table structure for turno
--- ----------------------------
-DROP TABLE IF EXISTS `turno`;
-CREATE TABLE `turno`  (
-  `idturno` int(11) NOT NULL AUTO_INCREMENT,
-  `hora_inicio` time(0) NOT NULL,
-  `hora_final` time(0) NOT NULL,
-  PRIMARY KEY (`idturno`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
-
--- ----------------------------
--- Records of turno
--- ----------------------------
-INSERT INTO `turno` VALUES (1, '15:08:00', '03:09:06');
-
--- ----------------------------
 -- Table structure for ubdepartamento
 -- ----------------------------
 DROP TABLE IF EXISTS `ubdepartamento`;
@@ -231,7 +196,7 @@ CREATE TABLE `ubdepartamento`  (
   `idDepa` int(5) NOT NULL DEFAULT 0,
   `departamento` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`idDepa`) USING BTREE
-) ENGINE = MyISAM CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of ubdepartamento
@@ -271,7 +236,7 @@ CREATE TABLE `ubdistrito`  (
   `distrito` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `idProv` int(5) NULL DEFAULT NULL,
   PRIMARY KEY (`idDist`) USING BTREE
-) ENGINE = MyISAM CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of ubdistrito
@@ -2117,7 +2082,7 @@ CREATE TABLE `ubprovincia`  (
   `provincia` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `idDepa` int(5) NULL DEFAULT NULL,
   PRIMARY KEY (`idProv`) USING BTREE
-) ENGINE = MyISAM CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of ubprovincia
@@ -2323,7 +2288,7 @@ DROP PROCEDURE IF EXISTS `sp_actualizar_alumno`;
 delimiter ;;
 CREATE PROCEDURE `sp_actualizar_alumno`(IN `_dni` VARCHAR(50), IN `_ape` VARCHAR(50), IN `_nom` VARCHAR(50), IN `_tel` VARCHAR(50), IN `dir` VARCHAR(50), IN `depar` INT, IN `prov` INT, IN `dis` INT, IN `sex` VARCHAR(50),IN `_correo` varchar(255), IN `_id` INT(50))
 BEGIN
-update alumno set dni=_dni,apellido=_ape,nombre=_nom,telefono=_tel,Direccion=dir,idDepa=depar,idProv=prov,idDist=dis,Sexo=sex,correo=_correo where id=_id;
+update alumno set dni=_dni,apellido=_ape,nombre=_nom,telefono=_tel,direccion=dir,idDepa=depar,idProv=prov,idDist=dis,sexo=sex,correo=_correo where idalumno=_id;
 end
 ;;
 delimiter ;
@@ -2347,7 +2312,7 @@ DROP PROCEDURE IF EXISTS `sp_eliminar_alumno`;
 delimiter ;;
 CREATE PROCEDURE `sp_eliminar_alumno`(IN `_id` INT)
 BEGIN
-DELETE FROM alumno WHERE id=_id;
+DELETE FROM alumno WHERE idalumno=_id;
 end
 ;;
 delimiter ;
@@ -2393,7 +2358,7 @@ DROP PROCEDURE IF EXISTS `sp_listar_alumno`;
 delimiter ;;
 CREATE PROCEDURE `sp_listar_alumno`()
 BEGIN
-SELECT dni,apellido,nombre,telefono,direccion,idDepa,idProv,idDist,Sexo from alumno;
+SELECT dni,apellido,nombre,telefono,direccion,idDepa,idProv,idDist,sexo from alumno;
 end
 ;;
 delimiter ;
@@ -2452,16 +2417,16 @@ delimiter ;;
 CREATE PROCEDURE `sp_procedure_edit_id`(`_id` INT)
 BEGIN
 	SELECT
-		id,
+		idalumno,
 		dni,
 		apellido,
 		nombre,
 		telefono,
-		Direccion,
+		direccion,
 		ud.idDepa AS 'region',
 		up.idProv AS 'provincia',
 		udi.idDist AS 'distrito',
-		Sexo,
+		sexo,
 		correo
 	FROM
 		alumno a
@@ -2470,7 +2435,7 @@ BEGIN
 		left JOIN ubdistrito udi ON a.idDist = udi.idDist
 
 	WHERE
-		id = _id;
+		idalumno = _id;
 	
 	END
 ;;

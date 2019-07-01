@@ -16,7 +16,7 @@ $correo=$_POST['txtcorreo'];
 // $idr=$_POST['txtidrol'];
 // $clave_cifrado=password_hash($clave,PASSWORD_DEFAULT,array("cost"=>12));
 
-$id=(isset($_POST['id']))?$_POST['id']:"";
+$id=(isset($_POST['idalumno']))?$_POST['idalumno']:"";
 $clave=(isset($_POST['txtclave']))?$_POST['txtclave']:"";
 
 $idr=(isset($_POST['example1']))?$_POST['example1']:"";

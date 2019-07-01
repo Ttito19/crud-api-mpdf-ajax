@@ -7,24 +7,24 @@ $(document).on("click", "#btn-editar", function() {
         url: '../../ajax/call-id.php',
         method: 'POST',
         data: {
-            "id": editar
+            "idalumno": editar
         },
         dataType: "JSON"
     }).done(function(res) {
-      
+      console.log(res);
      
         $("#dni").val(res[0].dni),
         $("#apellido").val(res[0].apellido),
         $("#nombre").val(res[0].nombre),
         $("#celular").val(res[0].telefono),
-        $("#direccion").val(res[0].Direccion),
+        $("#direccion").val(res[0].direccion),
         $("#region").val(res[0].region),
-        $("#sexo").val(res[0].Sexo),
+        $("#sexo").val(res[0].sexo),
         $("#correo").val(res[0].correo),
-        $("#btn-actualizar").attr("data-id", res[0].id)
-         $("#nom-usu").html("Editar a " + res[0].nombre)
+        $("#btn-actualizar").attr("data-idalumno", res[0].idalumno)
+        $("#nom-usu").html("Editar a " + res[0].nombre)
       
-         
+
 
 
         $.each(res[1],function(index,valor){
@@ -80,7 +80,7 @@ $(document).on("change","#distrito",function(){
 //ACTUALIZAR LOS DATOS
 $(document).on("click", "#btn-actualizar", function() {
     // console.log($(this).data("id"));
-    var id = $(this).data("id");
+    var idalumno = $(this).data("idalumno");
     var dni = $("#dni").val();
     var apellido = $("#apellido").val();
     var nombre = $("#nombre").val();
@@ -98,7 +98,7 @@ $(document).on("click", "#btn-actualizar", function() {
     // va
     //  console.log(id);
     var enviar = {
-        id: id,
+        idalumno: idalumno,
         txtdni: dni,
         txtape: apellido,
         txtnom: nombre,
@@ -117,8 +117,8 @@ $(document).on("click", "#btn-actualizar", function() {
     }).done(function(res) {
         //alertify.success('Actualizado Correctamente ' + `${id}`);
       
-        $("#tr-" + id).html(`
-		<td width="10">${id}</td>
+        $("#tr-" + idalumno).html(`
+		<td width="10">${idalumno}</td>
 		<td width="10">${dni}</td>
 		<td width="10">${apellido}</td>
 		<td width="10">${nombre}</td>
@@ -130,9 +130,9 @@ $(document).on("click", "#btn-actualizar", function() {
         <td width="10">${sexo}</td>
         <td width="10">${correo}</td>
 		
-        <td width="10"><a style='color:white' class="btn btn-success" id="btn-editar" data-toggle="modal" data-target="#form-editar"  data-editar="${id}">Editar</a></td>
-        <td width="10"><button  class="btn btn-danger"  id="btn-eliminar"  data-eliminar="${id}">Eliminar</button></td>			
-		<td width="10"><a style='color:white' class='btn btn-secondary' href="javascript:window.open('.../../../generate-pdf/pdf-datos.php?id=${id}')"   id='btn-pdf'>PDF</a></td>`);
+        <td width="10"><a style='color:white' class="btn btn-success" id="btn-editar" data-toggle="modal" data-target="#form-editar"  data-editar="${idalumno}">Editar</a></td>
+        <td width="10"><button  class="btn btn-danger"  id="btn-eliminar"  data-eliminar="${idalumno}">Eliminar</button></td>			
+		<td width="10"><a style='color:white' class='btn btn-secondary' href="javascript:window.open('.../../../generate-pdf/pdf-datos.php?id=${idalumno}')"   id='btn-pdf'>PDF</a></td>`);
         $('#form-editar').modal('hide');
 
 

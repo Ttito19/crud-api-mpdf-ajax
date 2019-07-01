@@ -51,21 +51,21 @@ function listar(pag,buscar) {
             return el
         });
         arr.forEach(element => {
-            html +=`<tr id='tr-${element.id}'>"
-            "<td width='10'> ${element.id} </td>"
+            html +=`<tr id='tr-${element.idalumno}'>"
+            "<td width='10'> ${element.idalumno} </td>"
             "<td width='10'> ${element.dni} </td>"
             "<td width='10'>  ${element.apellido} </td>"
             "<td width='10'>  ${element.nombre} </td>"
             "<td width='10'>  ${element.telefono} </td>"
-            "<td width='10'>  ${element.Direccion} </td>"
+            "<td width='10'>  ${element.direccion} </td>"
             "<td width='10'>  ${element.idDepa} </td>"
             "<td width='10'>  ${element.idProv} </td>"
             "<td width='10'>  ${element.idDist} </td>"
-            "<td width='10'>  ${element.Sexo} </td>" 
+            "<td width='10'>  ${element.sexo} </td>" 
             "<td width='10'>  ${element.correo} </td>" 
-            "<td width='10'><a  style='color:white' class='btn btn-success' id='btn-editar' data-toggle='modal' data-target='#form-editar'  data-editar="${element.id}">Editar</a></td>"	
-            "<td width='10'><button class='btn btn-danger'  id='btn-eliminar' data-eliminar="${element.id}">Eliminar</button></td>"	
-            "<td width='10'><a style='color:white'  class='btn btn-secondary' href="javascript:window.open('.../../../generate-pdf/pdf-datos.php?id=${element.id}')" id='btn-pdf'>PDF</a></td></tr>`;
+            "<td width='10'><a  style='color:white' class='btn btn-success' id='btn-editar' data-toggle='modal' data-target='#form-editar'  data-editar="${element.idalumno}">Editar</a></td>"	
+            "<td width='10'><button class='btn btn-danger'  id='btn-eliminar' data-eliminar="${element.idalumno}">Eliminar</button></td>"	
+            "<td width='10'><a style='color:white' target='_blank' class='btn btn-secondary' href=".../../../generate-pdf/pdf-datos.php?id=${element.idalumno}" id='btn-pdf'>PDF</a></td></tr>`;
             $('#list').html(html);
             //html = "";
         });

@@ -93,7 +93,7 @@ y luego continuara con lo de abajo-->
 					<td ><?php echo $value['apellido']?></td>
 					<td ><?php echo $value['direccion']?></td>
 					<td ><?php echo $value['telefono']?></td>
-					<td ><?php echo $value['Sexo']?></td>
+					<td ><?php echo $value['sexo']?></td>
 			
 				</tr>
 				

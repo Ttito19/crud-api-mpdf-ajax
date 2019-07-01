@@ -85,17 +85,17 @@
                     ?>
  
 
-            <tr id="tr-<?php echo $edit['id']?>">
-				<td width="10"><?php echo $edit['id']?></td>
+            <tr>
+				<td width="10"><?php echo $edit['idalumno']?></td>
 				<td width="10"><?php echo $edit['dni']?></td>
 				<td width="10"><?php echo $edit['apellido']?></td>
 				<td width="10"><?php echo $edit['nombre']?></td>
 				<td width="10"><?php echo $edit['telefono']?></td>
-				<td width="10"><?php echo $edit['Direccion']?></td>
+				<td width="10"><?php echo $edit['direccion']?></td>
 				<td width="10"><?php echo $edit['region']?></td>
 				<td width="10"><?php echo $edit['provincia']?></td>
 				<td width="10"><?php echo $edit['distrito']?></td>
-				<td width="10"><?php echo $edit['Sexo']   ///-->te permite especificar cual deseas mostrar ?></td> 
+				<td width="10"><?php echo $edit['sexo']   ///-->te permite especificar cual deseas mostrar ?></td> 
 			</tr>
 		
            
