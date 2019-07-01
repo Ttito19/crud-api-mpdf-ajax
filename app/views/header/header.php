@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="../../public/style/css/pagination.css">
     <link rel="stylesheet" href="../../public/style/css/pagination.less">
     <link rel="stylesheet" href="../../public/style/lib-combo/css/select2.css"/>
+    <link rel="stylesheet" href="../../public/style/css/estilos/loader.css">
   
 
   </head>

@@ -11,13 +11,14 @@ if(isset($login["res"]) && $login["res"] == "Usuario no encontrado"){
 }else{
   session_start();
   $_SESSION["rol"] = $login["idRol"];
-if($login["idRol"] == 1 || $login["idRol"] == 3){
+if($login["idRol"] == 1 ||$login["idRol"] == 2 || $login["idRol"] == 3){
   $_SESSION["nomCompleto"] = $login["apellido"] . " ". $login["nombre"]; 
-}else if ($login["idRol"] == 2){
-  $_SESSION["nomCompleto"] = $login["apepro"] . " ". $login["nompro"]; 
 }
+// else if ($login["idRol"] == 2){
+//   $_SESSION["nomCompleto"] = $login["apepro"] . " ". $login["nompro"]; 
+// }
  
-  print_r("usuario encontrado");
+  // print_r("usuario encontrado");
 }
   
  ?>

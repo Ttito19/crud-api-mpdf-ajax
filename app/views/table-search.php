@@ -17,7 +17,7 @@ color:green;
 }
 </style> 
 
-<h2  align="center" >Administrador: <?php echo($_SESSION["nomCompleto"]);?></h2>
+<!-- <h2  align="center" >Administrador: <?php echo($_SESSION["nomCompleto"]);?></h2> -->
 <div class="d-flex flex-column main-content border px-3 pt-2 rounded">
     <div class="form-row">
     <div  class="form-group col-lg-4 col-md-6" > 
@@ -27,7 +27,7 @@ color:green;
 
                <input type="text" class="form-control" id="nom" name="txtnom">
            </div>
-           <button type="submit" class="btn btn-primary mb-2 " id="btn-buscar">Buscar</button>
+           <a  class="btn btn-primary mb-2"  id="pdf-total">Generar pdf de lista de alumno</a>
        </div>
      </div>
    </div>

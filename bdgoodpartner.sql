@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : localhost2
+ Source Server         : localhostMysql
  Source Server Type    : MySQL
- Source Server Version : 80015
+ Source Server Version : 100135
  Source Host           : localhost:3306
  Source Schema         : bdgoodpartner
 
  Target Server Type    : MySQL
- Target Server Version : 80015
+ Target Server Version : 100135
  File Encoding         : 65001
 
- Date: 27/06/2019 13:57:18
+ Date: 01/07/2019 06:33:22
 */
 
 SET NAMES utf8mb4;
@@ -80,11 +80,11 @@ CREATE TABLE `alumno`  (
 -- ----------------------------
 -- Records of alumno
 -- ----------------------------
-INSERT INTO `alumno` VALUES (1, '7', 'sara', 'connor', 'hgf', 'gg', 3, 29, 260, 'k', 'correo1@gmail.com', '123456', 3);
+INSERT INTO `alumno` VALUES (1, '7', 'Sara', 'Connor', 'hgf', 'gg', 3, 29, 260, 'k', 'correo1@gmail.com', '123456', 3);
 INSERT INTO `alumno` VALUES (2, '355', 'dgfh', 'david', 'hgf', 'gg', 1, 2, 24, 'hh', 'correo2@gmail.com', '123456', 3);
 INSERT INTO `alumno` VALUES (3, '35804', 's', 's', 's', 's', 1, 1, 16, 'k', 'correo3@gmail.com', '123456', 3);
-INSERT INTO `alumno` VALUES (4, '358saaaa', 'hgh', 'fhg', 'fhgfh', 'gfhfg', 2, 10, 103, 'm', 'correo4@gmail.com', '123456', 3);
-INSERT INTO `alumno` VALUES (5, '256415', 'aaa', 'aa', 'a', 'aaa', 13, 10, 103, 'm', 'correo5@gmail.com', '123456', 3);
+INSERT INTO `alumno` VALUES (4, '755454', 'Mendiola', 'Alfredo', '35448485', 'Alamos', 2, 10, 103, 'm', 'correo4@gmail.com', '123456', 3);
+INSERT INTO `alumno` VALUES (5, '256415', 'aaa', 'aa', 'a', 'aaa', 3, 28, 257, 'm', 'correo5@gmail.com', '123456', 3);
 INSERT INTO `alumno` VALUES (6, '35589', 'hgh', 'fhg', 'fhgfh', 'gfhfg', 4, 38, 390, '4', 'correo6@gmail.com', '123456', 3);
 INSERT INTO `alumno` VALUES (7, '74577', 'jhghjh', 'jggj', '4545', 'dfh', 3, 31, 299, 'h', 'hgh', 'hnghh', 3);
 INSERT INTO `alumno` VALUES (8, '555554', 'jhghjh', 'jggj', '4545', 'dfh', 3, 31, 299, 'h', 'hgh', '$2y$12$5u4yeI/s2TduYGOMqQtMKuDzjTxlgj5.v2KmANy0ljN8AQFVtFLi.', 3);
@@ -100,6 +100,26 @@ INSERT INTO `alumno` VALUES (391, 'abcd', 'abcd', 'abcd', 'abcd', 'abcd', 2, 9, 
 INSERT INTO `alumno` VALUES (392, 'SGDFG', 'FG', 'GFDG', 'FDGFD', 'FDGFD', 1, 2, 23, 'GFDG', 'FDG', 'FDGFDG', 3);
 
 -- ----------------------------
+-- Table structure for alumno_docente
+-- ----------------------------
+DROP TABLE IF EXISTS `alumno_docente`;
+CREATE TABLE `alumno_docente`  (
+  `id_docente_alumno` int(11) NOT NULL,
+  `iddocente` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
+  `nota1` double(50, 0) NOT NULL,
+  `nota2` double(50, 0) NOT NULL,
+  `nota3` double(50, 0) NOT NULL,
+  `examen_parcial` double(50, 0) NOT NULL,
+  `examen_final` double(50, 0) NOT NULL,
+  PRIMARY KEY (`id_docente_alumno`) USING BTREE,
+  INDEX `fk_A_D_docentes`(`iddocente`) USING BTREE,
+  INDEX `fk_A_D_allumnos`(`id`) USING BTREE,
+  CONSTRAINT `fk_A_D_allumnos` FOREIGN KEY (`id`) REFERENCES `alumno` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_A_D_docentes` FOREIGN KEY (`iddocente`) REFERENCES `docentes` (`iddocente`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_spanish_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
 -- Table structure for curso
 -- ----------------------------
 DROP TABLE IF EXISTS `curso`;
@@ -108,16 +128,16 @@ CREATE TABLE `curso`  (
   `nomcurso` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `descripcion` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   PRIMARY KEY (`idcurso`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of curso
 -- ----------------------------
-INSERT INTO `curso` VALUES (1, 'curso 1', 'nada');
-INSERT INTO `curso` VALUES (2, 'curso 2', 'nada');
-INSERT INTO `curso` VALUES (3, 'curso 3', 'nada');
-INSERT INTO `curso` VALUES (4, 'curso 4', 'nada');
-INSERT INTO `curso` VALUES (5, 'curso 5', 'nada');
+INSERT INTO `curso` VALUES (1, 'programacion', 'nada');
+INSERT INTO `curso` VALUES (2, 'base de datos', 'nada');
+INSERT INTO `curso` VALUES (3, 'fisica', 'nada');
+INSERT INTO `curso` VALUES (4, 'quimica', 'nada');
+INSERT INTO `curso` VALUES (5, 'matematica', 'nada');
 
 -- ----------------------------
 -- Table structure for curso_profesor
@@ -162,13 +182,13 @@ CREATE TABLE `docentes`  (
 -- ----------------------------
 -- Records of docentes
 -- ----------------------------
-INSERT INTO `docentes` VALUES (6, '7787898', 'docente', 'docente', 'docente', 'docente', 10, 100, 500, 'docente', 'docente', 'docente', 2);
-INSERT INTO `docentes` VALUES (7, '12345678', 'fffff', '', 'fffff', '', 2, 9, 97, 'm', 'asaddsadsds', 'sdsds', 2);
-INSERT INTO `docentes` VALUES (8, 'ab', 'ab', 'ab', 'ab', 'ab', 2, 9, 97, 'ab', 'ab', 'ab', 2);
-INSERT INTO `docentes` VALUES (9, 'abcd', 'abcd', 'abcd', 'abcd', 'abcd', 2, 9, 97, 'abcd', 'abcd', 'abcd', 2);
-INSERT INTO `docentes` VALUES (10, 'SGDFG', 'FG', 'GFDG', 'FDGFD', 'FDGFD', 1, 2, 23, 'GFDG', 'FDG', 'FDGFDG', 2);
-INSERT INTO `docentes` VALUES (11, 'il', 'kjl', 'kl', 'kjl', 'jljk', 2, 8, 84, 'lkjl', 'hkl', 'jkl', 2);
-INSERT INTO `docentes` VALUES (12, 'df', 'dfd', 'fdf', 'fdf', 'dfd', 2, 8, 84, 'df', 'dfdf', 'dfdf', 2);
+INSERT INTO `docentes` VALUES (6, '7787898', 'Raul', 'Ramos', 'docente', 'docente', 10, 100, 500, 'docente', 'asas@gmail.com', '123', 2);
+INSERT INTO `docentes` VALUES (7, '12345678', 'fffff', '', 'fffff', '', 2, 9, 97, 'm', 'asas@gmail.com', '123', 2);
+INSERT INTO `docentes` VALUES (8, 'ab', 'ab', 'ab', 'ab', 'ab', 2, 9, 97, 'ab', 'asas@gmail.com', '123', 2);
+INSERT INTO `docentes` VALUES (9, 'abcd', 'abcd', 'abcd', 'abcd', 'abcd', 2, 9, 97, 'abcd', 'asas@gmail.com', '123', 2);
+INSERT INTO `docentes` VALUES (10, 'SGDFG', 'FG', 'GFDG', 'FDGFD', 'FDGFD', 1, 2, 23, 'GFDG', 'asas@gmail.com', '123', 2);
+INSERT INTO `docentes` VALUES (11, 'il', 'kjl', 'kl', 'kjl', 'jljk', 2, 8, 84, 'lkjl', 'asas@gmail.com', '123', 2);
+INSERT INTO `docentes` VALUES (12, 'df', 'dfd', 'fdf', 'fdf', 'dfd', 2, 8, 84, 'df', 'asas@gmail.com', '123', 2);
 
 -- ----------------------------
 -- Table structure for rol
@@ -178,7 +198,7 @@ CREATE TABLE `rol`  (
   `idRol` int(11) NOT NULL AUTO_INCREMENT,
   `nom_Rol` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   PRIMARY KEY (`idRol`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of rol
@@ -196,7 +216,7 @@ CREATE TABLE `turno`  (
   `hora_inicio` time(0) NOT NULL,
   `hora_final` time(0) NOT NULL,
   PRIMARY KEY (`idturno`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of turno
@@ -211,7 +231,7 @@ CREATE TABLE `ubdepartamento`  (
   `idDepa` int(5) NOT NULL DEFAULT 0,
   `departamento` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`idDepa`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of ubdepartamento
@@ -251,7 +271,7 @@ CREATE TABLE `ubdistrito`  (
   `distrito` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `idProv` int(5) NULL DEFAULT NULL,
   PRIMARY KEY (`idDist`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of ubdistrito
@@ -2097,7 +2117,7 @@ CREATE TABLE `ubprovincia`  (
   `provincia` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `idDepa` int(5) NULL DEFAULT NULL,
   PRIMARY KEY (`idProv`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of ubprovincia

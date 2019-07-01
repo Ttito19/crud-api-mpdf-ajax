@@ -45,7 +45,7 @@ if(isset($_SESSION['rol'])){
 
            
             </style>
-                                     <h1 align="center">Registrar Usuarios</h1>
+                              <u>       <h1 align="center">Registrar Usuarios</h1></u>     
 
                         <div class="container mt-4"  >
                                     <form method="post" autocomplete="off"    id="form" >                                                                              

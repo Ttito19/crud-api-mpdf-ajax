@@ -7,39 +7,16 @@ y luego continuara con lo de abajo-->
 <?php
 session_start();
 if(isset($_SESSION["rol"])) {
-    if($_SESSION["rol"] == 1 || $_SESSION["rol"] == 2 || $_SESSION["rol"] == 3){?>
+    if($_SESSION["rol"] == 1){?>
        <?php include 'header/header.php';  ?>
 
 <?php include 'menu/cabecera-login.php'  ?>
 
-<h1  style="margin-top:10px;" align="center" >Bienvenido: <?php echo($_SESSION["nomCompleto"]);?></h1>
-<div class="container mx-auto">
 
-   <div class="loader-container" >
-    <div class="loader" >
-        <div class="loader2">
-        </div>
-    </div>
-   </div>
-</div>
-   
-
-
-
-
-
-
-
-
-
-
-
-
- 
    <?php  include 'footer/footer.php'  ?>
 
 
-             
+
 <?php
 }else{
     header("Location:./rutas.php");

@@ -10,17 +10,17 @@
           <li class="nav-item active">
             <a class="nav-link" href="#">Inicio</a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" href="#">Servicios</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Contactos</a>
-          </li>
+          </li> -->
           <?php         
           if(isset($_SESSION['rol']))
           if($_SESSION["rol"] == 1){?>
           <li class="nav-item">
-            <a class="nav-link " href="./form-crud.php">Registrar Usuarios</a>
+            <a class="nav-link " href="./form-crud.php">Matricular</a>
           </li>
           <?php }   ?>
           <?php         
@@ -30,7 +30,27 @@
             <a class="nav-link " href="./table-search.php">Datos del Alumno</a>
           </li>
           <?php }   ?>
-
+          <?php         
+          if(isset($_SESSION['rol']))
+          if($_SESSION["rol"] == 1){?>
+          <li class="nav-item">
+            <a class="nav-link " href="./table-docente.php">Datos del Docente</a>
+          </li>
+          <?php }   ?>
+          <?php         
+          if(isset($_SESSION['rol']))
+          if($_SESSION["rol"] == 2){?>
+          <li class="nav-item">
+            <a class="nav-link " href="./form-alumno.php">Alumnos</a>
+          </li>
+          <?php }   ?>
+          <?php         
+          if(isset($_SESSION['rol']))
+          if($_SESSION["rol"] == 3){?>
+          <li class="nav-item">
+            <a class="nav-link " href="./D-Notas.php">Detalles de Notas</a>
+          </li>
+          <?php }   ?>
           <?php         
           if(isset($_SESSION['rol'])){
           ?>

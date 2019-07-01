@@ -287,7 +287,6 @@ $("#input").html('<input  type="submit" class="btn btn-primary"  value="Enviar a
 }
 
 })
-
-
-
-
+$(function(){
+    $('#pdf-total').attr('href',"javascript:window.open('../../app/generate-pdf/list-pdf.php')");
+  });

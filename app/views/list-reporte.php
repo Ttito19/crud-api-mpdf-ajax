@@ -13,9 +13,8 @@ y luego continuara con lo de abajo-->
 <head>
     <title>Listar en Pdf </title>
   
-	<link rel="stylesheet" type="text/css" href="../../public/style/css/bootstrap-grid.css">
-	<link rel="stylesheet" type="text/css" href="../../public/style/estilos/_all-skins.min.css">
-	<link rel="stylesheet" type="text/css" href="../../public/style/estilos/reporte.css">
+
+	<link rel="stylesheet" type="text/css" href="../../public/style/css/estilos/reporte.css">
 
 
 
